@@ -1,0 +1,127 @@
+.warnaGradien {
+    background: #06beb6; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #06beb6, #48b1bf); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #06beb6, #48b1bf);
+}
+
+.select2-selection--single {
+    border-radius: 0px !important;
+}
+
+.select2-selection--single .select2-selection__rendered {
+    line-height: 22px !important;
+    margin-left: -7px;
+}
+
+.Menu-Block {
+    display: inline-grid !important;
+    text-align: center;
+    font-size: 18px;
+}
+
+.Menu-Block .spanText {
+    font-size: 13px;
+}
+
+.Menu-Block .caret {
+    margin-top: 8px;
+    margin-left: 3px;
+}
+
+.body-bottom-nav .navbar-nav>li>a {
+    color: #6e6363 !important;
+}
+
+.body-bottom-nav{
+    background:white;
+    border-bottom: 1px solid #f4f4f4;
+    color: #000000;
+}
+
+.customUser {
+    height: 70px;
+    padding: 25px 0px !important;
+}
+
+.parent-drop {
+    display: flex;
+}
+
+.mainTitle {
+    width: 77%;
+    text-align: center;
+}
+
+.container {
+    width: 100% !important;
+    padding: 0px !important;
+}
+
+.content {
+    padding: 15px 10px !important;
+}
+
+.box {
+    border-radius: unset !important;
+}
+
+.jarakAtas {
+    margin-top: 65px;
+}
+
+.navbar-toggle {
+    padding: 15px 25px !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .Menu-Block {
+        display: unset !important;
+    }
+
+    .parent-drop {
+        display: contents;
+    }
+
+    .user-menu {
+        margin-top: -45px;
+        margin-right: 20px;
+    }
+
+    .mainTitle {
+        width: 100%;
+        margin-top: -50px;
+        text-align: center;
+    }
+
+    .jarakAtas {
+        margin-top: -45px;
+    }
+
+    .menu-mobile-layout {
+        padding-left: 15px !important;
+    }
+}
+
+@media only screen and (max-width: 451px) {
+    .nb-hide {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1224px) and (min-width: 768px) {
+    .user-menu {
+        margin-top: -50px;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .mainTitle {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .mainTitle {
+        font-size: 12px;
+    }
+}
