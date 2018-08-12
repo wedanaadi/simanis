@@ -21,14 +21,14 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Nama</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Jasa</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="nama" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control" name="nama" placeholder = "masukan nama jasa" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
                     </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Harga Jasa</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Harga</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="hargajasa" placeholder = "masukan Harga Jasa" required oninvalid="this.setCustomValidity('Masukan Harga Jasa')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)">
                     </div>

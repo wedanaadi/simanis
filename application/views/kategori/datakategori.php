@@ -1,13 +1,6 @@
 <?php 
-$this->load->view('template/01head');
-$this->load->view('template/02header');
-$this->load->view('template/04sidebar');
-$this->load->view('template/css');
+$this->load->view('layouts/template-atas');
 ?>
-
-<div class="wrapper">  
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header" >
       <h1>
         Data Kategori Servis
@@ -61,13 +54,9 @@ $this->load->view('template/css');
             </div>
             </div><!-- /.box-body -->
           </div><!-- /.box -->
-        </div><!-- /.col -->
-      </div><!-- /.row -->
     </section>
-
 <?php 
-$this->load->view('template/06footer');
-$this->load->view('template/08javascript');
+  $this->load->view('layouts/template-bawah');
 $this->load->view('kategori/kategori_Add');
 $this->load->view('kategori/kategori_edit');
 ?>

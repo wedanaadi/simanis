@@ -21,9 +21,9 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Nama</label>
+                  <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Suplayer</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="nama" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control" name="nama" placeholder = "masukan nama suplayer" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
                     </div>
                 </div>
 

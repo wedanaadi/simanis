@@ -1,5 +1,21 @@
-
-<?php $this->load->view('template/css'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>SIMANIS</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/lte/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/lte/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/lte/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/lte/dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/lte/plugins/iCheck/square/blue.css">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SIMANIS</title>
@@ -14,10 +30,10 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
   <div align="center">
-      <img style="width: 200px; " src="http://localhost/simanis/assets/img/simanis.png">
+      <img style="width: 200px; " src="http://localhost/simaniscoba/assets/lte/img/simanis.png">
       <br><h4>Sistem Informasi Manajemen Servis</h4><br>
   </div>
-    <form action="https://www.youtube.com/watch?v=6eoETnxjI4k" method="post">
+    <form action="#" method="post">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -47,8 +63,6 @@
 </div>
 <!-- /.login-box -->
 
-<?php $this->load->view('template/08javascript'); ?>
-
 <script>
   $(function () {
     $('input').iCheck({
@@ -58,4 +72,5 @@
     });
   });
 </script>
-
+</body>
+</html>
