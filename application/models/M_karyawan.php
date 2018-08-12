@@ -52,5 +52,18 @@ function update($data,$id)
     	$this->db->update('m_karyawan',$data);
   	}
 
+ function cek_login($table, $where)
+    {
+        return $this->db->get_where($table,$where);
+    }
+
+ function getdata($username, $password) 
+    {
+        $this->db->where("username", $username);
+        $this->db->where("pass", $password);
+        return $this->db->get('m_karyawan');
+    }
+
+
 }
  ?>

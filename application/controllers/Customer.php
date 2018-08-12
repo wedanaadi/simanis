@@ -3,7 +3,9 @@ class Customer extends CI_Controller {
 
 function __construct() 
 	{
-  		parent::__construct();
+  	parent::__construct();
+/*      if ($this->session->userdata('kodeuser')==NULL) {
+      redirect('Login'); }*/
  		$this->load->model('M_customer');
 	}
 

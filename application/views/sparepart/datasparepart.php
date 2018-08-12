@@ -46,7 +46,7 @@ $this->load->view('layouts/template-atas');
                           <td><?php echo $data->id_sparepart ?></td>
                           <td><?php echo $data->nama_suplayer ?></td>
                           <td><?php echo $data->nama_sparepart?></td>
-                          <td><?php echo $data->harga_jual?></td>
+                          <td><?php echo "Rp. ".number_format($data->harga_jual,2,",",",") ?></td>
                           <td><?php echo $data->jumlah_stok?></td>
                           <td align="center"> <!-- tambahan "edit" pada class dibawah untuk ajax -->
                            <a class="btn btn-primary edit" data-id="<?php echo $data->id_sparepart ?>" data-toggle="modal" data-target="#ubahsparepart" class="btn btn-primary btn-xs" class=" btn btn-primary"><i class="fa fa-pencil-square"></i> Edit

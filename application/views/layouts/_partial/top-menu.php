@@ -16,6 +16,6 @@
           <!-- Messages: style can be found in dropdown.less-->
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
-              <a href="Login">LOGOUT</a>
+              <a href="<?php echo base_url('index.php/Login/logout') ?>">LOGOUT</a>
     </nav>
 </header>
