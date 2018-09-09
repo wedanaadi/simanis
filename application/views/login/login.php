@@ -32,8 +32,9 @@
   <div align="center">
       <img style="width: 200px; " src="http://localhost/simaniscoba/assets/lte/img/simanis.png">
       <br><h4>Sistem Informasi Manajemen Servis</h4><br>
-  </div>
+  </div> <!-- Form Login -->
     <form action="<?php echo base_url('index.php/login/login')?>" method="post">
+  <!-- username -->
       <div class="form-group has-feedback">
         <input type="text" name="username" class="form-control" placeholder="Username">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -41,17 +42,17 @@
             <strong> <?php echo form_error('username') ?> </strong>          
         </span>
       </div>
+  <!-- Password -->
       <div class="form-group has-feedback">
         <input type="password" name="pass" class="form-control" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                <span class="help-block">
+        <span class="help-block">
             <strong> <?php echo form_error('pass') ?> </strong>          
         </span>
       </div>
       <div class="form-group has-feedback">
-        
-                <span class="help-block">
-            <strong>          <?= (isset($message))?$message:'' ?></strong>          
+      <span class="help-block">
+            <strong><?= (isset($message))?$message:'' ?></strong>          
         </span>
       </div>
       <div class="row">

@@ -26,7 +26,7 @@
       <!-- /.search form -->
 
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu" data-widget="tree">
+      <ul class="sidebar-menu" data-widget="tree" >
         <li class="header" style="text-align: center;">PT. BALIYONI SAGUNA</li>
         <li><a href="Dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href=""><i class="fa fa-user"></i> <span>Profil Pengguna</span></a></li>

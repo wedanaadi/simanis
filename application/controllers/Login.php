@@ -42,7 +42,7 @@ class Login extends CI_Controller {
 		}
 		else {
 			$respon['errorno']=1;
-			$respon['message']='Username salah' ;
+			$respon['message']='Username Atau Password Salah' ;
 			$this->load->view('login/Login',$respon);
 		}
 	}

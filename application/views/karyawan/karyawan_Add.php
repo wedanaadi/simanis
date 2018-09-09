@@ -30,8 +30,8 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Hak Akses</label>
                     <div class="col-sm-4">
-                      <select class="form-control" required oninvalid="this.setCustomValidity('Pilih Hak Akses')" oninput="setCustomValidity()" id="hakakses" name="akses">
-                        <option selected="" hidden=""> --Pilih Hak Akses-- </option>
+                      <select style="width:100%; border-radius: 0" class="form-control" id="hak-akses" name="akses" required="required">
+                        <option value="" disabled="disabled" selected="selected"> --Pilih Suplayer-- </option>
                         <?php foreach ( $akses as $k ): ?>
                           <option value="<?php echo $k->id_hakakses?>"> <?php echo $k->hak_akses ?> </option>
                         <?php endforeach;?>
@@ -90,6 +90,10 @@
           <!-- /.modal-dialog -->
         </div>
 
+
+<script type="text/javascript">
+  $('#hak-akses').select2();
+</script>
   <script>
     function hanyaAngka(evt) {
       var charCode = (evt.which) ? evt.which : event.keyCode

@@ -23,12 +23,11 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Suplayer</label>
                     <div class="col-sm-4">
-                      <select class="form-control" required oninvalid="this.setCustomValidity('Pilih Suplayer')" oninput="setCustomValidity()" id="suplayer" name="suplayer">
-                        <option selected="" hidden=""> --Pilih Suplayer-- </option>
+                      <select class="form-control" required="required" oninput="this.setCustomValidity('Masukan Nama sparepart')" id="suplayer" name="suplayer" style="width: 100%;" style="text-align: left;">
+                        <option selected="selected" disabled="" value=""> --Pilih Suplayer-- </option>
                         <?php foreach ( $akses as $k ): ?>
                           <option value="<?php echo $k->id_suplayer?>"> <?php echo $k->nama_suplayer ?> </option> 
                         <?php endforeach;?>
-
                       </select>
                     </div>
                 </div>
@@ -98,3 +97,7 @@
         }
     }
   </script>
+
+<script type="text/javascript">
+  $('#suplayer').select2();
+</script>

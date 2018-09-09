@@ -43,7 +43,7 @@
                           <td><?php echo $no; ?> </td>
                           <td><?php echo $data->id_jasa ?></td>
                           <td><?php echo $data->nama_jasa?></td>
-                          <td><?php echo $data->harga_jasa?></td>
+                          <td><?php echo "Rp. ".number_format($data->harga_jasa,2,",",",") ?></td>
                           <td align="center"> <!-- tambahan "edit" pada class dibawah untuk ajax -->
                            <a class="btn btn-primary edit" data-id="<?php echo $data->id_jasa ?>" data-toggle="modal" data-target="#ubahjasa" class="btn btn-primary btn-xs" class=" btn btn-primary"><i class="fa fa-pencil-square"></i> Edit
                           </a>

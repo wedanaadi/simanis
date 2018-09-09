@@ -1,6 +1,7 @@
 <?php 
 $this->load->view('layouts/template-atas');
 ?>
+
     
     <section class="content-header" >
       <h1>
@@ -67,6 +68,7 @@ $this->load->view('layouts/template-bawah');
 $this->load->view('sparepart/sparepart_Add');
 $this->load->view('sparepart/sparepart_edit');
 ?>
+
 
 <script>
   $(function () {
