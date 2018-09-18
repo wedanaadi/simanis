@@ -94,6 +94,7 @@
 <script type="text/javascript">
   $('#hak-akses').select2();
 </script>
+
   <script>
     function hanyaAngka(evt) {
       var charCode = (evt.which) ? evt.which : event.keyCode
