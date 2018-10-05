@@ -53,7 +53,7 @@
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" class="btn btn-info pull-right fa fa-save" > Simpan</button>
+                <button type="submit" class="btn btn-info pull-right fa fa-save simpann"> Simpan</button>
               </div>
               <!-- /.box-footer -->
             </form>
@@ -73,3 +73,15 @@
       return true;
     }
   </script>
+
+  <script type="text/javascript">
+    $('.simpann').on('click',function(){
+      swal("Data Berhasil Disimpan", "You clicked the button!", "success")
+    });
+  </script>
+
+<script type="text/javascript">
+  .sa-icon sa-custom{
+
+  }
+</script>

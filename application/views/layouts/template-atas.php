@@ -8,7 +8,7 @@
   <?php  
 	$this->load->view('layouts/_partial/top-menu');
   ?>
-  <aside class="main-sidebar">
+  <aside class="main-sidebar" style="background-color: black">
     <?php  
 		$this->load->view('layouts/_partial/left-sidebar');
 	?>

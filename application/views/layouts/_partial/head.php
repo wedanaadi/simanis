@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLte/css/AdminLTE.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLte/css/skins/_all-skins.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/datatables/datatables.min.css') ?>">
+    <!-- sweetalert -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/sweetalert/dist/sweetalert.css') ?>">
     <!-- Select2 -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/lte/bower_components/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -22,4 +24,4 @@
         }
     </style>
 </head>
-<body class="sidebar-mini wysihtml5-supported skin-blue">
+<body class="sidebar-mini wysihtml5-supported skin-blue" style="background-color: #000000;">

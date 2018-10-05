@@ -27,9 +27,9 @@
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree" >
-        <li class="header" style="text-align: center;">PT. BALIYONI SAGUNA</li>
+        <li class="header" style="text-align: center; color: #c7c7c7;">PT. BALIYONI SAGUNA</li>
         <li><a href="Dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="#"><i class="fa fa-user"></i> <span>Profil Pengguna</span></a></li>
+        <li><a href="Profil"><i class="fa fa-user"></i> <span>Profil Pengguna</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i> <span>Master Data</span>
@@ -53,11 +53,11 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="Penerimaan">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i> Penerimaan Servis </a></li>
-            <li><a href="#">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check-square-o"></i> Pengembalian Servis </a></li>
+            <li><a href="Pengembalian">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check-square-o"></i> Pengembalian Servis </a></li>
           </ul>
         </li>
-        <li><a href="#"><i class="fa fa-share-alt"></i> <span>Servis</span></a></li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
+        <li><a href="Servis"><i class="fa fa-share-alt"></i> <span>Servis</span></a></li>
+        <li><a href="Laporan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
