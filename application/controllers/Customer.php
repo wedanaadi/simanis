@@ -34,6 +34,7 @@ function Customer_AddDB()
     	 ];
     	// print_r($data); exit();
     	$this->M_customer->create($data);
+      $this->session->set_flashdata('alert','Data Berhasil Disimpan');
     	redirect('customer');
 	}
 

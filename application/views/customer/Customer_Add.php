@@ -9,7 +9,7 @@
               </div>
               <div class="modal-body">
                 <!-- form -->
-                <form id="form1" class="form-horizontal" action="<?php echo base_url('index.php/Customer/Customer_AddDB') ?>" method="post">
+                <form id="form1" class="form-horizontal" data-toggle="validator" action="<?php echo base_url('index.php/Customer/Customer_AddDB') ?>" method="post">
               <div class="box-body">
 
 
@@ -24,6 +24,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Nama</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="nama" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -31,6 +32,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">No. Telp</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="tlp"  placeholder = "masukan no. telp" required oninvalid="this.setCustomValidity('Masukan No Telepon')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)">
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -73,15 +75,4 @@
       return true;
     }
   </script>
-
-  <script type="text/javascript">
-    $('.simpann').on('click',function(){
-      swal("Data Berhasil Disimpan", "You clicked the button!", "success")
-    });
-  </script>
-
-<script type="text/javascript">
-  .sa-icon sa-custom{
-
-  }
-</script>
+<!--  -->

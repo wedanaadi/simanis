@@ -8,6 +8,7 @@
 </div>
 <?php  
 	$this->load->view('layouts/_partial/foot');
+	$this->load->view('layouts/_partial/sweetalert');
 ?>
 </body>
 </html>

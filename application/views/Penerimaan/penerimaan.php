@@ -119,7 +119,7 @@ $this->load->view('layouts/template-atas');
                    </div>
                    <div class="col-md-1" style="margin-left: -16px;">
                      <div class="form-group" >
-                        <a style="margin-top:24px; margin-left:2px; " class="btn btn-primary btn-flat tambahkan" id="tambah"><i class='fa fa-plus-square-o'></i>  Tambah  </a> 
+                        <a style="margin-top:24px; margin-left:2px; " class="btn btn-primary btn-flat tambahkan disabled" id="tambah"><i class='fa fa-plus-square-o'></i>  Tambah  </a> 
                      </div>
                   </div>
                 </div>
@@ -210,4 +210,13 @@ $this->load->view('Penerimaan/daftarcustomer');
       var t = $('#tbservis').DataTable();
       t.row($(this).closest('tr')).remove().draw(false);
  })
+</script>
+
+<script>
+  $('#NamaBarang').keyup(function (){
+      $('#tambah').removeClass('disabled');
+      if ($('#NamaBarang').val()=='') {
+        $('#tambah').addClass('disabled');
+      };
+  });
 </script>

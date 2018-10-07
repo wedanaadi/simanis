@@ -30,8 +30,8 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
   <div align="center">
-      <img style="width: 200px; " src="http://localhost/simaniscoba/assets/lte/img/simanis.png">
-      <br><h4>Sistem Informasi Manajemen Servis</h4><br>
+      <img style="width: 200px;" src="http://localhost/simaniscoba/assets/lte/img/simanis.png">
+      <br><h4 style=" font-size: 19,5px">Sistem Informasi Manajemen Servis</h4><br>
   </div> <!-- Form Login -->
     <form action="<?php echo base_url('index.php/login/login')?>" method="post">
   <!-- username -->
