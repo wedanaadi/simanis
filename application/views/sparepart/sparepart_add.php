@@ -9,7 +9,7 @@
               </div>
               <div class="modal-body">
                 <!-- form -->
-                <form id="form1" class="form-horizontal" action="<?php echo base_url('index.php/sparepart/sparepart_addDB') ?>" method="post">
+                <form id="form1" class="form-horizontal" data-toggle="validator" action="<?php echo base_url('index.php/sparepart/sparepart_addDB') ?>" method="post">
               <div class="box-body">
 
 
@@ -29,6 +29,7 @@
                           <option value="<?php echo $k->id_suplayer?>"> <?php echo $k->nama_suplayer ?> </option> 
                         <?php endforeach;?>
                       </select>
+                    <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -36,6 +37,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Nama</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="nama" placeholder = "masukan nama sparepart" required oninvalid="this.setCustomValidity('Masukan Nama sparepart')" oninput="setCustomValidity('')">
+                    <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -43,6 +45,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Harga Pokok</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="pokok" id="pokok" placeholder = "masukan harga" required oninvalid="this.setCustomValidity('Masukan Harga')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)" onkeyup="sum();">
+                    <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -57,6 +60,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Stok</label>
                     <div class="col-sm-4">
                       <input type="text" class="form-control" name="stok" placeholder = "masukan stok" required oninvalid="this.setCustomValidity('Masukan Jumlah Stok')" oninput="setCustomValidity('')">
+                    <span class="help-block with-errors"></span>
                     </div>
                 </div>
 

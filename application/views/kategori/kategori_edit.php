@@ -9,7 +9,7 @@
               </div>
               <div class="modal-body">
                 <!-- form -->
-                <form id="form1" class="form-horizontal" action="<?php echo base_url('index.php/kategori/update') ?>" method="post">
+                <form id="form1" class="form-horizontal" data-toggle="validator" action="<?php echo base_url('index.php/kategori/update') ?>" method="post">
               <div class="box-body">
 
 
@@ -17,6 +17,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">ID</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="id" id="id" value="<?php echo $kodeotomatis ?>" readonly>
+                    <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -24,6 +25,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Nama</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="nama" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                    <span class="help-block with-errors"></span>
                     </div>
                 </div>
 

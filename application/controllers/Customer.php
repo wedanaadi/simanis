@@ -56,7 +56,8 @@ function update()
       		'email_cus' => $this->input->post('email') 
     	];
     $this->M_customer->update($data,$id);
-	   redirect('customer');
+    $this->session->set_flashdata('alert','Data Berhasil Disimpan');
+	  redirect('customer');
 }
 
 }

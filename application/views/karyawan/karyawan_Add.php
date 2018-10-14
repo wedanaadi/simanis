@@ -9,7 +9,7 @@
               </div>
               <div class="modal-body">
                 <!-- form -->
-                <form id="form1" class="form-horizontal" action="<?php echo base_url('index.php/karyawan/karyawan_addDB') ?>" method="post">
+                <form id="form1" class="form-horizontal" data-toggle="validator" action="<?php echo base_url('index.php/karyawan/karyawan_addDB') ?>" method="post">
               <div class="box-body">
 
 
@@ -24,6 +24,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Nama</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="nama" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                        <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -31,11 +32,12 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Hak Akses</label>
                     <div class="col-sm-4">
                       <select style="width:100%; border-radius: 0" class="form-control" id="hak-akses" name="akses" required="required">
-                        <option value="" disabled="disabled" selected="selected"> --Pilih Suplayer-- </option>
+                        <option value="" disabled="disabled" selected="selected"> --Pilih Hak Akses-- </option>
                         <?php foreach ( $akses as $k ): ?>
                           <option value="<?php echo $k->id_hakakses?>"> <?php echo $k->hak_akses ?> </option>
                         <?php endforeach;?>
                       </select>
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -43,6 +45,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">No. Telp</label>
                     <div class="col-sm-10">
                       <input type="text" class="form-control" name="tlp" placeholder = "masukan nomer telepon" required oninvalid="this.setCustomValidity('Masukan Nomer Telepon')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)">
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -50,20 +53,23 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Alamat</label>
                     <div class="col-sm-10">
                       <textarea class="form-control" rows="3" style="resize: vertical;" name="alamat"  placeholder = "masukan alamat" required oninvalid="this.setCustomValidity('Masukan Alamat')" oninput="setCustomValidity('')"></textarea>
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Username</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="username" placeholder = "masukan username" required oninvalid="this.setCustomValidity('Masukan Nomer Telepon')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control" name="username" placeholder = "masukan username" required oninvalid="this.setCustomValidity('Masukan Username')" oninput="setCustomValidity('')">
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Password</label>
                     <div class="col-sm-10">
-                      <input type="password" class="form-control" name="pass" placeholder = "masukan password" required oninvalid="this.setCustomValidity('Masukan Nomer Telepon')" oninput="setCustomValidity('')">
+                      <input type="password" class="form-control" name="pass" placeholder = "masukan password" required oninvalid="this.setCustomValidity('Masukan Password')" oninput="setCustomValidity('')">
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -71,6 +77,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Email</label>
                     <div class="col-sm-10">
                       <input type="email" class="form-control" name="email"  placeholder = "masukan email" required oninvalid="this.setCustomValidity('Masukan Email')" oninput="setCustomValidity('')">
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 

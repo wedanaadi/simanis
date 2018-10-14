@@ -33,6 +33,7 @@ function kategori_addDB()
 			'nama_kategori' => $this->input->post('nama'),
 		];
 		$this->M_kategori->create($data);
+		$this->session->set_flashdata('alert','Data Berhasil Disimpan');
 		redirect('Kategori');
 	}
 
@@ -51,6 +52,7 @@ function update()
 			'nama_kategori' => $this->input->post('nama')
     	  ];
    		$this->M_kategori->update($data,$id);
+   		$this->session->set_flashdata('alert','Data Berhasil Disimpan');
 	   	redirect('Kategori');
 	}
 

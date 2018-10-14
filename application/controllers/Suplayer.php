@@ -35,6 +35,7 @@ function suplayer_addDB()
 			'alamat_sp' => $this->input->post('alamat')
 		];
 		$this->M_suplayer->create($data);
+		$this->session->set_flashdata('alert','Data Berhasil Disimpan');
 		redirect('suplayer');
 	}
 
@@ -55,6 +56,7 @@ function update()
 			'alamat_sp' => $this->input->post('alamat')
     	  ];
    		$this->M_suplayer->update($data,$id);
+   		$this->session->set_flashdata('alert','Data Berhasil Disimpan');
 	   	redirect('suplayer');
 	}
 

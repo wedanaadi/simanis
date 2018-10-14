@@ -38,6 +38,7 @@ function karyawan_addDB()
     	 ];
     	// print_r($data); exit();
     	$this->M_karyawan->create($data);
+      $this->session->set_flashdata('alert','Data Berhasil Disimpan');
     	redirect('karyawan');
 	}
 
@@ -62,6 +63,7 @@ function update()
       		'email' => $this->input->post('email') 
     	];
     	$this->M_karyawan->update($data,$id);
+      $this->session->set_flashdata('alert','Data Berhasil Disimpan');
 	    redirect('karyawan');
 	}
 

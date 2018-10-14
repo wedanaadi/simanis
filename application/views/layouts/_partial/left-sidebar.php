@@ -41,7 +41,7 @@
             <li><a href="Suplayer">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus"></i> Data Suplayer </a></li>
             <li><a href="Sparepart">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-wrench"></i> Data Sparepart </a></li>
             <li><a href="Jasa">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-support"></i> Data Jasa </a></li>
-            <li><a href="Kategori">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-tasks"></i> Kategori Servis </a></li>
+            <li><a href="Kategori">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-tasks"></i> Kategori Service </a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -52,11 +52,11 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="Penerimaan">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i> Penerimaan Servis </a></li>
-            <li><a href="Pengembalian">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check-square-o"></i> Pengembalian Servis </a></li>
+            <li><a href="Penerimaan">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i> Penerimaan Service </a></li>
+            <li><a href="Pengembalian">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check-square-o"></i> Pengembalian Service </a></li>
           </ul>
         </li>
-        <li><a href="Servis"><i class="fa fa-share-alt"></i> <span>Servis</span></a></li>
+        <li><a href="Servis"><i class="fa fa-share-alt"></i> <span>Service</span></a></li>
         <li><a href="Laporan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->

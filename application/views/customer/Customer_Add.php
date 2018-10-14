@@ -40,6 +40,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Alamat</label>
                     <div class="col-sm-10">
                       <textarea class="form-control" rows="3" style="resize: vertical;" name="alamat"  placeholder = "masukan alamat" required oninvalid="this.setCustomValidity('Masukan Alamat')" oninput="setCustomValidity('')"></textarea>
+                      <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
@@ -47,6 +48,7 @@
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Email</label>
                     <div class="col-sm-10">
                       <input type="email" class="form-control" name="email"  placeholder = "masukan email" required oninvalid="this.setCustomValidity('Masukan Email')" oninput="setCustomValidity('')">
+                    <span class="help-block with-errors"></span>
                     </div>
                 </div>
 
