@@ -57,6 +57,8 @@
 
 <script type="text/javascript">
   $('.pilih').on('click',function(){
+      $('.help-block').text('');
+      $('.form-group').removeClass('has-error');
       var IdCustomer=$(this).closest('tr').children('td.IdCustomer').text();
       var NamaCustomer =$(this).closest('tr').children('td.NamaCustomer').text();
       var NoTlpCus =$(this).closest('tr').children('td.NoTlpCus').text();

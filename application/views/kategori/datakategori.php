@@ -83,6 +83,8 @@ $this->load->view('kategori/kategori_edit');
 
 <script type="text/javascript">
   $('.edit').on('click',function(){
+    $('.help-block').text('');
+    $('.form-group').removeClass('has-error');
     var id = $(this).attr('data-id')
     $.ajax({
       method: "POST",

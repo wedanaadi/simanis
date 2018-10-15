@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_karyawan extends CI_Model {
 
-	 function all()
+function all()
 	 {
 	 	$data = $this->db->query('
 	 		SELECT id_karyawan, nama_karyawan, hak_akses.hak_akses, notlp_kar, alamat_kar, username, pass, email
@@ -12,13 +12,13 @@ class M_karyawan extends CI_Model {
 	 	return $data->result();
 	 }
 	
-	function hakakses()
+function hakakses()
 	 {
 		$data = $this->db->get('hak_akses');
 		return $data->result();
 	 }
 
-	function code_otomatis() {
+function code_otomatis() {
         $q = $this->db->query("SELECT MAX(RIGHT(id_karyawan,3)) AS kd_max FROM m_karyawan");
         $kd = "";
         if($q->num_rows()>0){
@@ -52,18 +52,31 @@ function update($data,$id)
     	$this->db->update('m_karyawan',$data);
   	}
 
- function cek_login($table, $where)
+function cek_login($table, $where)
     {
         return $this->db->get_where($table,$where);
     }
 
- function getdata($username, $password) 
+function getdata($username, $password) 
     {
         $this->db->where("username", $username);
         $this->db->where("pass", $password);
         return $this->db->get('m_karyawan');
     }
 
+function check_username($username)
+    {
+           $this->db->where('username', $username);  
+           $query = $this->db->get("m_karyawan");  
+           if($query->num_rows() > 0)  
+           {  
+                return true;  
+           }  
+           else  
+           {  
+                return false;  
+           }
+    }
 
 }
  ?>

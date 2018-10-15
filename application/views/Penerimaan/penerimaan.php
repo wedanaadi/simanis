@@ -14,7 +14,7 @@ $this->load->view('layouts/template-atas');
     <div class="row" data-toggle="valiator">
         <div class="col-md-12">
              <div class="box box-info" style="border-top-color: #8c8b8b; ">
-           <form method="post" id="Simpan" data-toggle="valiator" action="#" enctype="multipart/form-data">
+           <form method="post" id="Simpan" data-toggle="validator" action="#" enctype="multipart/form-data" autocomplete="off">
               <div class="box-body">
               	
               	<div class="row" > <!-- baris 1 -->
@@ -86,20 +86,22 @@ $this->load->view('layouts/template-atas');
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Serial Number</label>
-                          <input type="text" name="SN" id="SN" class="form-control">
+                          <input type="text" name="SN" id="SN" class="form-control" required="required">
                           <span class="help-block with-errors"></span>
                      </div>
                   </div>
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Kelengkapan</label>
-                          <input type="text" name="Kelengkapan" id="Kelengkapan" class="form-control">
+                          <input type="text" name="Kelengkapan" id="Kelengkapan" class="form-control" required="required">
+                          <span class="help-block with-errors"></span>
                      </div>
                   </div>
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Keluhan</label>
-                          <input type="text" name="Keluhan" id="Keluhan" class="form-control">
+                          <input type="text" name="Keluhan" id="Keluhan" class="form-control" required="required">
+                          <span class="help-block with-errors"></span>
                      </div>
                   </div>
                 </div>
@@ -107,7 +109,7 @@ $this->load->view('layouts/template-atas');
                   <div class="col-sm-3">
                       <div id ="barangservis" class="form-group">
                       	<label class="control-label">Kategori Service</label>
-                      <select style="width:100%; border-radius: 0" class="form-control" id="KategoriServis" name="KategoriServis" required="required">
+                      <select style="width:100%; border-radius: 0" class="form-control" id="KategoriServis" name="KategoriServis">
                         <option value="" disabled="disabled" selected="selected"> --Kategori Servis-- </option>
                         <?php foreach ( $kategori as $h ): ?>
                           <option value="<?php echo $h->id_kategori ?>"> <?php echo $h->nama_kategori ?> </option>
@@ -116,9 +118,9 @@ $this->load->view('layouts/template-atas');
                       </div>
                    </div>
                    <div class="col-xs-3">
-                      <div id ="baris1" class="form-group">
+                      <div class="form-group">
                         <label class="control-label">Teknisi</label>
-                          <select style="width:100%; border-radius: 0" class="form-control" id="Teknisi" name="Teknisi" required="required">
+                          <select style="width:100%; border-radius: 0" class="form-control" id="Teknisi" name="Teknisi">
                             <option value="" disabled="disabled" selected="selected"> --Pilih Teknisi-- 
                             </option>
                             <?php foreach ( $teknisi as $k ): ?>
@@ -126,7 +128,6 @@ $this->load->view('layouts/template-atas');
                               </option>
                             <?php endforeach;?>
                           </select>
-                          <span class="help-block with-errors"></span>
                       </div>
                    </div>
                    <div class="col-xs-2" style="margin-top: -5px;">
@@ -212,7 +213,9 @@ $this->load->view('Penerimaan/daftarcustomer');
          $('#SN').val('');
          $('#Kelengkapan').val('');
          $('#Keluhan').val('');
-         $('#KategoriServis').val('');
+         $('#KategoriServis').val('').trigger('change');
+         $('#Teknisi').val('').trigger('change');
+
 
     })
   })
@@ -226,11 +229,17 @@ $this->load->view('Penerimaan/daftarcustomer');
 </script>
 
 <script>
-  $('#NamaBarang').keyup(function (){
-      $('#tambah').removeClass('disabled');
-      if ($('#NamaBarang').val()=='') {
+  $('#NamaBarang,#SN,#Kelengkapan,#Keluhan').keyup(function (){
+      if ($('#NamaBarang').val()=='' || $('#SN').val()=='' || $('#Kelengkapan').val()=='' || $('#Keluhan').val()=='' || $('#KategoriServis').val()=='' || $('#Teknisi').val()=='' ) {
         $('#tambah').addClass('disabled');
       };
+      if ($('#NamaBarang').val()!='' && $('#SN').val()!='' && $('#Kelengkapan').val()!='' && $('#Keluhan').val()!='') {
+        $('#KategoriServis').on('select2:select',function(){
+          $('#Teknisi').on('select2:select',function(){
+            $('#tambah').removeClass('disabled');
+          });
+        });
+      }
   });
 </script>
 

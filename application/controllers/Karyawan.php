@@ -67,6 +67,31 @@ function update()
 	    redirect('karyawan');
 	}
 
+// function checkusername() 
+//   {
+//       if ($this->M_karyawan->check_username($_POST["username"]))
+//           {  
+//             echo '<label class="text-danger"><span class="glyphicon glyphicon-remove"></span> Email Already register</label>';
+//           }  
+      
+//       else {
+//         echo '<label class="text-success"><span class="glyphicon glyphicon-ok"></span> Email Available</label>';
+//       }
+//   }
+//   
+  function checkusername()
+  {
+    $username = $this->input->get('dataUser');
+    $data = $this->db->query("SELECT * FROM m_karyawan WHERE username = '$username'")->result();
+    if(count($data) != 0)
+    {
+      echo json_encode(['msg' => 'ada']);
+    }
+    else
+    {
+      echo json_encode(['msg' => 'tidak']);
+    }
+  }
 }
 
 /* End of file Karyawan.php */
