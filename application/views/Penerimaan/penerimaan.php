@@ -38,11 +38,7 @@ $this->load->view('layouts/template-atas');
               		<div class="col-md-3">
                     	<div id ="baris2" class="form-group">
               			   <label class="control-label">Karyawan</label>
-<<<<<<< HEAD
-              			   <input value="system" type="text" name="karyawan" readonly="readonly" class="form-control" required="required">
-=======
               			   <input type="text" name="karyawan" readonly="readonly" value="utamaaa" class="form-control" required="required">
->>>>>>> 573619f76263de7fb46df7bcc125bf369db6c927
                      	<span class="help-block with-errors"></span>
                       </div>
                   	</div>
@@ -84,40 +80,28 @@ $this->load->view('layouts/template-atas');
                     <div id ="barangservis" class="form-group" >
                           <label class="control-label">Nama Barang</label>
                           <input type="text" name="NamaBarang" id="NamaBarang"  class="form-control">
-<<<<<<< HEAD
                           <span class="help-block with-errors"></span>
-=======
->>>>>>> 573619f76263de7fb46df7bcc125bf369db6c927
                      </div>
                   </div>
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Serial Number</label>
                           <input type="text" name="SN" id="SN" class="form-control">
-<<<<<<< HEAD
                           <span class="help-block with-errors"></span>
-=======
->>>>>>> 573619f76263de7fb46df7bcc125bf369db6c927
                      </div>
                   </div>
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Kelengkapan</label>
                           <input type="text" name="Kelengkapan" id="Kelengkapan" class="form-control">
-<<<<<<< HEAD
                           <span class="help-block with-errors"></span>
-=======
->>>>>>> 573619f76263de7fb46df7bcc125bf369db6c927
                      </div>
                   </div>
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Keluhan</label>
                           <input type="text" name="Keluhan" id="Keluhan" class="form-control">
-<<<<<<< HEAD
                           <span class="help-block with-errors"></span>
-=======
->>>>>>> 573619f76263de7fb46df7bcc125bf369db6c927
                      </div>
                   </div>
                 </div>
@@ -172,13 +156,8 @@ $this->load->view('layouts/template-atas');
                      <tbody id="mytbody"></tbody>
                     </table>
                 </div>    
-<<<<<<< HEAD
                 <div class="col-md-12" align="right" style="margin-top :30px;">
                 <button type="submit" class="btn btn-success btn-lg fa fa-save save" id="Simpan"> Simpan</button>
-=======
-                <div class="box-footer col-md-12" align="right" style="margin-top :30px;">
-                <button type="submit" class="btn btn-success btn-lg fa fa-save" id="Simpan"> Simpan</button>
->>>>>>> 573619f76263de7fb46df7bcc125bf369db6c927
               </div>
               </div>
                 </div>
@@ -296,7 +275,7 @@ $this->load->view('Penerimaan/daftarcustomer');
           karyawan: $('input[name=karyawan]').val(),
           notelp: $('input[name=notelp]').val(),
           tanggal: $('input[name=tanggal]').val(),
-          
+
         };
 
         console.log(_data);
