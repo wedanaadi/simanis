@@ -24,19 +24,12 @@ class M_penerimaan extends CI_Model {
    	    $tahun = date('y'); 
         $bulan = date('m');
 		$hari	= date ('d'); 
-        $q = $this->db->query("SELECT MAX(RIGHT(id_penerimaan, 3)) AS kd_max FROM m_penerimaan");
-        $kd = "";
-        if($q->num_rows()>0){
-            foreach($q->result() as $k){
-                $tmp = ((int)$k->kd_max)+1;
-                $kd = sprintf("%03s", $tmp);
-            }
-        }else{
-            $kd = "001";
-        }
-        $kodemax = str_pad($kd,3,"0",STR_PAD_LEFT);
-        $kodejadi  = "PEM".$tahun.$bulan.$hari.$kodemax;
-        return $kodejadi;
+		$where = $tahun.$bulan.$hari;
+		$lastKode = $this->db->query("SELECT MAX(id_penerimaan) AS 'kode' FROM `m_penerimaan` WHERE SUBSTR(`id_penerimaan`,4,6) = '$where'")->row();
+		$kode = substr($lastKode->kode,9);
+		$angka = (int)$kode;
+		$angka_baru = 'PEM'.$where.str_repeat("0", 3 - strlen($angka+1)).($angka+1);
+		return $angka_baru;
     }
 
 }

@@ -69,7 +69,7 @@
         $('#NamaCustomer').val(NamaCustomer);
         $('#notelp').val(NoTlpCus);
         $('#alamat').val(AlamatCus);
-
+        panggil();
         datacustomer.modal('hide');   
   });
 </script>
