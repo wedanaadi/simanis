@@ -28,8 +28,8 @@ $this->load->view('layouts/template-atas');
                     	<div id ="baris1" class="form-group" name="customerr" data-toggle="modal" data-target="#datacustomer">
               			   <label class="control-label">Customer</label>
                        <input type="text" name="NamaCustomer" id="NamaCustomer" class="form-control" required="required">
+                        <span class="help-block with-errors"></span>
               			   <input type="hidden" name="IdCustomer" id="IdCustomer" class="form-control">
-                     	<span class="help-block with-errors"></span>
                       </div>
                   	</div>
 
@@ -38,7 +38,7 @@ $this->load->view('layouts/template-atas');
               		<div class="col-md-3">
                     	<div id ="baris2" class="form-group">
               			   <label class="control-label">Karyawan</label>
-              			   <input type="text" name="karyawan" readonly="readonly" class="form-control" required="required">
+              			   <input type="text" name="karyawan" readonly="readonly" value="utamaaa" class="form-control" required="required">
                      	<span class="help-block with-errors"></span>
                       </div>
                   	</div>
@@ -79,29 +79,25 @@ $this->load->view('layouts/template-atas');
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group" >
                           <label class="control-label">Nama Barang</label>
-                          <input type="text" name="NamaBarang" id="NamaBarang"  class="form-control" required="required">
-                          <span class="help-block with-errors"></span>
+                          <input type="text" name="NamaBarang" id="NamaBarang"  class="form-control">
                      </div>
                   </div>
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Serial Number</label>
-                          <input type="text" name="SN" id="SN" class="form-control" required="required">
-                          <span class="help-block with-errors"></span>
+                          <input type="text" name="SN" id="SN" class="form-control">
                      </div>
                   </div>
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Kelengkapan</label>
-                          <input type="text" name="Kelengkapan" id="Kelengkapan" class="form-control" required="required">
-                          <span class="help-block with-errors"></span>
+                          <input type="text" name="Kelengkapan" id="Kelengkapan" class="form-control">
                      </div>
                   </div>
                   <div class="col-md-3">
                     <div id ="barangservis" class="form-group">
                           <label class="control-label">Keluhan</label>
-                          <input type="text" name="Keluhan" id="Keluhan" class="form-control" required="required">
-                          <span class="help-block with-errors"></span>
+                          <input type="text" name="Keluhan" id="Keluhan" class="form-control">
                      </div>
                   </div>
                 </div>
@@ -156,8 +152,9 @@ $this->load->view('layouts/template-atas');
                      <tbody id="mytbody"></tbody>
                     </table>
                 </div>    
-                <div class="col-md-12" align="right" style="margin-top :30px;">
+                <div class="box-footer col-md-12" align="right" style="margin-top :30px;">
                 <button type="submit" class="btn btn-success btn-lg fa fa-save" id="Simpan"> Simpan</button>
+              </div>
               </div>
                 </div>
         </form>  

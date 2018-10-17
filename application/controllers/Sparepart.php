@@ -38,7 +38,7 @@ class Sparepart extends CI_Controller {
     	// print_r($data); exit();
     	$this->M_sparepart->create($data);
       $this->session->set_flashdata('alert','Data Berhasil Disimpan');
-    	redirect('sparepart');
+    	redirect('Sparepart');
 	  }
 
 	function find($id)
@@ -61,7 +61,7 @@ class Sparepart extends CI_Controller {
     	];
     	$this->M_sparepart->update($data,$id);
       $this->session->set_flashdata('alert','Data Berhasil Disimpan');
-	    redirect('sparepart');
+	    redirect('Sparepart');
 	  }
 
 }

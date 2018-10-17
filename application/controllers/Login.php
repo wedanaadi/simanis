@@ -17,7 +17,7 @@ class Login extends CI_Controller {
 	function login()
 	{
 		if ($this->session->userdata('kodeuser')!=NULL) {
-			redirect('Customer');
+			redirect('Dashboard');
 		}
 		
 		$this->load->library('form_validation');
@@ -38,7 +38,7 @@ class Login extends CI_Controller {
 		 	'namauser' => $result[0]-> nama_karyawan
 		 );
 		 $this->session->set_userdata($user_session);
-		 redirect('Customer');
+		 redirect('Dashboard');
 		}
 		else {
 			$respon['errorno']=1;

@@ -17,11 +17,7 @@ $this->load->view('layouts/template-atas');
 
           <div class="box" style="border-top-color: #8c8b8b;">
             <div class="box-header">
-            <div class="box-header"> <!-- tambahan "tambah" pada class dibawah untuk ajax -->
-                <a style="float:right"  href="#" class=" btn btn-primary tambah" data-toggle="modal" data-target="#tambahcustomer" title="Tambah Data">
-                 <i class="fa fa-plus-circle"></i> Tambah Data
-                </a>
-            </div>
+
             <!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
