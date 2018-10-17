@@ -135,7 +135,7 @@
                     else
                     {
                       $('.for_hb_username').text('');
-                      $('#username').css('border-color','red');
+                      $('#username').css('border-color','#2bca81');
                       $('.for_hb_username').css('color','red');
                       $('.save').removeClass('disabled');
                     }

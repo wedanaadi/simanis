@@ -36,7 +36,7 @@ function suplayer_addDB()
 		];
 		$this->M_suplayer->create($data);
 		$this->session->set_flashdata('alert','Data Berhasil Disimpan');
-		redirect('suplayer');
+		redirect('Suplayer');
 	}
 
 function find($id)
@@ -57,7 +57,7 @@ function update()
     	  ];
    		$this->M_suplayer->update($data,$id);
    		$this->session->set_flashdata('alert','Data Berhasil Disimpan');
-	   	redirect('suplayer');
+	   	redirect('Suplayer');
 	}
 
 }

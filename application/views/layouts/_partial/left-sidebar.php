@@ -28,20 +28,20 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu" data-widget="tree" >
         <li class="header" style="text-align: center; color: #c7c7c7;">PT. BALIYONI SAGUNA</li>
-        <li><a href="Dashboard"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-        <li><a href="Profil"><i class="fa fa-user"></i> <span>Profil Pengguna</span></a></li>
+        <li><a href=" <?php echo base_url('index.php/Dashboard') ?> "><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li><a href=" <?php echo base_url('index.php/Profil') ?> "><i class="fa fa-user"></i> <span>Profil Pengguna</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i> <span>Master Data</span>
             <i class="fa fa-angle-left pull-right"></i>
           </a>
           <ul class="treeview-menu">
-            <li><a href="Karyawan">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-user"></i> Data Karyawan </a></li>
-            <li><a href="Customer">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-group"></i> Data Customer </a></li>
-            <li><a href="Suplayer">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus"></i> Data Suplayer </a></li>
-            <li><a href="Sparepart">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-wrench"></i> Data Sparepart </a></li>
-            <li><a href="Jasa">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-support"></i> Data Jasa </a></li>
-            <li><a href="Kategori">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-tasks"></i> Kategori Service </a></li>
+            <li><a href="<?php echo base_url('index.php/Karyawan')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-user"></i> Data Karyawan </a></li>
+            <li><a href="<?php echo base_url('index.php/Customer')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-group"></i> Data Customer </a></li>
+            <li><a href="<?php echo base_url('index.php/Suplayer')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-cart-plus"></i> Data Suplayer </a></li>
+            <li><a href="<?php echo base_url('index.php/Sparepart')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-wrench"></i> Data Sparepart </a></li>
+            <li><a href="<?php echo base_url('index.php/Jasa')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-support"></i> Data Jasa </a></li>
+            <li><a href="<?php echo base_url('index.php/Kategori')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-tasks"></i> Kategori Service </a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -52,12 +52,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="Penerimaan">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i> Penerimaan Service </a></li>
-            <li><a href="Pengembalian">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check-square-o"></i> Pengembalian Service </a></li>
+            <li><a href="<?php echo base_url('index.php/Penerimaan')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i> Penerimaan Service </a></li>
+            <li><a href="<?php echo base_url('index.php/Pengembalian')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check-square-o"></i> Pengembalian Service </a></li>
           </ul>
         </li>
-        <li><a href="Servis"><i class="fa fa-share-alt"></i> <span>Service</span></a></li>
-        <li><a href="Laporan"><i class="fa fa-book"></i> <span>Laporan</span></a></li>
+        <li><a href=" <?php echo base_url('index.php/Servis') ?> "><i class="fa fa-share-alt"></i> <span>Service</span></a></li>
+        <li><a href=" <?php echo base_url('index.php/Laporan') ?> "><i class="fa fa-book"></i> <span>Laporan</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

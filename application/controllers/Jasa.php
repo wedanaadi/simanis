@@ -34,7 +34,7 @@ function jasa_addDB()
 			'harga_jasa' => $this->input->post('hargajasa')
 		];
 		$this->M_jasa->create($data);
-		redirect('jasa');
+		redirect('Jasa');
 	}
 
 function find($id)
@@ -53,7 +53,7 @@ function update()
 			'harga_jasa' => $this->input->post('hargajasa')
     	  ];
    		$this->M_jasa->update($data,$id);
-	   	redirect('jasa');
+	   	redirect('Jasa');
 	}
 
 }

@@ -35,7 +35,7 @@ function Customer_AddDB()
     	// print_r($data); exit();
     	$this->M_customer->create($data);
       $this->session->set_flashdata('alert','Data Berhasil Disimpan');
-    	redirect('customer');
+    	redirect('Customer');
 	}
 
 function find($id)
@@ -57,7 +57,7 @@ function update()
     	];
     $this->M_customer->update($data,$id);
     $this->session->set_flashdata('alert','Data Berhasil Disimpan');
-	  redirect('customer');
+	  redirect('Customer');
 }
 
 }

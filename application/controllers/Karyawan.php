@@ -39,7 +39,7 @@ function karyawan_addDB()
     	// print_r($data); exit();
     	$this->M_karyawan->create($data);
       $this->session->set_flashdata('alert','Data Berhasil Disimpan');
-    	redirect('karyawan');
+    	redirect('Karyawan');
 	}
 
 function find($id)
@@ -64,7 +64,7 @@ function update()
     	];
     	$this->M_karyawan->update($data,$id);
       $this->session->set_flashdata('alert','Data Berhasil Disimpan');
-	    redirect('karyawan');
+	    redirect('Karyawan');
 	}
 
 // function checkusername() 
@@ -82,7 +82,8 @@ function update()
   function checkusername()
   {
     $username = $this->input->get('dataUser');
-    $data = $this->db->query("SELECT * FROM m_karyawan WHERE username = '$username'")->result();
+    $data = $this->M_karyawan->check_username($username);
+    /*$data = $this->db->query("SELECT * FROM m_karyawan WHERE username = '$username'")->result();*/
     if(count($data) != 0)
     {
       echo json_encode(['msg' => 'ada']);

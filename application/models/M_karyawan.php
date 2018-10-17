@@ -66,7 +66,7 @@ function getdata($username, $password)
 
 function check_username($username)
     {
-           $this->db->where('username', $username);  
+/*           $this->db->where('username', $username);  
            $query = $this->db->get("m_karyawan");  
            if($query->num_rows() > 0)  
            {  
@@ -75,7 +75,9 @@ function check_username($username)
            else  
            {  
                 return false;  
-           }
+           }*/
+      $data = $this->db->query("SELECT * FROM m_karyawan WHERE username = '$username'");
+      return $data->result();
     }
 
 }
