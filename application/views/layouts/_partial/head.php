@@ -13,6 +13,8 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/lte/bower_components/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <!-- favicon -->
+    <link rel="icon" sizes="60x60" type="image/png" href="<?php echo base_url('assets/lte/img/apple-icon-60x60.png')?>">
 
     <style type="text/css" media="screen">
         .select2-container--default .select2-selection--single {
