@@ -36,7 +36,6 @@ class M_penerimaan extends CI_Model {
 		if ($this->db->trans_status() === FALSE)
 		{
 				$this->db->trans_rollback();
-				echo "A";
 				return FALSE;
 		}
 		else
