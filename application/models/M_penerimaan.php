@@ -30,7 +30,33 @@ class M_penerimaan extends CI_Model {
 		$angka = (int)$kode;
 		$angka_baru = 'PEM'.$where.str_repeat("0", 3 - strlen($angka+1)).($angka+1);
 		return $angka_baru;
-    }
+	}
+
+	function last_kode($where)
+	{
+		$data = $this->db->query("SELECT MAX(id_penerimaan) AS 'kode' FROM `m_penerimaan` WHERE SUBSTR(`id_penerimaan`,4,6) = '$where'")->row();
+		return $data;
+	}
+	
+	function insertDB($penerimaan, $service)
+	{
+		// $this->db->trans_strict(FALSE);
+		$this->db->trans_begin();
+		$this->db->insert( 'm_penerimaan', $penerimaan);
+		$this->db->insert_batch( 'm_service', $service);  
+		$this->db->trans_complete(); 
+		if ($this->db->trans_status() === FALSE)
+		{
+				$this->db->trans_rollback();
+				echo "A";
+				return FALSE;
+		}
+		else
+		{
+				$this->db->trans_commit();
+				return TRUE;
+		}
+	}
 
 }
 
