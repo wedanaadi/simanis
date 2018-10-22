@@ -34,6 +34,28 @@ $this->load->view('layouts/template-atas');
                   </tr>
               </thead>
               			<!-- data service -->
+                  <?php 
+                      //$no = 1;
+                      foreach ($dataall as $data ) {
+                  ?>
+                      <tr class='odd gradeX context' >
+                          <td><?php echo $data->id_service ?> </td>
+                          <td><?php echo $data->id_penerimaan ?></td>
+                          <td><?php echo $data->tgl_penerimaan ?></td>
+                          <td><?php echo $data->nama_barang ?></td>
+                          <td><?php echo $data->nama_karyawan ?></td>
+                          <td><?php echo $data->status_service ?></td>
+                          <td align="center"> <!-- tambahan "edit" pada class dibawah untuk ajax -->
+                           <a class="btn btn-primary btn-sm edit" data-id="#" data-toggle="modal" data-target="#ubahsparepart"><i class="fa fa-pencil-square"></i> Edit
+                          </a> &nbsp;
+                          <a class="btn btn-primary btn-sm edit" href="<?php echo base_url('index.php/Servis/view_detail');?>"><i class="fa fa-pencil-square"></i> Detail
+                          </a>
+                          </td>
+                      </tr>
+                  <?php 
+                      //$no++;
+                      }
+                  ?>
               </table>
             </div>
             </div><!-- /.box-body -->

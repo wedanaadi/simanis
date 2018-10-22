@@ -56,7 +56,7 @@
             <li><a href="<?php echo base_url('index.php/Pengembalian')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check-square-o"></i> Pengembalian Service </a></li>
           </ul>
         </li>
-        <li><a href=" <?php echo base_url('index.php/Servis') ?> "><i class="fa fa-share-alt"></i> <span>Service</span></a></li>
+        <li><a href=" <?php echo base_url('index.php/Servis') /*== base_url('index.php/Servis/view_detail')*/ ?> "><i class="fa fa-share-alt"></i> <span>Service</span></a></li>
         <li><a href=" <?php echo base_url('index.php/Laporan') ?> "><i class="fa fa-book"></i> <span>Laporan</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
