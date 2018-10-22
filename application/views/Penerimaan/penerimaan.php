@@ -21,7 +21,7 @@ $this->load->view('layouts/template-atas');
               		<div class="col-md-3">
                     	<div id ="baris1" class="form-group">
               			   <label class="control-label">No Nota</label>
-              			   <input type="text" name="id" readonly="readonly" class="form-control" value=" <?php echo $kodetd ?> ">
+              			   <input type="text" name="id" readonly="readonly" class="form-control" value="<?php echo $kodetd ?>">
                      	</div>
                   	</div>
                   	<div class="col-md-3" style="margin-left">
@@ -150,7 +150,9 @@ $this->load->view('layouts/template-atas');
                               <th>Keluhan</th>
                               <th>Kategori</th>
                               <th>Teknisi</th>
-                              <th>Action</th>
+                              <th style="width: 50px">Action</th>
+                              <th style="display:none">idKateg</th>
+                              <th style="display:none">idKaryawan</th>
                             </tr>
                         </thead>
                      <tbody id="mytbody"></tbody>
@@ -206,9 +208,13 @@ $this->load->view('Penerimaan/daftarcustomer');
             Keluhan,
             NamaKategori,
             NamaTeknisi,
-            Action
+            Action,
+            KategoriServis,
+            Teknisi
         ] ).draw(false);
         t.row(row).column(0).nodes().to$().addClass('IdServis');
+        t.row(row).column(7).nodes().to$().css('display','none');
+        t.row(row).column(8).nodes().to$().css('display','none');
 
          $('#NamaBarang').val('');
          $('#SN').val('');
@@ -216,6 +222,8 @@ $this->load->view('Penerimaan/daftarcustomer');
          $('#Keluhan').val('');
          $('#KategoriServis').val('').trigger('change');
          $('#Teknisi').val('').trigger('change');
+
+         panggil();
 
 
     })
@@ -275,10 +283,28 @@ $this->load->view('Penerimaan/daftarcustomer');
           karyawan: $('input[name=karyawan]').val(),
           notelp: $('input[name=notelp]').val(),
           tanggal: $('input[name=tanggal]').val(),
+          tbdetil: tabel.rows().data().toArray(),
 
         };
 
-        console.log(_data);
+        $.ajax({
+          url: "<?php echo site_url('Penerimaan/addDB') ?>",
+          type: "POST",
+          method: "POST",
+          data: _data,
+          success: function(data)
+          {
+            obj = JSON.parse(data);
+            swal({
+                title: "Sukses",
+                text: obj.message,
+                type: "success",
+                button: "ok",
+            }, function(){
+              window.location = "<?php echo site_url('Penerimaan') ?>";
+            });
+          }
+        });
       }
     }
     return false;
