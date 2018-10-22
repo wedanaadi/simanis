@@ -69,7 +69,7 @@
         $('#NamaCustomer').val(NamaCustomer);
         $('#notelp').val(NoTlpCus);
         $('#alamat').val(AlamatCus);
-        panggil();
+        panggil(); /*Function untuk cek konidisi pada buttom simpan di daftarcustomer*/
         datacustomer.modal('hide');   
   });
 </script>

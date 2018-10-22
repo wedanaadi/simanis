@@ -28,7 +28,7 @@
                                 <td><?php echo $no; ?> </td>
                                 <td class="IdJasa"><?php echo $j->id_jasa ?></td>
                                 <td class="NamaJasa" ><?php echo $j->nama_jasa?></td>
-                                <td><?php echo "Rp. ".number_format($j->harga_jasa,2,",",",") ?></td>
+                                <td class="HargaJasa"><?php echo "Rp. ".number_format($j->harga_jasa,2,",",",") ?></td>
                                 <td align="center"> 
                                     <a class="btn btn-primary btn-xs pilih"><i class="fa fa-plus-circle"></i> Tambah</a>
                                 </td>
@@ -49,5 +49,22 @@
 <script type="text/javascript">
   $(function () {
     $("#TbJasa").DataTable();
+  });
+</script>
+
+<script type="text/javascript">
+  $('.pilih').on('click',function(){
+      $('.help-block').text('');
+      $('.form-group').removeClass('has-error');
+      var IdJasa=$(this).closest('tr').children('td.IdJasa').text();
+      var NamaJasa =$(this).closest('tr').children('td.NamaJasa').text();
+      var HargaJasa =$(this).closest('tr').children('td.HargaJasa').text();
+      var datajasa = $('#datajasa');
+      
+        $('#IdJasa').val(IdJasa);
+        $('#NamaJasa').val(NamaJasa);
+        $('#HargaJasa').val(HargaJasa);
+        panggil();
+        datajasa.modal('hide');   
   });
 </script>
