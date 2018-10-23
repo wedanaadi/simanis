@@ -24,15 +24,17 @@ $this->load->view('layouts/template-atas');
               			   <label class="control-label">Nama Sparepart</label>
                        <input type="text" name="NamaSparepart" id="NamaSparepart" class="form-control" required="required">
                         <span class="help-block with-errors"></span>
-                        <input type="hidden" name="Id_Servis" id="Id_Servis" readonly="readonly" class="form-control">
+                        <input type="hidden" name="IdServis" id="IdServis" readonly="readonly" class="form-control">
+                        <input type="hidden" name="IdSparepart" id="IdSparepart" readonly="readonly" class="form-control">
                       </div>
                   	</div>
                   	<div class="col-md-6" >
-                    	<div id ="baris1" class="form-group" name="jasa" data-toggle="modal" data-target="#datajasa" style="margin-right: 85px; margin-left: 15px;"> 
+                    	<div id ="baris1" class="form-group" name="Jasa" id="Jasa" data-toggle="modal" data-target="#datajasa" style="margin-right: 85px; margin-left: 15px;"> 
                         <h4 style="text-align: center; margin-top:2px;"><b>Jasa</b></h4>
                         <hr style="border-top: 3px solid #444; padding: 6px; margin-top: -5px; margin-bottom: 0px;">
                        <label class="control-label">Nama Jasa</label>
                        <input type="text" name="NamaJasa" id="NamaJasa" class="form-control" required="required">
+                       <input type="hidden" name="IdJasa" id="IdJasa" readonly="readonly" class="form-control">
                         <span class="help-block with-errors"></span>
                       </div>
                   	</div>
@@ -48,7 +50,7 @@ $this->load->view('layouts/template-atas');
                   	</div>
                   	<div class="col-md-6">
                     	<div id ="baris2" class="form-group" style="margin-right: 85px; margin-left: 15px;">
-              			   <label class="control-label">Harga</label>
+              			   <label class="control-label">Harga jasa</label>
               			   <input type="text" name="HargaJasa" id="HargaJasa" readonly="readonly" class="form-control">
                      	</div>
                   	</div>
@@ -65,7 +67,7 @@ $this->load->view('layouts/template-atas');
                     	<div id ="baris3" class="form-group" style="margin-right: 85px; margin-left: 15px;">
               			   <label class="control-label" hidden="">Qty</label>
               			   <input type="hidden" name="QtyJasa" id="QtyJasa" readonly="readonly" value="1" class="form-control">
-                       <a style="margin-top:/*70px*/ 12px;" class="btn btn-primary btn-flat TambahkanJasa disabled" id="TambahJasa"><i class='fa fa-plus-square-o'></i>  Tambah  </a>
+                       <a style="margin-top:/*70px*/ 12px;" class="btn btn-primary btn-flat TambahkanJasa disabled " id="TambahJasa"><i class='fa fa-plus-square-o'></i>  Tambah  </a>
                      	</div>
                   	</div>
               </div>
@@ -79,7 +81,9 @@ $this->load->view('layouts/template-atas');
                               <th>Service</th>
                               <th>Qty</th>
                               <th>Harga</th>
+                              <th>Sub Total</th>
                               <th>Action</th>
+                              <th hidden="hidden">Status</th>
                             </tr>
                         </thead>
                      <tbody id="mytbody"></tbody>
@@ -108,82 +112,21 @@ $this->load->view('servis/daftarjasa');
   });
 </script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-      var t = $('#tbservis').DataTable();
-      var i = 1;
 
-    $('.tambahkan').on('click', function() {
-        var NamaBarang = $('#NamaBarang').val();
-        var SN = $('#SN').val();
-        var Kelengkapan = $('#Kelengkapan').val();
-        var Keluhan = $('#Keluhan').val();
-        var KategoriServis = $('#KategoriServis').val();
-        var NamaKategori = $( "#KategoriServis option:selected" ).text();
-        var Teknisi = $('#Teknisi').val();
-        var NamaTeknisi = $("#Teknisi option:selected").text();
-        var Action = "<a class='btn btn-danger btn-xs Hapus' title='Remove Item'>  <span class=' fa  fa-minus-square' ></span> </a> "
-
-    var row = t.row.add( [
-            NamaBarang,
-            SN,
-            Kelengkapan,
-            Keluhan,
-            NamaKategori,
-            NamaTeknisi,
-            Action
-        ] ).draw(false);
-        t.row(row).column(0).nodes().to$().addClass('IdServis');
-
-         $('#NamaBarang').val('');
-         $('#SN').val('');
-         $('#Kelengkapan').val('');
-         $('#Keluhan').val('');
-         $('#KategoriServis').val('').trigger('change');
-         $('#Teknisi').val('').trigger('change');
-
-
-    })
-  })
+<script> /*Sparepart*/
+  $('#NamaSparepart, #HargaSparepart, #QtySparepart').keyup(function (){
+      if ($('#NamaSparepart').val()=='' || $('#HargaSparepart').val()=='' || $('#QtySparepart').val()=='' ) {
+        $('#TambahSparepart').addClass('disabled');
+      };
+      if ($('#NamaSparepart').val()!='' && $('#HargaSparepart').val()!='' && $('#QtySparepart').val()!='' ) {
+        $('#TambahSparepart').removeClass('disabled');
+      };
+  });
 </script>
 
-<script type="text/javascript">
-   $('#TbDetailServis tbody').on('click', '.Hapus', function(e){
-      var t = $('#TbDetailServis').DataTable();
-      t.row($(this).closest('tr')).remove().draw(false);
- })
-</script>
-
-
-<script>
+<script> /*Jasa*/
   function panggil()
   {
-    $('.save').removeClass('disabled');
+    $('#TambahJasa').removeClass('disabled');
   }
-  // alert(tabel.rows().data().toArray());
-  $(document).on('submit',function(e){
-    if(!e.isDefaultPrevented())
-    {
-      var tabel = $("#tbservis").DataTable();
-      var jumlah = tabel.rows().count();
-      if(jumlah == 0)
-      {
-        alert('empty');
-      }
-      else
-      {
-        var _data = {
-          no_nota: $('input[name=id]').val(),
-          customer: $('input[name=IdCustomer]').val(),
-          karyawan: $('input[name=karyawan]').val(),
-          notelp: $('input[name=notelp]').val(),
-          tanggal: $('input[name=tanggal]').val(),
-
-        };
-
-        console.log(_data);
-      }
-    }
-    return false;
-  });
 </script>

@@ -28,11 +28,11 @@
                           ?>
                             <tr class='odd gradeX context' >
                           <td><?php echo $no; ?> </td>
-                          <td><?php echo $s->id_sparepart ?></td>
-                          <td><?php echo $s->nama_suplayer ?></td>
-                          <td><?php echo $s->nama_sparepart?></td>
-                          <td><?php echo "Rp. ".number_format($s->harga_jual,2,",",",") ?></td>
-                          <td><?php echo $s->jumlah_stok?></td>
+                          <td class="IdSparepart"><?php echo $s->id_sparepart ?></td>
+                          <td class="NamaSpuplayer"><?php echo $s->nama_suplayer ?></td>
+                          <td class="NamaSparepart"><?php echo $s->nama_sparepart?></td>
+                          <td class="HargaJual"><?php echo "Rp. ".number_format($s->harga_jual,2,",",",") ?></td>
+                          <td class="JumlahStok"><?php echo $s->jumlah_stok?></td>
                           <td align="center">
                               <a class="btn btn-primary btn-xs pilih"><i class="fa fa-plus-circle"></i> Tambah</a>
                           </td>
@@ -55,3 +55,22 @@
     $("#TbSparepart").DataTable();
   });
   </script>
+
+<script type="text/javascript">
+  $('.pilih').on('click',function(){
+      $('.help-block').text('');
+      $('.form-group').removeClass('has-error');
+      var IdSparepart=$(this).closest('tr').children('td.IdSparepart').text();
+      var NamaSpuplayer =$(this).closest('tr').children('td.NamaSpuplayer').text();
+      var NamaSparepart =$(this).closest('tr').children('td.NamaSparepart').text();
+      var HargaJual =$(this).closest('tr').children('td.HargaJual').text();
+      var JumlahStok =$(this).closest('tr').children('td.JumlahStok').text();
+      var datasparepart = $('#datasparepart');
+      
+        $('#IdSparepart').val(IdSparepart);
+        $('#NamaSparepart').val(NamaSparepart);
+        $('#HargaSparepart').val(HargaJual);
+        //panggil();
+        datasparepart.modal('hide');   
+  });
+</script>
