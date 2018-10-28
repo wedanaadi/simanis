@@ -46,9 +46,9 @@ $this->load->view('layouts/template-atas');
                           <td><?php echo $data->nama_karyawan ?></td>
                           <td><?php echo $data->status_service ?></td>
                           <td align="center"> <!-- tambahan "edit" pada class dibawah untuk ajax -->
-                           <a class="btn btn-primary btn-sm edit" data-id="#" data-toggle="modal" data-target="#ubahsparepart"><i class="fa fa-pencil-square"></i> Edit
+                           <a class="btn btn-primary btn-sm edit ubah" data-id="<?php echo $data->id_service ?>" id="<?php echo $data->id_penerimaan?>" data-toggle="modal" data-target="#editdataservis"><i class="fa fa-pencil"></i> Edit
                           </a> &nbsp;
-                          <a class="btn btn-primary btn-sm edit" href="<?php echo base_url('index.php/Servis/view_detail');?>"><i class="fa fa-pencil-square"></i> Detail
+                          <a class="btn btn-primary btn-sm detail" href="<?php echo base_url('index.php/Servis/view_detail');?>"><i class="fa fa-plus"></i> Detail
                           </a>
                           </td>
                       </tr>
@@ -64,6 +64,7 @@ $this->load->view('layouts/template-atas');
 
 <?php
 $this->load->view('layouts/template-bawah');
+$this->load->view('servis/editdataservis');
  ?>
 
 <script type="text/javascript">
@@ -72,3 +73,51 @@ $this->load->view('layouts/template-bawah');
     });
   });
 </script>
+
+<script type="text/javascript">
+  $('.edit').on('click',function(){
+    $('.save').removeClass('disabled');
+    $('.help-block').text('');
+    $('.form-group').removeClass('has-error');
+    var id = $(this).attr('id')
+    $.ajax({
+      method: "POST",
+      url: "<?php echo base_url('index.php/Servis/findpenerimaan/') ?>"+id,
+      success: function(penerimaan) {
+        var ambil = JSON.parse(penerimaan);
+        $('[name="NoNota"]').val(ambil.id_penerimaan);
+        $('[name="Karyawan"]').val(ambil.nama_karyawan);
+        $('[name="Tanggal"]').val(ambil.tgl_penerimaan);
+        $('[name="NamaCustomer"]').val(ambil.nama_customer);
+        $('[name="NoTelepon"]').val(ambil.notlp_cus);
+        $('[name="Alamat"]').val(ambil.alamat_cus);
+      }
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $('.ubah').on('click',function(){
+    $('.help-block').text('');
+    $('.form-group').removeClass('has-error');
+    var id = $(this).attr('data-id')
+    $.ajax({
+      method: "POST",
+      url: "<?php echo base_url('index.php/Servis/findservis/') ?>"+id,
+      success: function(service) {
+        var ambil = JSON.parse(service);
+        $('[name="IDService"]').val(ambil.id_service);
+        $('[name="NamaBarang"]').val(ambil.nama_barang);
+        $('[name="SerialNumber"]').val(ambil.sn_barang);
+        $('[name="Kelengkapan"]').val(ambil.kelengkapan);
+        $('[name="Keluhan"]').val(ambil.keluhan);
+        $('[name="Teknisi"]').val(ambil.id_karyawan);
+        $('[name="Status"]').val(ambil.id_status);
+        $('[name="Kondisi"]').val(ambil.kondisi);
+      }
+    });
+  });
+</script>
+
+
+

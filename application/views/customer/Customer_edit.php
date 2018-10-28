@@ -9,7 +9,7 @@
               </div>
               <div class="modal-body">
                 <!-- form -->
-                <form id="form" class="form-horizontal" data-toggle="validator" action="<?php echo base_url('index.php/Customer/update') ?>" method="post">
+                <form id="form" class="form-horizontal" data-toggle="validator" action="<?php echo base_url('index.php/Customer/update') ?>" method="post" autocomplete="off">
               <div class="box-body">
 
                 <div class="form-group">

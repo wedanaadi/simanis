@@ -20,7 +20,7 @@ class M_penerimaan extends CI_Model {
 		return $data->result();
 	}
 
-   function kodetd(){
+/*   function kodetd(){
    	    $tahun = date('y'); 
         $bulan = date('m');
 		$hari	= date ('d'); 
@@ -30,11 +30,11 @@ class M_penerimaan extends CI_Model {
 		$angka = (int)$kode;
 		$angka_baru = 'PEM'.$where.str_repeat("0", 3 - strlen($angka+1)).($angka+1);
 		return $angka_baru;
-	}
+	}*/
 
 	function last_kode($where)
 	{
-		$data = $this->db->query("SELECT MAX(id_penerimaan) AS 'kode' FROM `m_penerimaan` WHERE SUBSTR(`id_penerimaan`,4,6) = '$where'")->row();
+		$data = $this->db->query("SELECT MAX(id_penerimaan) AS 'kode' FROM `m_penerimaan` WHERE SUBSTR(`id_penerimaan`,4,6) = '$where'")->row();  /*(`id_penerimaan`,4,6) -> pada id penerimaan majukan 4 angka dari kiri kemudian ambil 6 angka*/
 		return $data;
 	}
 	

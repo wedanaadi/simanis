@@ -1,17 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/**
- * 
- * 
- *
- * @author By Wedana Adi.
- */
-
 class Create_kode {
     var $CI = NULL;
     function __construct(){
         $this->ci =& get_instance();
-        $this->ci->load->model('M_penerimaan'); 
     }
 
     function generate_menu($lastKode, $lenght, $start, $awalKode = NULL, $split = NULL) {
@@ -22,3 +14,4 @@ class Create_kode {
     }
 }
 ?>
+

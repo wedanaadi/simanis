@@ -19,8 +19,11 @@ class Penerimaan extends CI_Controller {
 		$tahun = date('y'); 
         $bulan = date('m');
 		$hari	= date ('d'); 
-		$last_kode = $this->M_penerimaan->last_kode($tahun.$bulan.$hari);
+		$last_kode = $this->M_penerimaan->last_kode($tahun.$bulan.$hari); 
+		/* last_kode($tahun.$bulan.$hari); --> $where pada M_penerimaan untuk mencocokan tgl sekarang dengan id_penerimaan*/ 
+		
 		$data['kodetd'] = $this->create_kode->generate_menu($last_kode->kode, 3, 9, 'PEM', $tahun.$bulan.$hari);
+		
 		$data['teknisi'] = $this->M_penerimaan->teknisi();
 		$data['kategori'] = $this->M_penerimaan->kategori();
 		$data['customer'] = $this->M_penerimaan->customer();
@@ -46,7 +49,7 @@ class Penerimaan extends CI_Controller {
 				'nama_barang' => $this->input->post('tbdetil')[$i][0],
 				'kelengkapan' => $this->input->post('tbdetil')[$i][2],
 				'keluhan' => $this->input->post('tbdetil')[$i][3],
-				'id_status' => '3',
+				'id_status' => '1',
 				'kondisi' => '1'
 			];
 		}

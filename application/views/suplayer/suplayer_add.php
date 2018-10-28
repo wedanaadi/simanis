@@ -9,7 +9,7 @@
               </div>
               <div class="modal-body">
                 <!-- form -->
-                <form id="form1" class="form-horizontal" data-toggle="validator" action="<?php echo base_url('index.php/suplayer/Suplayer_AddDB') ?>" method="post">
+                <form id="form1" class="form-horizontal" data-toggle="validator" action="<?php echo base_url('index.php/suplayer/Suplayer_AddDB') ?>" method="post" autocomplete="off">
               <div class="box-body">
 
 
