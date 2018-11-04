@@ -48,7 +48,7 @@ $this->load->view('layouts/template-atas');
                           <td align="center"> <!-- tambahan "edit" pada class dibawah untuk ajax -->
                            <a class="btn btn-primary btn-sm edit ubah" data-id="<?php echo $data->id_service ?>" id="<?php echo $data->id_penerimaan?>" data-toggle="modal" data-target="#editdataservis"><i class="fa fa-pencil"></i> Edit
                           </a> &nbsp;
-                          <a class="btn btn-primary btn-sm detail" href="<?php echo base_url('index.php/Servis/view_detail');?>"><i class="fa fa-plus"></i> Detail
+                          <a class="btn btn-primary btn-sm detail" href="<?php echo base_url('index.php/Servis/view_detail/'.$data->id_service);?>"><i class="fa fa-plus"></i> Detail
                           </a>
                           </td>
                       </tr>

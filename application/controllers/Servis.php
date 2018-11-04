@@ -20,10 +20,11 @@ class Servis extends CI_Controller {
 		$this->load->view('servis/dataservis', $data);
 	}
 
-	function view_detail()
+	function view_detail($id)
 	{
 		$data['jasa'] = $this->M_servis->jasa();
 		$data['sparepart'] = $this->M_servis->datasparepart();
+    $data['getidservis'] = $this->M_servis->getidservis($id);
 		//print_r($data); exit();
 		$this->load->view('servis/detailservis', $data);
 	}

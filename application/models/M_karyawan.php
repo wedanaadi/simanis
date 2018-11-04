@@ -61,7 +61,9 @@ function getdata($username, $password)
     {
         $this->db->where("username", $username);
         $this->db->where("pass", $password);
-        return $this->db->get('m_karyawan');
+        //return $this->db->get('m_karyawan');
+        return $this->db->query(" SELECT id_karyawan, nama_karyawan, hak_akses.hak_akses, notlp_kar, alamat_kar, username, pass, email
+      FROM m_karyawan INNER JOIN hak_akses ON m_karyawan.id_hakakses = hak_akses.id_hakakses WHERE username = '$username'; ");
     }
 
 function check_username($username)

@@ -33,21 +33,23 @@
       <img style="width: 200px;" src="<?php echo base_url('assets/lte/img/simanis.png') ?>">
       <br><h4 style=" font-size: 19,5px">Sistem Informasi Manajemen Servis</h4><br>
   </div> <!-- Form Login -->
-    <form action="<?php echo base_url('index.php/login/login')?>" method="post">
+    <form action="<?php echo base_url('index.php/login/login')?>" method="post" data-toggle="validator">
   <!-- username -->
       <div class="form-group has-feedback">
-        <input type="text" name="username" class="form-control" placeholder="Username">
+        <input type="text" name="username" class="form-control" placeholder="Username" required="required">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
         <span class="help-block">
-            <strong> <?php echo form_error('username') ?> </strong>          
+            <strong> <?php echo form_error('username') ?> </strong>
+            <span class="help-block with-errors"></span>          
         </span>
       </div>
   <!-- Password -->
       <div class="form-group has-feedback">
-        <input type="password" name="pass" class="form-control" placeholder="Password">
+        <input type="password" name="pass" class="form-control" placeholder="Password" required="required">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         <span class="help-block">
-            <strong> <?php echo form_error('pass') ?> </strong>          
+            <strong> <?php echo form_error('pass') ?> </strong>
+            <span class="help-block with-errors"></span>          
         </span>
       </div>
       <div class="form-group has-feedback">

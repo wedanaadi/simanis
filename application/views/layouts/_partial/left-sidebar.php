@@ -6,10 +6,10 @@
           <img src="<?php echo base_url('assets/AdminLte/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Admin</p>
+          <p><?php echo $this->session->userdata('namauser')?></p>
           <!-- Status -->
-          <p>Nama</p>
-          <!-- <a href="#"><i class="fa fa-circle text-success"></i> Online</a> -->
+<!--           <i class="fa fa-circle text-success"></i>  -->
+          <a><i class="fa fa-circle text-success"></i><?php echo $this->session->userdata('hak_akses')?> </a>
         </div>
       </div>
 

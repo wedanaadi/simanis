@@ -28,7 +28,7 @@
                                 <td><?php echo $no; ?> </td>
                                 <td class="IdJasa"><?php echo $j->id_jasa ?></td>
                                 <td class="NamaJasa" ><?php echo $j->nama_jasa?></td>
-                                <td class="HargaJasa"><?php echo "Rp. ".number_format($j->harga_jasa,2,",",",") ?></td>
+                                <td class="HargaJasa"><?php echo /*number_format($j->harga_jasa,2,".",".") */$j->harga_jasa ?></td>
                                 <td align="center"> 
                                     <a class="btn btn-primary btn-xs pilih"><i class="fa fa-plus-circle"></i> Tambah</a>
                                 </td>

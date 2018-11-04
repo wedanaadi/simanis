@@ -78,6 +78,13 @@ function findservis($id)
     	$this->db->update('m_service',$data);
   	}
 
+
+  	function getidservis($id) 
+  	{
+    	$this->db->where('id_service',$id);
+    	$data = $this->db->get('m_service');
+    	return $data->row();
+  	}
 }
 
 /* End of file M_servis.php */

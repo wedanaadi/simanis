@@ -222,10 +222,7 @@ $this->load->view('Penerimaan/daftarcustomer');
          $('#Keluhan').val('');
          $('#KategoriServis').val('').trigger('change');
          $('#Teknisi').val('').trigger('change');
-
          panggil();
-
-
     })
   })
 </script>
@@ -273,7 +270,12 @@ $this->load->view('Penerimaan/daftarcustomer');
       var jumlah = tabel.rows().count();
       if(jumlah == 0)
       {
-        alert('empty');
+        swal({
+                title: "Barang Service Kosong",
+                text: "Masukan Data Service Barang Service",
+                type: "warning",
+                timer: 2000
+            });
       }
       else
       {

@@ -31,10 +31,10 @@
                           <td class="IdSparepart"><?php echo $s->id_sparepart ?></td>
                           <td class="NamaSpuplayer"><?php echo $s->nama_suplayer ?></td>
                           <td class="NamaSparepart"><?php echo $s->nama_sparepart?></td>
-                          <td class="HargaJual"><?php echo "Rp. ".number_format($s->harga_jual,2,",",",") ?></td>
+                          <td class="HargaJual"><?php echo /*number_format($s->harga_jual,2,".",".")*/ $s->harga_jual?></td>
                           <td class="JumlahStok"><?php echo $s->jumlah_stok?></td>
                           <td align="center">
-                              <a class="btn btn-primary btn-xs pilih"><i class="fa fa-plus-circle"></i> Tambah</a>
+                              <a class="btn btn-primary btn-xs pilihh"><i class="fa fa-plus-circle"></i> Tambah</a>
                           </td>
                           </tr>
                           <?php 
@@ -57,7 +57,7 @@
   </script>
 
 <script type="text/javascript">
-  $('.pilih').on('click',function(){
+  $('.pilihh').on('click',function(){
       $('.help-block').text('');
       $('.form-group').removeClass('has-error');
       var IdSparepart=$(this).closest('tr').children('td.IdSparepart').text();
@@ -70,7 +70,6 @@
         $('#IdSparepart').val(IdSparepart);
         $('#NamaSparepart').val(NamaSparepart);
         $('#HargaSparepart').val(HargaJual);
-        //panggil();
         datasparepart.modal('hide');   
   });
 </script>

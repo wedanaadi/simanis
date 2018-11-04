@@ -35,7 +35,8 @@ class Login extends CI_Controller {
 		 $user_session = array(
 		 	'session_id' => $this->session->userdata('session_id'),
 		 	'kodeuser' => $result[0]->id_karyawan,
-		 	'namauser' => $result[0]-> nama_karyawan
+		 	'namauser' => $result[0]-> nama_karyawan,
+		 	'hak_akses' => $result[0]-> hak_akses
 		 );
 		 $this->session->set_userdata($user_session);
 		 redirect('Dashboard');
