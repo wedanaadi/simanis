@@ -105,6 +105,7 @@ $this->load->view('servis/daftarjasa');
 ?>
 
 <script type="text/javascript">
+  var isEmpty = null;
   $(function () {
     var tabel = $("#TbDetailServis").DataTable({
       paging:false, searching:false
@@ -156,30 +157,65 @@ $this->load->view('servis/daftarjasa');
         var HargaSparepart = $('#HargaSparepart').val();
         var jumlah = parseFloat(HargaSparepart) * parseFloat(QtySparepart);
         //var harga = jumlah;
-        var Action = "<a class='btn btn-danger btn-xs Hapus' title='Remove Item'>  <span class=' fa  fa-minus-square' ></span> </a> "
+        var Action = "<a class='btn btn-danger btn-xs Hapus' title='Remove Item'>  <span class=' fa  fa-minus-square' ></span> </a> ";
         var IdSparepart = $('#IdSparepart').val();
         var status = "1"
 
-    var row = t.row.add( [
-            No,
-            NamaSparepart,
-            QtySparepart,
-            HargaSparepart,
-            jumlah,
-            Action,
-            IdServis,
-            IdSparepart,
-            status
-        ] ).draw(false);
-        t.row(row).column(0).nodes().to$().addClass('IdDetailServis');
-        t.row(row).column(6).nodes().to$().css('display','none');
-        t.row(row).column(7).nodes().to$().css('display','none');
-        t.row(row).column(8).nodes().to$().css('display','none');
-        i++;
-         $('#NamaSparepart').val('');
-         $('#QtySparepart').val('');
-         $('#HargaSparepart').val('');
+        if(jumlahStockPilih - QtySparepart < 0) 
+        {
+          alert('stock melebih');
+        }
+        else {
+          var row = t.row.add( [
+                  No,
+                  NamaSparepart,
+                  QtySparepart,
+                  HargaSparepart,
+                  jumlah,
+                  Action,
+                  IdServis,
+                  IdSparepart,
+                  status
+              ] ).draw(false);
+              t.row(row).column(0).nodes().to$().addClass('IdDetailServis');
+              t.row(row).column(6).nodes().to$().css('display','none');
+              t.row(row).column(7).nodes().to$().css('display','none');
+              t.row(row).column(8).nodes().to$().css('display','none');
+              i++;
+              $('#NamaSparepart').val('');
+              $('#QtySparepart').val('');
+              $('#HargaSparepart').val('');
+        }
+
     })
+
+    //load data 
+    $.ajax({
+      url: "<?php echo site_url('Servis/get_detil') ?>",
+      method: "GET",
+      type: "JSON",
+      data: {id_service: $('#IdServis').val()},
+      success: function(data)
+      {
+        var obj = JSON.parse(data);
+        var Action = "<a class='btn btn-danger btn-xs Hapus' title='Remove Item'>  <span class=' fa  fa-minus-square' ></span> </a> "
+        isEmpty = obj.length;
+        for (let index = 0; index < obj.length; index++) {
+            var row = t.row.add( [
+                  index+1,
+                  obj[index].nama_service,
+                  obj[index].qty,
+                  obj[index].harga,
+                  obj[index].subtotal,
+                  Action,
+                  obj[index].id_service,
+                  obj[index].nama_id,
+                  obj[index].status
+              ] ).draw(false);
+              t.row(row).column(0).nodes().to$().addClass('IdDetailServis');
+        }
+      }
+    });
 
     $('.TambahkanJasa').on('click', function() {
         var No = i
@@ -220,4 +256,46 @@ $this->load->view('servis/daftarjasa');
       var t = $('#TbDetailServis').DataTable();
       t.row($(this).closest('tr')).remove().draw(false);
  })
+</script>
+
+<script>
+    $('form').on('submit',function(e){
+      if(!e.isDefaultPrevented())
+      {
+        var tabel = $('#TbDetailServis').DataTable();
+        var jumlah = tabel.rows().count();
+        if(jumlah == 0)
+        {
+          alert('error kosong tabel');
+        }
+        else
+        {
+          var _data = {
+            id_service: $('#IdServis').val(),
+            adadata: isEmpty,
+            tbdetil: tabel.rows().data().toArray(),
+          };
+
+          $.ajax({
+            url: "<?php echo site_url('Servis/save_detil') ?>",
+            method: "POST",
+            type: "POST",
+            data: _data,
+            success: function(data)
+            {
+              obj = JSON.parse(data);
+              swal({
+                  title: "Sukses",
+                  text: obj.message,
+                  type: "success",
+                  button: "ok",
+              }, function(){
+                window.location = "<?php echo site_url('Servis') ?>";
+              });
+            }
+          });
+        }
+      }
+      return false;
+    });
 </script>

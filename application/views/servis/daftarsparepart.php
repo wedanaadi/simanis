@@ -57,6 +57,7 @@
   </script>
 
 <script type="text/javascript">
+  var jumlahStockPilih = 0;
   $('.pilihh').on('click',function(){
       $('.help-block').text('');
       $('.form-group').removeClass('has-error');
@@ -70,6 +71,7 @@
         $('#IdSparepart').val(IdSparepart);
         $('#NamaSparepart').val(NamaSparepart);
         $('#HargaSparepart').val(HargaJual);
+        jumlahStockPilih = JumlahStok;
         datasparepart.modal('hide');   
   });
 </script>

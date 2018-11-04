@@ -286,7 +286,6 @@ $this->load->view('Penerimaan/daftarcustomer');
           notelp: $('input[name=notelp]').val(),
           tanggal: $('input[name=tanggal]').val(),
           tbdetil: tabel.rows().data().toArray(),
-
         };
 
         $.ajax({

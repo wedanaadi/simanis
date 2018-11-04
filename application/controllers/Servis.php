@@ -8,7 +8,7 @@ class Servis extends CI_Controller {
   	parent::__construct();
 /*      if ($this->session->userdata('kodeuser')==NULL) {
       redirect('Login'); }*/
- 		$this->load->model('M_servis');
+ 		$this->load->model(array('M_servis','M_sparepart'));
 	}
 
 	public function index()
@@ -61,6 +61,69 @@ class Servis extends CI_Controller {
     	$this->M_servis->update($data,$id);
       	$this->session->set_flashdata('alert','Data Berhasil Disimpan');
 	    redirect('Servis');
+	}
+
+	function save_detil()
+	{
+		// ini untuk stock spare part yang dihapus /lama
+		if($this->input->post('adadata') > 0) // cek jumlah request dari view detil service
+		{
+			$dataold = $this->M_servis->getDetilService($this->input->post('id_service')); //select data detilservice berdasarkan id
+			$stockAkhirLama = []; // set valiabel array
+			for ($a=0; $a < count($dataold); $a++) // hitung data hasil select dari variable dataold
+			{ 
+				if($dataold[$a]->status  == '1') // jika status nya adalah 1 lakukan aksi dibawah
+				{
+					$getSparepartLama = $this->M_sparepart->find($dataold[$a]->nama_id); // get spare part
+					// hitung stock yang ditambah
+					$stockLama[] = [ 
+						'id_sparepart' => $dataold[$a]->nama_id,
+						'jumlah_stok' => $getSparepartLama->jumlah_stok + $dataold[$a]->qty
+					];
+					$stockAkhirLama = []; //kosongkan array
+					$stockAkhirLama = array_merge($stockAkhirLama, $stockLama); //gabungkan stock akhir lama dengan stock lama kemudian set stock akhir lama
+				}
+			}
+			$this->M_servis->update_sparepart_old($stockAkhirLama, $this->input->post('id_service'), count($stockAkhirLama)); //lihat di model
+		}
+
+		// data baru
+		$stockAkhir = []; // set array variable
+		for ($i=0; $i < count($this->input->post('tbdetil')); $i++) 
+		{ 
+			if($this->input->post('tbdetil')[$i][8] == '1')
+			{
+				$getSparepart = $this->M_sparepart->find($this->input->post('tbdetil')[$i][7]);
+				$stock[] = [
+					'id_sparepart' => $this->input->post('tbdetil')[$i][7],
+					'jumlah_stok' => $getSparepart->jumlah_stok - $this->input->post('tbdetil')[$i][2]
+				];
+				$stockAkhir = [];
+				$stockAkhir = array_merge($stockAkhir,$stock);
+				// $this->M_sparepart->update($stockAkhir,$this->input->post('tbdetil')[$i][7]);
+			}
+			
+			$dataDetil[] = [
+				'id_service' => $this->input->post('tbdetil')[$i][6],
+				'nama_id' => $this->input->post('tbdetil')[$i][7],
+				'nama_service' => $this->input->post('tbdetil')[$i][1],
+				'qty' => $this->input->post('tbdetil')[$i][2],
+				'harga' => $this->input->post('tbdetil')[$i][3],
+				'subtotal' => $this->input->post('tbdetil')[$i][4],
+				'status' => $this->input->post('tbdetil')[$i][8]
+			];
+		}
+
+		$this->M_servis->save_detil($stockAkhir, $dataDetil, count($stockAkhir));
+		echo json_encode(['success' => true,'message' => 'Berhasil']);
+
+	}
+
+	public function get_detil()
+	{
+		$id = $this->input->get('id_service');
+		$data = $this->db->query("SELECT * FROM m_detailservice WHERE id_service = '$id'")->result();
+		echo json_encode($data);
 	}
 }
 

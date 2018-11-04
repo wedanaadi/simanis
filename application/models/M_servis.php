@@ -84,7 +84,55 @@ function findservis($id)
     	$this->db->where('id_service',$id);
     	$data = $this->db->get('m_service');
     	return $data->row();
-  	}
+	}
+
+	public function update_sparepart_old($sparepartOld, $id_service, $count)
+	{
+		$this->db->trans_begin();
+		if($count > 0)
+		{
+			$this->db->update_batch('m_sparepart', $sparepartOld, 'id_sparepart');
+		}
+		$this->db->query("DELETE FROM m_detailservice WHERE id_service = '$id_service'");
+		$this->db->trans_complete(); 
+		if ($this->db->trans_status() === FALSE)
+		{
+				$this->db->trans_rollback();
+				return FALSE;
+		}
+		else
+		{
+				$this->db->trans_commit();
+				return TRUE;
+		}
+	}
+
+	public function save_detil($updateStock, $insertDetil, $hitung_sparepart)
+	{
+		$this->db->trans_begin();
+		if($hitung_sparepart > 0) {
+			$this->db->update_batch('m_sparepart', $updateStock, 'id_sparepart');
+		}
+		$this->db->insert_batch( 'm_detailservice', $insertDetil);  
+		$this->db->trans_complete(); 
+		if ($this->db->trans_status() === FALSE)
+		{
+				$this->db->trans_rollback();
+				return FALSE;
+		}
+		else
+		{
+				$this->db->trans_commit();
+				return TRUE;
+		}
+	}
+
+	public function getDetilService($id)
+	{
+		$this->db->where('id_service',$id);
+		return $data = $this->db->get('m_detailservice')->result();
+	}
+	  
 }
 
 /* End of file M_servis.php */
