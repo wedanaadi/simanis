@@ -19,7 +19,12 @@ class M_penerimaan extends CI_Model {
 		$data = $this->db->get('m_customer');
 		return $data->result();
 	}
-
+	
+	function garansi()
+	{
+		$data = $this->db->get('garansi');
+		return $data->result();
+	}
 
 /*   function kodetd(){
    	    $tahun = date('y'); 

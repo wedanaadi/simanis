@@ -36,7 +36,6 @@ function karyawan_addDB()
       		'pass' => $this->input->post('pass'),
       		'email' => $this->input->post('email') 
     	 ];
-    	// print_r($data); exit();
     	$this->M_karyawan->create($data);
       $this->session->set_flashdata('alert','Data Berhasil Disimpan');
     	redirect('Karyawan');
@@ -45,6 +44,7 @@ function karyawan_addDB()
 function find($id)
   	{
    		$data = $this->M_karyawan->find($id);
+      // print_r($data); exit();
     	echo json_encode($data);
   	}	
 
@@ -62,6 +62,7 @@ function update()
       		'pass' => $this->input->post('pass'),
       		'email' => $this->input->post('email') 
     	];
+      //print_r($data); exit();
     	$this->M_karyawan->update($data,$id);
       $this->session->set_flashdata('alert','Data Berhasil Disimpan');
 	    redirect('Karyawan');
@@ -93,6 +94,8 @@ function update()
       echo json_encode(['msg' => 'tidak']);
     }
   }
+
+
 }
 
 /* End of file Karyawan.php */

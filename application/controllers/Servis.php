@@ -17,6 +17,7 @@ class Servis extends CI_Controller {
 		$data['status'] = $this->M_servis->status();
 		$data['teknisi'] = $this->M_servis->teknisi();
 		$data['kategori'] = $this->M_servis->kategori();
+		$data['garansi'] = $this->M_servis->garansi();
 		$this->load->view('servis/dataservis', $data);
 	}
 
@@ -24,7 +25,7 @@ class Servis extends CI_Controller {
 	{
 		$data['jasa'] = $this->M_servis->jasa();
 		$data['sparepart'] = $this->M_servis->datasparepart();
-    $data['getidservis'] = $this->M_servis->getidservis($id);
+    	$data['getidservis'] = $this->M_servis->getidservis($id);
 		//print_r($data); exit();
 		$this->load->view('servis/detailservis', $data);
 	}
@@ -55,13 +56,56 @@ class Servis extends CI_Controller {
       		'kelengkapan' => $this->input->post('Kelengkapan'),
       		'keluhan' => $this->input->post('Keluhan'),
       		'id_status' => $this->input->post('Status'),
+      		'id_garansi' => $this->input->post('Garansi'),
       		'kondisi' => $this->input->post('Kondisi')
 
     	];
     	$this->M_servis->update($data,$id);
-      	$this->session->set_flashdata('alert','Data Berhasil Disimpan');
-	    redirect('Servis');
+    	echo json_encode(['success' => true,'message' => 'Data Berhasil Disimpan']);
+/*      	$this->session->set_flashdata('alert','Data Berhasil Disimpan');
+	    redirect('Servis');*/
 	}
+
+/*	function cencel()
+	{
+			$dataold = $this->M_servis->getDetilService($this->input->post('IDService')); //select data detilservice berdasarkan id
+			$stockAkhirLama = []; // set valiabel array
+			for ($a=0; $a < count($dataold); $a++) // hitung data hasil select dari variable dataold
+			{ 
+				if($dataold[$a]->status  == '1') // jika status nya adalah 1 lakukan aksi dibawah
+				{
+					$getSparepartLama = $this->M_sparepart->find($dataold[$a]->nama_id); // get spare part
+					// hitung stock yang ditambah
+					$stockLama[] = [ 
+						'id_sparepart' => $dataold[$a]->nama_id,
+						'jumlah_stok' => $getSparepartLama->jumlah_stok + $dataold[$a]->qty
+					];
+					$stockAkhirLama = []; //kosongkan array
+					$stockAkhirLama = array_merge($stockAkhirLama, $stockLama); //gabungkan stock akhir lama dengan stock lama kemudian set stock akhir lama
+				}
+			}
+			$this->M_servis->update_sparepart_old($stockAkhirLama, $this->input->post('IDService'), count($stockAkhirLama)); //lihat di model
+
+		$id = $this->input->post('IDService');
+    	$data = 
+    	[
+      		'id_service' => $this->input->post('IDService'), 
+      		'id_penerimaan' => $this->input->post('NoNota'),
+      		'id_karyawan' => $this->input->post('Teknisi'), 
+      		'id_kategori' => $this->input->post('Kategori'), 
+      		'sn_barang' => $this->input->post('SerialNumber'),
+      		'nama_barang' => $this->input->post('NamaBarang'),
+      		'kelengkapan' => $this->input->post('Kelengkapan'),
+      		'keluhan' => $this->input->post('Keluhan'),
+      		'id_status' => $this->input->post('Status'),
+      		'id_garansi' => $this->input->post('Garansi'),
+      		'kondisi' => $this->input->post('Kondisi')
+
+    	];
+    	$this->M_servis->update($data,$id);
+    	echo json_encode(['success' => true,'message' => 'Data Berhasil Disimpan']);
+	}
+*/
 
 	function save_detil()
 	{
@@ -122,7 +166,8 @@ class Servis extends CI_Controller {
 	public function get_detil()
 	{
 		$id = $this->input->get('id_service');
-		$data = $this->db->query("SELECT * FROM m_detailservice WHERE id_service = '$id'")->result();
+		//$data = $this->db->query("SELECT * FROM m_detailservice WHERE id_service = '$id'")->result();
+		$data = $this->M_servis->getDetilService($id);
 		echo json_encode($data);
 	}
 }

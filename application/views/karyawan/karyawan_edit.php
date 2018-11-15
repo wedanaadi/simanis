@@ -60,7 +60,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Username</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="username" placeholder = "masukan username" required oninvalid="this.setCustomValidity('Masukan Nomer Telepon')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control" readonly="readonly" name="username" placeholder = "masukan username" required oninvalid="this.setCustomValidity('Masukan Nomer Telepon')" oninput="setCustomValidity('')">
                     <span class="help-block with-errors"></span>
                     </div>
                 </div>

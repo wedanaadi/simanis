@@ -38,7 +38,8 @@ $this->load->view('layouts/template-atas');
               		<div class="col-md-3">
                     	<div id ="baris2" class="form-group">
               			   <label class="control-label">Karyawan</label>
-              			   <input type="text" name="karyawan" readonly="readonly" value="utamaaa" class="form-control" required="required">
+              			   <input type="hidden" name="karyawan" readonly="readonly" value="<?php echo $this->session->userdata('kodeuser')?>" class="form-control" required="required">
+                       <input type="text" name="karyawan1" readonly="readonly" value="<?php echo $this->session->userdata('namauser')?>" class="form-control" required="required">
                      	<span class="help-block with-errors"></span>
                       </div>
                   	</div>
@@ -130,6 +131,19 @@ $this->load->view('layouts/template-atas');
                           </select>
                       </div>
                    </div>
+                     <div class="col-xs-3">
+                      <div class="form-group">
+                        <label class="control-label">Status</label>
+                          <select style="width:100%; border-radius: 0" class="form-control" id="Garansi" name="Garansi">
+                            <option value="" disabled="disabled" selected="selected"> --Pilih Status-- 
+                            </option>
+                            <?php foreach ( $garansi as $g ): ?>
+                              <option value="<?php echo $g->id_garansi?>"> <?php echo $g->nama_st ?> 
+                              </option>
+                            <?php endforeach;?>
+                          </select>
+                      </div>
+                   </div>
                    <div class="col-xs-2" style="margin-top: -5px;">
                      <div class="form-group" >
                         <a style="margin-top:24px; margin-left:2px; " class="btn btn-primary btn-flat tambahkan disabled" id="tambah"><i class='fa fa-plus-square-o'></i>  Tambah  </a> 
@@ -150,9 +164,11 @@ $this->load->view('layouts/template-atas');
                               <th>Keluhan</th>
                               <th>Kategori</th>
                               <th>Teknisi</th>
-                              <th style="width: 50px">Action</th>
+                              <th>Status</th>
+                              <th >Action</th>
                               <th style="display:none">idKateg</th>
                               <th style="display:none">idKaryawan</th>
+                              <th style="display:none">idstatus</th>
                             </tr>
                         </thead>
                      <tbody id="mytbody"></tbody>
@@ -175,6 +191,7 @@ $this->load->view('Penerimaan/daftarcustomer');
 <script type="text/javascript">
   $('#Teknisi').select2();
   $('#KategoriServis').select2();
+  $('#Garansi').select2();
 </script>
 
   <script type="text/javascript">
@@ -199,6 +216,8 @@ $this->load->view('Penerimaan/daftarcustomer');
         var NamaKategori = $( "#KategoriServis option:selected" ).text();
         var Teknisi = $('#Teknisi').val();
         var NamaTeknisi = $("#Teknisi option:selected").text();
+        var Garansi = $('#Garansi').val();
+        var NamaGaransi = $("#Garansi option:selected").text();
         var Action = "<a class='btn btn-danger btn-xs Hapus' title='Remove Item'>  <span class=' fa  fa-minus-square' ></span> </a> "
 
     var row = t.row.add( [
@@ -208,13 +227,16 @@ $this->load->view('Penerimaan/daftarcustomer');
             Keluhan,
             NamaKategori,
             NamaTeknisi,
+            NamaGaransi,
             Action,
             KategoriServis,
-            Teknisi
+            Teknisi,
+            Garansi,
         ] ).draw(false);
         t.row(row).column(0).nodes().to$().addClass('IdServis');
-        t.row(row).column(7).nodes().to$().css('display','none');
         t.row(row).column(8).nodes().to$().css('display','none');
+        t.row(row).column(9).nodes().to$().css('display','none');
+        t.row(row).column(10).nodes().to$().css('display','none');
 
          $('#NamaBarang').val('');
          $('#SN').val('');
@@ -222,6 +244,7 @@ $this->load->view('Penerimaan/daftarcustomer');
          $('#Keluhan').val('');
          $('#KategoriServis').val('').trigger('change');
          $('#Teknisi').val('').trigger('change');
+         $('#Garansi').val('').trigger('change');
          panggil();
     })
   })
@@ -236,13 +259,15 @@ $this->load->view('Penerimaan/daftarcustomer');
 
 <script>
   $('#NamaBarang,#SN,#Kelengkapan,#Keluhan').keyup(function (){
-      if ($('#NamaBarang').val()=='' || $('#SN').val()=='' || $('#Kelengkapan').val()=='' || $('#Keluhan').val()=='' || $('#KategoriServis').val()=='' || $('#Teknisi').val()=='' ) {
+      if ($('#NamaBarang').val()=='' || $('#SN').val()=='' || $('#Kelengkapan').val()=='' || $('#Keluhan').val()=='' || $('#KategoriServis').val()=='' || $('#Teknisi').val()=='' || $('#Garansi').val()=='' ) {
         $('#tambah').addClass('disabled');
       };
       if ($('#NamaBarang').val()!='' && $('#SN').val()!='' && $('#Kelengkapan').val()!='' && $('#Keluhan').val()!='') {
         $('#KategoriServis').on('select2:select',function(){
           $('#Teknisi').on('select2:select',function(){
-            $('#tambah').removeClass('disabled');
+            $('#Garansi').on('select2:select',function(){
+               $('#tambah').removeClass('disabled');
+            });
           });
         });
       }

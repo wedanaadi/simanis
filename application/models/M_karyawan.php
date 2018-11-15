@@ -45,6 +45,14 @@ function find($id)
    	 	$data = $this->db->get('m_karyawan');
     	return $data->row();
 	}
+
+  function idfrofil()
+  {
+    $id = $this->session->userdata('kodeuser');
+    $this->db->where('id_karyawan',$id);
+    $data = $this->db->get('m_karyawan');
+    return $data->row();
+  }
   
 function update($data,$id) 
   	{
@@ -62,8 +70,12 @@ function getdata($username, $password)
         $this->db->where("username", $username);
         $this->db->where("pass", $password);
         //return $this->db->get('m_karyawan');
-        return $this->db->query(" SELECT id_karyawan, nama_karyawan, hak_akses.hak_akses, notlp_kar, alamat_kar, username, pass, email
-      FROM m_karyawan INNER JOIN hak_akses ON m_karyawan.id_hakakses = hak_akses.id_hakakses WHERE username = '$username'; ");
+        return $this->db->query("SELECT id_karyawan, nama_karyawan, hak_akses.hak_akses, username
+        FROM m_karyawan INNER JOIN hak_akses ON m_karyawan.id_hakakses = hak_akses.id_hakakses 
+        WHERE username = '$username' AND pass = '$password';");
+        
+
+
     }
 
 function check_username($username)
@@ -81,6 +93,5 @@ function check_username($username)
       $data = $this->db->query("SELECT * FROM m_karyawan WHERE username = '$username'");
       return $data->result();
     }
-
 }
  ?>

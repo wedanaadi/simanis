@@ -70,7 +70,13 @@
       
         $('#IdSparepart').val(IdSparepart);
         $('#NamaSparepart').val(NamaSparepart);
-        $('#HargaSparepart').val(HargaJual);
+        if($('#Garansi').val() == 1){
+          $('#HargaSparepart').val(0);
+        }
+        else
+        {
+          $('#HargaSparepart').val(HargaJual);
+        }
         jumlahStockPilih = JumlahStok;
         datasparepart.modal('hide');   
   });

@@ -36,7 +36,13 @@ class Login extends CI_Controller {
 		 	'session_id' => $this->session->userdata('session_id'),
 		 	'kodeuser' => $result[0]->id_karyawan,
 		 	'namauser' => $result[0]-> nama_karyawan,
-		 	'hak_akses' => $result[0]-> hak_akses
+		 	'hak_akses' => $result[0]-> hak_akses,
+		 	'id_akses' => $result[0]-> id_hakakses,
+		 	'notlp' => $result[0]-> notlp_kar,
+		 	'alamat' => $result[0]-> alamat_kar,
+		 	'usernameuser' => $result[0]-> username,
+		 	'pass' => $result[0]-> pass,
+		 	'emailuser' => $result[0]-> email
 		 );
 		 $this->session->set_userdata($user_session);
 		 redirect('Dashboard');

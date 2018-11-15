@@ -4,8 +4,8 @@ $this->load->view('layouts/template-atas');
 
 <!-- Content Header (Page header) -->
     <section class="content-header" >
-      <h1>
-        <a href="<?php echo base_url('index.php/Servis');?>">Data Service</a> / Detail Service
+      <h1> 
+        <a href="<?php echo base_url('index.php/Servis')?>">Data Service</a> / Detail Service
       </h1>
     </section>
 
@@ -43,6 +43,7 @@ $this->load->view('layouts/template-atas');
               			   <label class="control-label">Harga</label>
               			   <input type="text" name="HargaSparepart" id="HargaSparepart" readonly="readonly" class="form-control" required="required">
                       <input type="hidden" name="IdServis" id="IdServis" value="<?php echo $getidservis->id_service ?>"  class="form-control">
+                      <input type="hidden" name="Garansi" id="Garansi" value="<?php echo $getidservis->id_garansi ?>"  class="form-control">
                      	<span class="help-block with-errors"></span>
                       </div>
                   	</div>
@@ -108,6 +109,9 @@ $this->load->view('servis/daftarjasa');
   var isEmpty = null;
   $(function () {
     var tabel = $("#TbDetailServis").DataTable({
+      columnDefs:[{
+        targets:[3,4], render: $.fn.dataTable.render.number('.',',','','Rp. ')
+      }],
       paging:false, searching:false
     });
   });
@@ -163,7 +167,13 @@ $this->load->view('servis/daftarjasa');
 
         if(jumlahStockPilih - QtySparepart < 0) 
         {
-          alert('stock melebih');
+          //alert('stock melebih');
+            swal({
+                title: "STOK KURANG",
+                text: "",
+                type: "warning",
+                timer: 2000
+            });
         }
         else {
           var row = t.row.add( [
@@ -213,6 +223,10 @@ $this->load->view('servis/daftarjasa');
                   obj[index].status
               ] ).draw(false);
               t.row(row).column(0).nodes().to$().addClass('IdDetailServis');
+              t.row(row).column(6).nodes().to$().css('display','none');
+              t.row(row).column(7).nodes().to$().css('display','none');
+              t.row(row).column(8).nodes().to$().css('display','none');
+              i++;
         }
       }
     });
@@ -266,7 +280,12 @@ $this->load->view('servis/daftarjasa');
         var jumlah = tabel.rows().count();
         if(jumlah == 0)
         {
-          alert('error kosong tabel');
+            swal({
+                title: "Detail Kosong",
+                text: "Masukan Data Perbaikan Service",
+                type: "warning",
+                timer: 2000
+            });
         }
         else
         {
@@ -289,6 +308,7 @@ $this->load->view('servis/daftarjasa');
                   text: obj.message,
                   type: "success",
                   button: "ok",
+                  timer: 2000
               }, function(){
                 window.location = "<?php echo site_url('Servis') ?>";
               });

@@ -63,7 +63,13 @@
       
         $('#IdJasa').val(IdJasa);
         $('#NamaJasa').val(NamaJasa);
-        $('#HargaJasa').val(HargaJasa);
+        if($('#Garansi').val() == 1){
+          $('#HargaJasa').val(0);
+        }
+        else
+        {
+          $('#HargaJasa').val(HargaJasa);
+        }
         panggil();
         datajasa.modal('hide');   
   });

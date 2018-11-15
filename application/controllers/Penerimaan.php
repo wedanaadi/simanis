@@ -27,6 +27,7 @@ class Penerimaan extends CI_Controller {
 		$data['teknisi'] = $this->M_penerimaan->teknisi();
 		$data['kategori'] = $this->M_penerimaan->kategori();
 		$data['customer'] = $this->M_penerimaan->customer();
+		$data['garansi'] = $this->M_penerimaan->garansi();
 		$this->load->view('Penerimaan/Penerimaan',$data);
 	}
 
@@ -43,12 +44,13 @@ class Penerimaan extends CI_Controller {
 		{ 
 			$service[] = [
 				'id_penerimaan' => $this->input->post('no_nota'),
-				'id_karyawan' => $this->input->post('tbdetil')[$i][8],
-				'id_kategori' => $this->input->post('tbdetil')[$i][7],
+				'id_karyawan' => $this->input->post('tbdetil')[$i][9],
+				'id_kategori' => $this->input->post('tbdetil')[$i][8],
 				'sn_barang' => $this->input->post('tbdetil')[$i][1],
 				'nama_barang' => $this->input->post('tbdetil')[$i][0],
 				'kelengkapan' => $this->input->post('tbdetil')[$i][2],
 				'keluhan' => $this->input->post('tbdetil')[$i][3],
+				'id_garansi' => $this->input->post('tbdetil')[$i][10],
 				'id_status' => '1',
 				'kondisi' => '1'
 			];

@@ -24,12 +24,13 @@ $this->load->view('layouts/template-atas');
               <table id="TBservis" class="table table-bordered table-striped">
               <thead>
                   <tr>
-                    <th>ID Servis</th>
+                    <th>ID</th>
                     <th>No Nota</th>
                     <th>Tgl Masuk</th>
                     <th>Nama Barang</th>
                     <th>Teknisi</th>
-                    <th>Status</th>
+                    <th>Status Service</th>
+                    <th>Status barang</th>
                     <th>Action</th>
                   </tr>
               </thead>
@@ -39,12 +40,13 @@ $this->load->view('layouts/template-atas');
                       foreach ($dataall as $data ) {
                   ?>
                       <tr class='odd gradeX context' >
-                          <td><?php echo $data->id_service ?> </td>
+                          <td ><?php echo $data->id_service ?> </td>
                           <td><?php echo $data->id_penerimaan ?></td>
                           <td><?php echo $data->tgl_penerimaan ?></td>
                           <td><?php echo $data->nama_barang ?></td>
                           <td><?php echo $data->nama_karyawan ?></td>
                           <td><?php echo $data->status_service ?></td>
+                          <td><?php echo $data->nama_st ?></td>
                           <td align="center"> <!-- tambahan "edit" pada class dibawah untuk ajax -->
                            <a class="btn btn-primary btn-sm edit ubah" data-id="<?php echo $data->id_service ?>" id="<?php echo $data->id_penerimaan?>" data-toggle="modal" data-target="#editdataservis"><i class="fa fa-pencil"></i> Edit
                           </a> &nbsp;
@@ -113,6 +115,7 @@ $this->load->view('servis/editdataservis');
         $('[name="Keluhan"]').val(ambil.keluhan);
         $('[name="Teknisi"]').val(ambil.id_karyawan);
         $('[name="Status"]').val(ambil.id_status);
+        $('[name="Garansi"]').val(ambil.id_garansi);
         $('[name="Kondisi"]').val(ambil.kondisi);
       }
     });

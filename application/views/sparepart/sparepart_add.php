@@ -59,7 +59,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Stok</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" name="stok" placeholder = "masukan stok" required oninvalid="this.setCustomValidity('Masukan Jumlah Stok')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control" name="stok" placeholder = "masukan stok" required oninvalid="this.setCustomValidity('Masukan Jumlah Stok')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)">
                     <span class="help-block with-errors"></span>
                     </div>
                 </div>
@@ -84,7 +84,6 @@
     function hanyaAngka(evt) {
       var charCode = (evt.which) ? evt.which : event.keyCode
        if (charCode > 31 && (charCode < 48 || charCode > 57))
- 
         return false;
       return true;
     }

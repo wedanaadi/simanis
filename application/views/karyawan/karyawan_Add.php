@@ -130,14 +130,14 @@
                       $('.for_hb_username').text('Username Alredy Exits');
                       $('#username').css('border-color','red');
                       $('.for_hb_username').css('color','red');
-                      $('.save').addClass('disabled');
+                      $('.save').prop('disabled', true);
                     }
                     else
                     {
                       $('.for_hb_username').text('');
                       $('#username').css('border-color','#2bca81');
                       $('.for_hb_username').css('color','red');
-                      $('.save').removeClass('disabled');
+                      $('.save').prop('disabled', false);
                     }
                   }
                 });
