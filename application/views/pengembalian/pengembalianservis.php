@@ -199,10 +199,27 @@ $this->load->view('layouts/template-atas');
    $(document).on('click', '.Hapus', function(e){
    	if(!e.isDefaultPrevented()){
    	 var b = $('#tbservis').DataTable();
+		 var tabel = $('#tbdetailservis').DataTable();
      var tb1 = b.row($(this).parents('tr')).data();
      var idser1 = tb1[0];
+		 var datadetil = [];
+		 var grand_total = $('input[name=Total]').val();
      b.row($(this).closest('tr')).remove().draw(false);
-      console.log(idser1);
+		  $('#tbdetailservis tbody tr').each(function(index){
+				$row = $(this);
+				var id = $row.find("td:eq(0)").text();
+				if(id.indexOf(idser1) === 0) {
+						row_id = tabel.row(this);
+						aksi = true;
+						datadetil.push(row_id.data());
+						row_id.remove().draw(false);
+				}
+			});
+			for (let w = 0; w < datadetil.length; w++) {
+				grand_total = parseFloat(grand_total) - parseFloat(datadetil[w][4]);
+			}
+			console.log(grand_total);
+			$('input[name=Total]').val(grand_total);
 
    	}
    return false;
