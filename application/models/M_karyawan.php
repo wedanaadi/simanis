@@ -70,12 +70,9 @@ function getdata($username, $password)
         $this->db->where("username", $username);
         $this->db->where("pass", $password);
         //return $this->db->get('m_karyawan');
-        return $this->db->query("SELECT id_karyawan, nama_karyawan, hak_akses.hak_akses, username
-        FROM m_karyawan INNER JOIN hak_akses ON m_karyawan.id_hakakses = hak_akses.id_hakakses 
-        WHERE username = '$username' AND pass = '$password';");
-        
-
-
+        return $this->db->query("SELECT m_karyawan.id_karyawan, m_karyawan.nama_karyawan, hak_akses.hak_akses, m_karyawan.username, m_karyawan.id_hakakses FROM m_karyawan 
+          JOIN hak_akses ON (m_karyawan.id_hakakses = hak_akses.id_hakakses) 
+          WHERE username = '$username' AND pass = '$password';");
     }
 
 function check_username($username)

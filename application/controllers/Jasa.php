@@ -34,6 +34,7 @@ function jasa_addDB()
 			'harga_jasa' => $this->input->post('hargajasa')
 		];
 		$this->M_jasa->create($data);
+		$this->session->set_flashdata('alert','Data Berhasil Disimpan');
 		redirect('Jasa');
 	}
 
@@ -53,6 +54,7 @@ function update()
 			'harga_jasa' => $this->input->post('hargajasa')
     	  ];
    		$this->M_jasa->update($data,$id);
+   		$this->session->set_flashdata('alert','Data Berhasil Disimpan');
 	   	redirect('Jasa');
 	}
 

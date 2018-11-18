@@ -82,13 +82,15 @@ $this->load->view('layouts/template-atas');
 						<div class="row">
 							<div class="col-xs-12" align="right">
 								<div class="form-group" >
-									<a class="btn btn-primary btn-flat tambahkan" id="tambah" data-toggle="modal" data-target="#showdataservis"><i class='fa fa-plus-square-o'></i>  Tambah  </a> 
+									<a class="btn btn-primary btn-flat tambahkan" id="tambah" data-toggle="modal" data-target="#showdataservis"><i class='fa fa-plus-square-o'></i>  Tambah Data Service </a> 
 								</div>
 							</div>
 						</div>
-						<div>
-							<hr style="border-top: 3px solid #8c8b8b; padding: 6px; margin-top: 5px; margin-bottom: 0px;">
-						</div>
+		               <div>
+		               	<hr style="border-top: 3px solid #8c8b8b; padding: 6px; margin-top: 1px; margin-bottom: 0px;">
+		                <h4 class="box-title" style="margin-top: -10px; margin-bottom: 0px;" ><strong>&nbsp;&nbsp;Barang Service</strong> </h4>
+		                <hr style="border-top: 3px solid #8c8b8b; padding: 6px; margin-top: 5px; margin-bottom: 0px;">
+		               </div>
 						<!-- <hr style="border-top: 3px solid #8c8b8b; padding: 6px; margin-top: 5px; margin-bottom: 0px;"> -->
 						<div class="table-responsive">
 							<table id="tbservis" class="table table-bordered table-striped">
@@ -105,9 +107,11 @@ $this->load->view('layouts/template-atas');
 								<tbody id="mytbody"></tbody>
 							</table>
 						</div>
-						<div>
-							<hr style="border-top: 3px solid #8c8b8b; padding: 6px; margin-top: 5px; margin-bottom: 0px;">
-						</div>
+		               <div>
+		               	<hr style="border-top: 3px solid #8c8b8b; padding: 6px; margin-top: 15px; margin-bottom: 0px;">
+		                <h4 class="box-title" style="margin-top: -10px; margin-bottom: 0px;" ><strong>&nbsp;&nbsp;Detail Service</strong> </h4>
+		                <hr style="border-top: 3px solid #8c8b8b; padding: 6px; margin-top: 5px; margin-bottom: 0px;">
+		               </div>
 						<div class="table-responsive">
 							<table id="tbdetailservis" class="table table-bordered table-striped">
 								<thead>
@@ -188,7 +192,19 @@ $this->load->view('layouts/template-atas');
       }],
       paging:false, searching:false
     });
-    //paging:false, searching:false
   });
   </script>
 
+<script type="text/javascript">
+   $(document).on('click', '.Hapus', function(e){
+   	if(!e.isDefaultPrevented()){
+   	 var b = $('#tbservis').DataTable();
+     var tb1 = b.row($(this).parents('tr')).data();
+     var idser1 = tb1[0];
+     b.row($(this).closest('tr')).remove().draw(false);
+      console.log(idser1);
+
+   	}
+   return false;
+ });
+</script>

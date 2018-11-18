@@ -5,15 +5,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class M_servis extends CI_Model {
 
 	function all()
-	{
-		$data = $this->db->query('SELECT id_service, m_penerimaan.id_penerimaan, m_penerimaan.tgl_penerimaan, nama_barang, m_karyawan.nama_karyawan, status_service.status_service, garansi.nama_st, kondisi FROM m_service 
+	{	
+		$idaaa = $this->session->userdata('kodeuser');
+		$id2 = $this->session->userdata('id_akses');
+		
+		if ($id2 == 2) 
+		{
+			$data = $this->db->query("SELECT m_service.id_service, m_penerimaan.id_penerimaan, m_service.id_karyawan, 
+			m_karyawan.id_hakakses, m_penerimaan.tgl_penerimaan, m_service.nama_barang, m_karyawan.nama_karyawan, 
+			status_service.status_service, garansi.nama_st, m_service.kondisi FROM m_service 
+			JOIN m_penerimaan ON (m_service.id_penerimaan = m_penerimaan.id_penerimaan) 
+			JOIN m_karyawan ON (m_service.id_karyawan = m_karyawan.id_karyawan)
+			JOIN garansi ON (m_service.id_garansi = garansi.id_garansi)
+			JOIN status_service ON (m_service.id_status = status_service.id_status) 
+			WHERE m_service.id_karyawan = '$idaaa' AND m_service.kondisi = '1'");
+
+		return $data->result();
+		}
+		elseif ($id2 == 1) 
+		{
+			$data = $this->db->query('SELECT id_service, m_penerimaan.id_penerimaan, m_penerimaan.tgl_penerimaan, 
+			nama_barang, m_karyawan.nama_karyawan, status_service.status_service, garansi.nama_st, kondisi FROM m_service 
 			INNER JOIN m_penerimaan ON m_service.id_penerimaan = m_penerimaan.id_penerimaan 
 			INNER JOIN m_karyawan ON m_service.id_karyawan = m_karyawan.id_karyawan
 			INNER JOIN garansi ON m_service.id_garansi = garansi.id_garansi
 			INNER JOIN status_service ON m_service.id_status = status_service.id_status WHERE kondisi = "1"');
 
 		return $data->result();
+		}
+
 	}
+
 	
 function jasa()
 	{
