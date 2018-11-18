@@ -5,7 +5,7 @@ $this->load->view('layouts/template-atas');
 <!-- Content Header (Page header) -->
 <section class="content-header" >
 	<h1>
-		Penerimaan Service
+		Pengembalian Service
 	</h1>
 </section>
 
@@ -54,9 +54,9 @@ $this->load->view('layouts/template-atas');
 									<input type="text" name="notelp" id="notelp" readonly="readonly" class="form-control">
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="col-md-6"> <!-- RP -->
 								<div id ="baris2" class="form-group">
-									<label class="control-label" style="font-size: xx-large; padding-left: 40px;">Rp.  </label>
+									<label class="control-label totalL" style="font-size: xx-large; padding-left: 40px;" id="totalsemua"></label>
 								</div>
 							</div>
 						</div>
@@ -134,7 +134,7 @@ $this->load->view('layouts/template-atas');
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">Total</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="Total" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control total" name="Total" value="0" readonly="readonly" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
                       <span class="help-block with-errors"></span>
                     </div>
                 </div>
@@ -147,7 +147,7 @@ $this->load->view('layouts/template-atas');
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">Bayar</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="Bayar" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control Bayar" name="Bayar" placeholder = "Masukan Pembayaran" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
                       <span class="help-block with-errors"></span>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ $this->load->view('layouts/template-atas');
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">Kembalian</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="Kembalian" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control Kembalian" name="Kembalian" readonly="readonly" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
                       <span class="help-block with-errors"></span>
                     </div>
                 </div>
@@ -220,8 +220,21 @@ $this->load->view('layouts/template-atas');
 			}
 			console.log(grand_total);
 			$('input[name=Total]').val(grand_total);
+			$('.totalL').text('Rp. '+ grand_total);
 
    	}
    return false;
  });
+</script>
+
+<script type="text/javascript">
+	$('.total, .Bayar, .Kembalian').inputmask("numeric", 
+	{
+    	groupSeparator: ".",
+        digits: 0,
+        autoGroup: true,
+        rightAlign: false,
+        removeMaskOnSubmit: true,
+        allowMinus: false
+    });
 </script>
