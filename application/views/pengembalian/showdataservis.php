@@ -109,7 +109,7 @@
             var Action = "<a class='btn btn-danger btn-xs Hapus' title='Remove Item'>  <span class=' fa  fa-minus-square' ></span> </a> "
             var b = $('#tbdetailservis').DataTable();
             console.log(obj2[0]);
-            var grand_total = 0;
+            var grand_total = $('input[name=Total]').val();
             for (var i = 0; i < obj2.length; i++) {
                 b.row.add([
                 obj2[i].id_service,

@@ -134,7 +134,7 @@ $this->load->view('layouts/template-atas');
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">Total</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" name="Total" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control" name="Total" value="0" placeholder = "masukan nama" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
                       <span class="help-block with-errors"></span>
                     </div>
                 </div>
