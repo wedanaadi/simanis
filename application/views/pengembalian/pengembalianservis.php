@@ -21,7 +21,8 @@ $this->load->view('layouts/template-atas');
 							<div class="col-md-3">
 								<div id ="baris1" class="form-group">
 									<label class="control-label">No Nota</label>
-									<input type="text" name="id" readonly="readonly" class="form-control" value="<?php echo $kodetd ?>">
+									<input type="text" name="id" readonly="readonly" class="form-control" value="<?php echo $kodetd ?>"
+									>
 								</div>
 							</div>
 							<div class="col-md-3" style="margin-left">
@@ -34,7 +35,7 @@ $this->load->view('layouts/template-atas');
 							</div>
 							<div class="col-md-3" style="margin-left">
 								<div id ="baris1" class="form-group" name="customerr">
-									<label class="control-label" style="font-size:xx-large; padding-top: 20px; padding-left: 40px;" >TOTAL</label>
+									<!-- <label class="control-label" style="font-size:xx-large; padding-top: 20px; padding-left: 40px;" >TOTAL</label> -->
 								</div>
 							</div>
 
@@ -68,7 +69,7 @@ $this->load->view('layouts/template-atas');
 										<div class="input-group-addon"> 
 											<i class="fa fa-calendar"></i>
 										</div>
-										<input type="text"   value="<?= date('d/m/Y') ?>" class="form-control pull-right" name= "tanggal" id="tanggal" readonly="readonly">
+										<input type="text"   value="<?= date('d/m/Y') ?>" class="form-control pull-right" name="tanggal" id="tanggal" readonly="readonly">
 									</div>
 								</div>
 							</div>
@@ -93,7 +94,7 @@ $this->load->view('layouts/template-atas');
 		               </div>
 						<!-- <hr style="border-top: 3px solid #8c8b8b; padding: 6px; margin-top: 5px; margin-bottom: 0px;"> -->
 						<div class="table-responsive">
-							<table id="tbservis" class="table table-bordered table-striped">
+							<table id="TbServis" class="table table-bordered table-striped">
 								<thead>
 									<tr>
 										<th style="width: 100px">ID Service</th>
@@ -102,6 +103,9 @@ $this->load->view('layouts/template-atas');
 										<th>Kelengkapan</th>
 										<th>Keluhan</th>
 										<th style="width: 50px">Action</th>
+										<th style="display: none;">id_garansi</th>
+										<th style="display: none;">id_karyawan</th>
+										<th style="display: none;">id_kategori</th>
 									</tr>
 								</thead>
 								<tbody id="mytbody"></tbody>
@@ -128,44 +132,71 @@ $this->load->view('layouts/template-atas');
 						</div> 
   
       <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-7">
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-5">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">Total</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control total" name="Total" value="0" readonly="readonly" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control total" name="Total" id="Total" value="0" readonly="readonly" required >
                       <span class="help-block with-errors"></span>
                     </div>
                 </div>
         </div>
       </div>
-            <div class="row">
-        <div class="col-xs-8">
+      <div class="row">
+        <div class="col-xs-7">
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-5">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">PPN</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control PPN" name="PPN" value="0" id="PPN" readonly="readonly" required>
+                      <span class="help-block with-errors"></span>
+                    </div>
+                </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-7">
+        </div>
+        <div class="col-xs-5">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">Total Fatur</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control TotalFatur" name="TotalFatur" value="0" id="TotalFatur" readonly="readonly" required>
+                      <span class="help-block with-errors"></span>
+                    </div>
+                </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-7">
+        </div>
+        <div class="col-xs-5">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">Bayar</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control Bayar" name="Bayar" placeholder = "Masukan Pembayaran" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control Bayar" name="Bayar" id="Bayar" placeholder = "Masukan Pembayaran" required>
                       <span class="help-block with-errors"></span>
                     </div>
                 </div>
         </div>
       </div>
-            <div class="row">
-        <div class="col-xs-8">
+      <div class="row">
+        <div class="col-xs-7">
         </div>
-        <div class="col-xs-4">
+        <div class="col-xs-5">
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-3 control-label" style="text-align: left; padding-top: 7px;">Kembalian</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control Kembalian" name="Kembalian" readonly="readonly" required oninvalid="this.setCustomValidity('Masukan Nama')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control Kembalian" name="Kembalian" value="0" id="Kembalian" readonly="readonly" required>
                       <span class="help-block with-errors"></span>
                     </div>
                 </div>
         </div>
       </div>
+
 						<div class="col-md-12" align="left" style="margin-top :30px;">
 							<button type="submit" class="btn btn-success btn-lg fa fa-save save" id="Simpan"> Simpan</button>
 						</div>			
@@ -182,7 +213,7 @@ $this->load->view('layouts/template-atas');
 
   <script type="text/javascript">
   $(function () {
-    $("#tbservis").DataTable({
+    $("#TbServis").DataTable({
       paging:false, searching:false
     });
 
@@ -198,12 +229,12 @@ $this->load->view('layouts/template-atas');
 <script type="text/javascript">
    $(document).on('click', '.Hapus', function(e){
    	if(!e.isDefaultPrevented()){
-   	 var b = $('#tbservis').DataTable();
-		 var tabel = $('#tbdetailservis').DataTable();
+   	 var b = $('#TbServis').DataTable();
+	 var tabel = $('#tbdetailservis').DataTable();
      var tb1 = b.row($(this).parents('tr')).data();
      var idser1 = tb1[0];
 		 var datadetil = [];
-		 var grand_total = $('input[name=Total]').val();
+		 var grand_total = $('input[name=Total]').inputmask('unmaskedvalue');
      b.row($(this).closest('tr')).remove().draw(false);
 		  $('#tbdetailservis tbody tr').each(function(index){
 				$row = $(this);
@@ -217,10 +248,14 @@ $this->load->view('layouts/template-atas');
 			});
 			for (let w = 0; w < datadetil.length; w++) {
 				grand_total = parseFloat(grand_total) - parseFloat(datadetil[w][4]);
+				PPN = parseFloat(grand_total) * (10 / 100);
+				TotalFatur = parseFloat(grand_total) + parseFloat(PPN);
 			}
 			console.log(grand_total);
 			$('input[name=Total]').val(grand_total);
-			$('.totalL').text('Rp. '+ grand_total);
+			$('input[name=PPN]').val(PPN);
+			$('input[name=TotalFatur]').val(TotalFatur);
+			//$('.totalL').text('Rp. '+ TotalFatur);
 
    	}
    return false;
@@ -228,13 +263,91 @@ $this->load->view('layouts/template-atas');
 </script>
 
 <script type="text/javascript">
-	$('.total, .Bayar, .Kembalian').inputmask("numeric", 
+	$('.total, .Bayar, .Kembalian, .PPN, .TotalFatur').inputmask("numeric", 
 	{
     	groupSeparator: ".",
         digits: 0,
         autoGroup: true,
         rightAlign: false,
         removeMaskOnSubmit: true,
-        allowMinus: false
+        allowMinus: true
     });
 </script>
+
+<script type="text/javascript">
+	$('#Bayar').on('input',function (){ 
+		var zz = $('#TotalFatur').inputmask('unmaskedvalue');
+        var aa = $('#Bayar').inputmask('unmaskedvalue');
+        var hasil = parseFloat(aa) - parseFloat(zz);
+        /*console.log(hasil);*/
+        $('#Kembalian').val(hasil);
+        console.log(aa);
+        console.log(zz);
+        if(aa-zz < 0) {
+        	$('.save').prop('disabled',true);
+        	console.log('mati');
+        }
+        else if(aa-zz > 0){
+        	$('.save').prop('disabled',false);
+        	console.log('hidup');
+        }
+        else if(aa-zz == 0){
+        	$('.save').prop('disabled',false);
+        	console.log('hidup');
+        }
+
+	});
+</script>
+
+<script>
+  $(document).on('submit',function(e){
+    if(!e.isDefaultPrevented())
+    {
+      var tabel = $("#TbServis").DataTable();
+
+      var _data = {
+          no_nota: $('input[name=id]').val(),
+          customer: $('input[name=IdCustomer]').val(),
+          karyawan: $('input[name=IDKaryawan]').val(),
+          tanggal: $('input[name=tanggal]').val(),
+          bayar: $('input[name=Bayar]').val(),
+          total: $('input[name=Total]').val(),
+          kembalian: $('input[name=Kembalian]').val(),
+          PPN: $('input[name=PPN]').val(),
+          TotalFatur: $('input[name=TotalFatur]').val(),
+          TbServis: tabel.rows().data().toArray(),
+        };
+
+        $.ajax({
+          url: "<?php echo site_url('Pengembalian/addpenerimaan') ?>",
+          type: "POST",
+          method: "POST",
+          data: _data,
+          success: function(data)
+          {
+            obj = JSON.parse(data);
+            swal({
+                title: "Sukses",
+                text: obj.message,
+                type: "success",
+                button: "ok",
+            }, function(){
+              window.location = "<?php echo site_url('Pengembalian') ?>";
+            });
+          }
+        });
+      }
+    /*}*/
+    return false;
+  });
+</script>
+
+<?php if($this->session->flashdata('no_nota')): ?>
+<?php $kodecetak =  $this->session->flashdata('no_nota');?> 
+<script type="text/javascript">
+  $(document).ready(function() {
+    var kodepen = "<?php echo $kodecetak;?>"
+          window.open("<?php echo base_url(). 'index.php/Pengembalian/CetakPEN/';?>?KodePen="+kodepen ,"MyTargetWindowName")
+  });
+  </script>
+<?php endif; ?>

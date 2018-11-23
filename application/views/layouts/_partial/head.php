@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLte/css/AdminLTE.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLte/css/skins/_all-skins.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/datatables/datatables.min.css') ?>">
-    <!-- sweetalert -->
+      <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') ?>">
+        <!-- sweetalert -->
     <link rel="stylesheet" href="<?php echo base_url('assets/sweetalert/dist/sweetalert.css') ?>">
     <!-- Select2 -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/lte/bower_components/select2/dist/css/select2.min.css">

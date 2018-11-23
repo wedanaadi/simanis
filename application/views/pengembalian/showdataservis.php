@@ -22,6 +22,7 @@
                               <th style="display: none;">nama_customer</th>
                               <th style="display: none;">tlpr</th>
                               <th style="display: none;">alamat</th>
+                              <th style="display: none;">idcus</th>
                            </tr>
                         </thead>
                           <!-- data -->
@@ -42,6 +43,7 @@
                                 <td style="display: none;" class="nama_customer"><?php echo $s->nama_customer?></td>
                                 <td style="display: none;" class="notlp_cus"><?php echo $s->notlp_cus?></td>
                                 <td style="display: none;" class="alamat_cus"><?php echo $s->alamat_cus?></td>
+                                <td style="display: none;" class="id_customer"><?php echo $s->id_customer?></td>
                             </tr>
                           <?php 
                           //$no++;
@@ -71,11 +73,13 @@
       var NamaCus =$(this).closest('tr').children('td.nama_customer').text();
       var TlpCus =$(this).closest('tr').children('td.notlp_cus').text();
       var AlamatCus =$(this).closest('tr').children('td.alamat_cus').text();
+      var IdCustomer =$(this).closest('tr').children('td.id_customer').text();
       var showdataservis = $('#showdataservis');
 
       $('#NamaCustomer').val(NamaCus);
       $('#notelp').val(TlpCus);
       $('#alamat').val(AlamatCus);
+      $('#IdCustomer').val(IdCustomer);
 
       console.log(IdService);
       $.ajax({
@@ -87,7 +91,7 @@
       {
         var obj = JSON.parse(data);
         var Action = "<a class='btn btn-danger btn-xs Hapus' title='Remove Item'>  <span class=' fa  fa-minus-square' ></span> </a> "
-        var t = $('#tbservis').DataTable();
+        var t = $('#TbServis').DataTable();
         console.log(obj[0]);
         t.row.add([
           obj[0].id_service,
@@ -96,8 +100,14 @@
           obj[0].kelengkapan,
           obj[0].keluhan,
           Action,
-        ]).draw();
-
+          obj[0].id_garansi,
+          obj[0].id_karyawan,
+          obj[0].id_kategori,
+        ]).draw(false);
+        t.row(t).column(6).nodes().to$().css('display','none');
+        t.row(t).column(7).nodes().to$().css('display','none');
+        t.row(t).column(8).nodes().to$().css('display','none');
+        
         $.ajax({
           url: "<?php echo site_url('Pengembalian/getdetail') ?>",
           method: "GET",
@@ -109,7 +119,7 @@
             var Action = "<a class='btn btn-danger btn-xs Hapus' title='Remove Item'>  <span class=' fa  fa-minus-square' ></span> </a> "
             var b = $('#tbdetailservis').DataTable();
             console.log(obj2[0]);
-            var grand_total = $('input[name=Total]').val();
+            var grand_total = $('input[name=Total]').inputmask('unmaskedvalue');
             for (var i = 0; i < obj2.length; i++) {
                 b.row.add([
                 obj2[i].id_service,
@@ -120,9 +130,13 @@
               ]).draw();
 
               grand_total = parseFloat(grand_total) + parseFloat(obj2[i].subtotal);
+              PPN = parseFloat(grand_total) * (10 / 100);
+              TotalFatur = parseFloat(grand_total) + parseFloat(PPN);
             }
             $('input[name=Total]').val(grand_total);
-            $('.totalL').text('Rp. '+ grand_total);
+            $('input[name=PPN]').val(PPN);
+            $('input[name=TotalFatur]').val(TotalFatur);
+            //$('.totalL').text('Rp. '+ TotalFatur);
           }
         });         
       }

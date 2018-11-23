@@ -325,6 +325,7 @@ $this->load->view('Penerimaan/daftarcustomer');
                 title: "Sukses",
                 text: obj.message,
                 type: "success",
+                timer: 2000,
                 button: "ok",
             }, function(){
               window.location = "<?php echo site_url('Penerimaan') ?>";
@@ -336,3 +337,14 @@ $this->load->view('Penerimaan/daftarcustomer');
     return false;
   });
 </script>
+
+
+<?php if($this->session->flashdata('no_nota')): ?>
+<?php $kodecetak =  $this->session->flashdata('no_nota');?> 
+<script type="text/javascript">
+  $(document).ready(function() {
+    var kodepem = "<?php echo $kodecetak;?>"
+          window.open("<?php echo base_url(). 'index.php/Penerimaan/CetakPEM/';?>?KodePem="+kodepem ,"MyTargetWindowName")
+  });
+  </script>
+<?php endif; ?>

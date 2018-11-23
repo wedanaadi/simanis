@@ -7,11 +7,11 @@ class Penerimaan extends CI_Controller {
 	{
 		$this->CI =& get_instance();
   		parent::__construct();
-      /*      if ($this->session->userdata('kodeuser')==NULL) {
-	  redirect('Login'); }*/
+  		if ($this->session->userdata('kodeuser')==NULL) {
+  			redirect('Login'); }
 		$this->load->model('M_penerimaan');
+		$this->load->library(array('session','create_pdf','create_kode'));
 		$this->load->helper(array('url'));
-		$this->load->library( array('create_kode'));
 	}
 
  function index()
@@ -57,9 +57,26 @@ class Penerimaan extends CI_Controller {
 		}
 
 		$this->M_penerimaan->insertDB($penerimaan,$service);
+		$this->session->set_flashdata('no_nota', $this->input->post('no_nota'));
 		echo json_encode(['success' => true,'message' => 'Berhasil']);
 	}
+
+/*	function Cetak(){
+		$data1= $this->load->view('layouts/cetak_head',null,TRUE);
+		return $data1;
+	}*/
+
+	function CetakPEM(){
+		$KodePem = $this->input->get('KodePem', TRUE);
+	    $data['header'] = $this->load->view('layouts/cetak_head',null,TRUE);
+	    $data['konten'] = $this->M_penerimaan->loadpenerimaan($KodePem);
+	    $html=$this->load->view('pengembalian/cetakpem',$data, TRUE);
+     	$this->create_pdf->load($html,'TandaTerima'.'-'.$data['konten'][0]->id_penerimaan, 'A4');	
+	}
+
 }
+
+
 
 
 /* End of file Penerimaan.php */

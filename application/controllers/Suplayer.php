@@ -6,8 +6,8 @@ class Suplayer extends CI_Controller {
 function __construct() 
 	{
   		parent::__construct();
-  		/*      if ($this->session->userdata('kodeuser')==NULL) {
-      redirect('Login'); }*/
+  		      if ($this->session->userdata('kodeuser')==NULL) {
+      redirect('Login'); }
  		$this->load->model('M_suplayer');
 	}
 
