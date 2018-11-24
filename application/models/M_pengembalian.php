@@ -59,20 +59,21 @@
 		}
 	}
 
-  function loadpenerimaan($KodePem) 
+  function loadpenerimaan($kodepen) 
 	{
 		$query = $this->db->query
 		(
-			"SELECT s.id_service, p.id_penerimaan,k.`nama_karyawan`, DATE_FORMAT(p.`tgl_penerimaan`,'%d-%m-%Y') AS tgl_penerimaan , c.nama_customer, c.notlp_cus, c.alamat_cus, 
-			s.id_kategori, o.nama_kategori, s.sn_barang, s.nama_barang, s.kelengkapan, s.keluhan, 
-			s.id_status, t.`status_service`, s.id_garansi, g.`nama_st` ,s.kondisi
-			FROM m_service s
-			JOIN m_penerimaan p ON (s.`id_penerimaan`= p.`id_penerimaan`)
-			JOIN m_customer c ON (p.`id_customer`= c.`id_customer`)
-			JOIN m_karyawan k ON (s.`id_karyawan`= k.`id_karyawan`)
-			JOIN m_kategoriservis o ON (s.`id_kategori` = o.`id_kategori`)
-			JOIN status_service t ON (s.`id_status` = t.`id_status` )
-			JOIN garansi g ON (s.`id_garansi` = g.`id_garansi`) WHERE p.id_penerimaan = '$KodePem';"
+			"SELECT d.`id_pengembalian`, w.`nama_karyawan`, k.`nama_kategori`, d.`id_service`,g.`nama_st`, d.`nama_barang`, d.`sn_barang`, 
+			d.`kelengkapan`, d.`keluhan`, DATE_FORMAT(p.tgl_pengembalian,'%d-%m-%Y') AS tgl_pengembalian, p.`bayar`, p.`kembalian`, 
+			p.`ppn`, p.`total`, p.`totalfatur`, c.`nama_customer`, c.`notlp_cus`, c.`alamat_cus`, s.`nama_service`, s.`qty`, s.`harga`, s.`subtotal`
+			FROM m_detailservice s
+			JOIN m_detailpengem d ON ( s.`id_service` = d.`id_service`)
+			JOIN m_pengembalian p ON ( d.id_pengembalian = p.id_pengembalian)
+			JOIN m_customer c ON (p.`id_customer` = c.`id_customer`)
+			JOIN m_kategoriservis k ON (k.`id_kategori` = d.`id_kategori`)
+			JOIN garansi g ON (g.`id_garansi` = d.`id_garansi`)
+			JOIN m_karyawan w ON (w.`id_karyawan` = d.`id_karyawan`) WHERE d.`id_pengembalian` = '$kodepen';"
+
 		);
 		return $query->result() ; 
 	}

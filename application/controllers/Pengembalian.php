@@ -85,7 +85,7 @@ class Pengembalian extends CI_Controller {
 	{
 		$KodePen = $this->input->get('KodePen', TRUE);
 	    $data['header'] = $this->load->view('layouts/cetak_head',null,TRUE);
-	    $data['konten'] = $this->M_pengembalian->loadpenerimaan($KodePem);
+	    $data['konten'] = $this->M_pengembalian->loadpenerimaan($KodePen);
 	    $html=$this->load->view('pengembalian/cetakpen',$data, TRUE);
      	$this->create_pdf->load($html,'Invoice'.'-'.$data['konten'][0]->id_penerimaan, 'A4');	
 	}

@@ -2,7 +2,7 @@
 <?php echo $header?>
 
 <style type="text/css">
-  #TabelKonten tr td {
+  #TabelKonten #tabelharga tr td {
     padding-right: 7px;
     padding-left:  7px;
     font-size: 12px;
@@ -23,24 +23,24 @@
 
    
  </table>
-  <table id="Konten" width="100%" border="1" style="font-size:11px;"  >
+  <table id="Konten" width="100%" border="0" style="font-size:11px;"  >
     <tr>
       <td width="10%" align="left" ><strong>NO</strong> </td>
-      <td align="left">: </td>
+      <td align="left">: <?php echo $konten[0]->id_pengembalian;?></td>
       <td width="10%" align="left" ><strong>Customer</strong> </td>
-      <td width="25%" align="left" >: ;?></td>
+      <td width="25%" align="left" >: <?php echo $konten[0]->nama_customer;?></td>
     </tr>
     <tr>
      <td><strong>Karyawan</strong></td>
      <td align="left">: <?php echo $this->session->userdata('namauser')?></td>
      <td align="left"><strong>Telp.</strong> </td>
-     <td align="left">: </td>
+     <td align="left">: <?php echo $konten[0]->notlp_cus;?></td>
    </tr>
    <tr>
     <td><strong>Tanggal</strong></td>
-    <td align="left">: </td>
+    <td align="left">: <?php echo $konten[0]->tgl_pengembalian;?></td>
     <td align="left"><strong>Alamat</strong> </td>
-    <td align="left">: </td>
+    <td align="left">: <?php echo $konten[0]->alamat_cus;?></td>
    </tr>
    <tr>
      <td>&nbsp;</td>
@@ -55,36 +55,47 @@
 <table id="TabelKonten"  border="1" style="border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  width="100%"   >
   <tbody>
     <tr>
-      <th  scope="col">NO</th>
-      <th  scope="col">Nama Barang</th>
-      <th  scope="col">Service</th>
-      <th  scope="col">Qty</th>
-      <th  scope="col">Subtotal</th>
-      <th  scope="col">Total</th>
+      <th width="7%" scope="col">NO</th>
+      <th width="25%" scope="col">Nama Barang</th>
+      <th width="7%" scope="col">Service</th>
+      <th width="7%" scope="col">Qty</th>
+      <th width="7%" scope="col">Subtotal</th>
+      <th width="7%" width="18%" scope="col">Total</th>
     </tr>
     <!-- DATA -->
   </tbody>
 </table>
-<table align="right" width="40%" border="1" style="font-size:11px; "  >
+<table align="right" id="tabelharga" width="35.6%" border="1" style="font-size:11px; border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  >
     <tr>
-      <td width="15%" >Total </td>
-      <td width="25%" >&nbsp; </td>    
+      <td width="40.8%" >Total </td>
+      <td width="44%" align="right"><?php echo "Rp. ".number_format($konten[0]->total,2,",",",")?></td>    
     </tr>
      <tr>
       <td >Total PPN </td> 
-      <td >&nbsp; </td>
+      <td align="right"><?php echo "Rp. ".number_format($konten[0]->ppn,2,",",",") ?></td>
     </tr>
     <tr>
       <td >Total Fatur</td> 
-      <td >&nbsp; </td>    
+      <td align="right"><?php echo "Rp. ".number_format($konten[0]->totalfatur,2,",",",") ?></td>    
     </tr>
     <tr>
       <td >Total Bayar </td> 
-      <td >&nbsp; </td>     
+      <td align="right"><?php echo "Rp. ".number_format($konten[0]->bayar,2,",",",") ?></td>     
     </tr>
     <tr>
       <td >Total Kembalian </td> 
-      <td >&nbsp; </td>   
+      <td align="right"><?php echo "Rp. ".number_format($konten[0]->kembalian,2,",",",") ?></td>   
+    </tr>
+  </table>
+  <table align="left" width="100%" border="0" style="font-size:11px; "  >
+    <tr>
+      <td width="15%" >Note : </td>   
+    </tr>
+     <tr>
+      <td >Barang yang sudah Dibeli Tidak Dapat Dikembalikan,</td> 
+    </tr>
+    <tr>
+      <td >Terima Kasih</td>    
     </tr>
   </table>
 
@@ -94,11 +105,15 @@
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
       <td >&nbsp; </td>     
     </tr>
      <tr>
       <td >&nbsp; </td>
       <td >&nbsp; </td> 
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
@@ -106,14 +121,27 @@
     
     <tr>
       <td >&nbsp; </td>
-     <td  align="center"><strong>YANG MENERIMA</strong> </td>
+     <td  align="center"><strong>PENGIRIM</strong> </td>
      <td >&nbsp; </td>
-     <td  align="center"><strong>YANG MENYERAHKAN</strong></td>
+     <td  align="center"><strong>PENERIMA</strong> </td>
+     <td >&nbsp; </td>
+     <td  align="center"><strong>TERTANDA</strong></td>
      <td >&nbsp; </td>
     </tr>
     <tr>
       <td >&nbsp; </td>
       <td >&nbsp; </td> 
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>      
+    </tr>
+    <tr>
+      <td >&nbsp; </td>
+      <td >&nbsp; </td> 
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>     
@@ -123,25 +151,24 @@
       <td >&nbsp; </td> 
       <td >&nbsp; </td>
       <td >&nbsp; </td>
-      <td >&nbsp; </td>     
-    </tr>
-    <tr>
+      <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td> 
-      <td >&nbsp; </td>
-      <td >&nbsp; </td>
-      <td >&nbsp; </td>    
     </tr>
      <tr>
       <td >&nbsp; </td>
       <td >&nbsp; </td> 
       <td >&nbsp; </td>
       <td >&nbsp; </td>
-      <td >&nbsp; </td>     
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>      
     </tr>
     <tr>
       <td >&nbsp; </td>
       <td >&nbsp; </td> 
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>    
@@ -149,6 +176,8 @@
      <tr>
       <td >&nbsp; </td>
      <td align="center"> <hr style="color:#000000"> </td>
+     <td >&nbsp; </td>
+     <td align="center"> <hr style="color:#000000"></td>
      <td >&nbsp; </td>
      <td align="center"> <hr style="color:#000000"></td>
      <td >&nbsp; </td>
