@@ -21,7 +21,7 @@
      <br><br>
    </tr>
 
-   
+
  </table>
   <table id="Konten" width="100%" border="0" style="font-size:11px;"  >
     <tr>
@@ -62,54 +62,64 @@
       <th  scope="col">Subtotal</th>
       <th  scope="col">Total</th>
     </tr>
-    <?php $i=1; foreach ($konten as $k ) { ?>
+    <?php $i=1; $temp=null; foreach ($konten as $value)
+      {
+    ?>
     <tr>
-      <td align="center"><?php echo $i?></td>
-      <td ><?php echo $k->nama_barang ?></td>
-      <td ></td>
-      <td ></td>
-      <td ></td>
-      <td ></td>
+      <?php if($value->nama_barang != $temp)
+      {
+      ?>
+      <td rowspan="<?php echo $value->jumlah ?>"><?php echo $i ?></td>
+      <td rowspan="<?php echo $value->jumlah ?>"><?php echo $value->nama_barang ?></td>
+      <?php } ?>
+      <td><?php echo $value->nama_service ?></td>
+      <td><?php echo $value->qty ?></td>
+      <td><?php echo $value->harga ?></td>
+      <td><?php echo $value->subtotal ?></td>
     </tr>
-   <?php $i++; } ?>
+    <?php
+      $temp = $value->nama_barang;
+      $i++;
+      }
+    ?>
   </tbody>
 </table>
 <table align="right" id="tabelharga" width="40%" border="0" style="font-size:11px; border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  >
     <tr>
 
       <td  >Total </td>
-      <td  align="right"><?php echo number_format($konten[0]->total,2,",",",")?></td>    
+      <td  align="right"><?php echo number_format($konten[0]->total,2,",",",")?></td>
     </tr>
      <tr>
 
-      <td >Total PPN </td> 
+      <td >Total PPN </td>
       <td align="right"><?php echo number_format($konten[0]->ppn,2,",",",") ?></td>
     </tr>
     <tr>
 
-      <td >Total Fatur</td> 
-      <td align="right"><?php echo number_format($konten[0]->totalfatur,2,",",",") ?></td>    
+      <td >Total Fatur</td>
+      <td align="right"><?php echo number_format($konten[0]->totalfatur,2,",",",") ?></td>
     </tr>
     <tr>
 
-      <td >Total Bayar </td> 
-      <td align="right"><?php echo number_format($konten[0]->bayar,2,",",",") ?></td>     
+      <td >Total Bayar </td>
+      <td align="right"><?php echo number_format($konten[0]->bayar,2,",",",") ?></td>
     </tr>
     <tr>
 
-      <td >Total Kembalian </td> 
-      <td align="right"><?php echo number_format($konten[0]->kembalian,2,",",",") ?></td>   
+      <td >Total Kembalian </td>
+      <td align="right"><?php echo number_format($konten[0]->kembalian,2,",",",") ?></td>
     </tr>
   </table>
   <table align="left" width="100%" border="0" style="font-size:11px; "  >
     <tr>
-      <td width="15%" >Note : </td>   
+      <td width="15%" >Note : </td>
     </tr>
      <tr>
-      <td >Barang yang sudah Dibeli Tidak Dapat Dikembalikan,</td> 
+      <td >Barang yang sudah Dibeli Tidak Dapat Dikembalikan,</td>
     </tr>
     <tr>
-      <td >Terima Kasih</td>    
+      <td >Terima Kasih</td>
     </tr>
   </table>
 
@@ -121,18 +131,18 @@
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
-      <td >&nbsp; </td>     
+      <td >&nbsp; </td>
     </tr>
      <tr>
       <td >&nbsp; </td>
-      <td >&nbsp; </td> 
+      <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
     </tr>
-    
+
     <tr>
       <td >&nbsp; </td>
      <td  align="center"><strong>PENGIRIM</strong> </td>
@@ -144,48 +154,48 @@
     </tr>
     <tr>
       <td >&nbsp; </td>
-      <td >&nbsp; </td> 
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
-      <td >&nbsp; </td>      
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
     </tr>
     <tr>
       <td >&nbsp; </td>
-      <td >&nbsp; </td> 
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
-      <td >&nbsp; </td>     
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
     </tr>
     <tr>
       <td >&nbsp; </td>
-      <td >&nbsp; </td> 
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
-      <td >&nbsp; </td> 
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
     </tr>
      <tr>
       <td >&nbsp; </td>
-      <td >&nbsp; </td> 
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
-      <td >&nbsp; </td>      
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
     </tr>
     <tr>
       <td >&nbsp; </td>
-      <td >&nbsp; </td> 
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
       <td >&nbsp; </td>
-      <td >&nbsp; </td>    
+      <td >&nbsp; </td>
+      <td >&nbsp; </td>
     </tr>
      <tr>
       <td >&nbsp; </td>
@@ -197,11 +207,3 @@
      <td >&nbsp; </td>
     </tr>
   </table>
-
-
-  
-
-
-
-
-

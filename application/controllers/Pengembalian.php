@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Pengembalian extends CI_Controller {
 
-	 function __construct() 
+	 function __construct()
 	{
 		$this->CI =& get_instance();
   		parent::__construct();
@@ -12,20 +12,20 @@ class Pengembalian extends CI_Controller {
 		$this->load->model('M_pengembalian');
 		$this->load->library(array('session','create_pdf','create_kode'));
 		$this->load->helper(array('url'));
-		
+
 	}
 
 	public function index()
 	{
-		$tahun = date('y'); 
+		$tahun = date('y');
         $bulan = date('m');
-		$hari	= date ('d'); 
-		$last_kode = $this->M_pengembalian->last_kode($tahun.$bulan.$hari); 
+		$hari	= date ('d');
+		$last_kode = $this->M_pengembalian->last_kode($tahun.$bulan.$hari);
 		$data['kodetd'] = $this->create_kode->generate_menu($last_kode->kode, 3, 9, 'PEG', $tahun.$bulan.$hari);
 		$data['dataservis'] = $this->M_pengembalian->dataservis();
 		$this->load->view('Pengembalian/pengembalianservis',$data);
 	}
-	
+
 	public function getservice()
 	{
 		$id = $this->input->get('id_service');
@@ -56,8 +56,8 @@ class Pengembalian extends CI_Controller {
 			'kembalian' => $this->input->post('kembalian')
 		];
 
-		for ($i=0; $i < count($this->input->post('TbServis')); $i++) 
-		{ 
+		for ($i=0; $i < count($this->input->post('TbServis')); $i++)
+		{
 			$updatekonisi[] = [
 				'id_service' => $this->input->post('TbServis')[$i][0],
 				'kondisi' => '0'
@@ -87,7 +87,7 @@ class Pengembalian extends CI_Controller {
 	    $data['header'] = $this->load->view('layouts/cetak_head',null,TRUE);
 	    $data['konten'] = $this->M_pengembalian->loadpenerimaan($KodePen);
 	    $html=$this->load->view('pengembalian/cetakpen',$data, TRUE);
-     	$this->create_pdf->load($html,'Invoice'.'-'.$data['konten'][0]->id_penerimaan, 'A4');	
+     	$this->create_pdf->load($html,'Invoice'.'-'.$data['konten'][0]->id_penerimaan, 'A4');
 	}
 
 }
