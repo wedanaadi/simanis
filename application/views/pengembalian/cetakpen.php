@@ -52,39 +52,53 @@
 
 </div>
 
-<table id="TabelKonten"  border="1" style="border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  width="100%"   >
+<table id="TabelKonten"  border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  width="100%"   >
   <tbody>
     <tr>
-      <th width="7%" scope="col">NO</th>
-      <th width="25%" scope="col">Nama Barang</th>
-      <th width="7%" scope="col">Service</th>
-      <th width="7%" scope="col">Qty</th>
-      <th width="7%" scope="col">Subtotal</th>
-      <th width="7%" width="18%" scope="col">Total</th>
+      <th >NO</th>
+      <th >Nama Barang</th>
+      <th  scope="col">Service</th>
+      <th  scope="col">Qty</th>
+      <th  scope="col">Subtotal</th>
+      <th  scope="col">Total</th>
     </tr>
-    <!-- DATA -->
+    <?php $i=1; foreach ($konten as $k ) { ?>
+    <tr>
+      <td align="center"><?php echo $i?></td>
+      <td ><?php echo $k->nama_barang ?></td>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+    </tr>
+   <?php $i++; } ?>
   </tbody>
 </table>
-<table align="right" id="tabelharga" width="35.6%" border="1" style="font-size:11px; border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  >
+<table align="right" id="tabelharga" width="40%" border="0" style="font-size:11px; border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  >
     <tr>
-      <td width="40.8%" >Total </td>
-      <td width="44%" align="right"><?php echo "Rp. ".number_format($konten[0]->total,2,",",",")?></td>    
+
+      <td  >Total </td>
+      <td  align="right"><?php echo number_format($konten[0]->total,2,",",",")?></td>    
     </tr>
      <tr>
+
       <td >Total PPN </td> 
-      <td align="right"><?php echo "Rp. ".number_format($konten[0]->ppn,2,",",",") ?></td>
+      <td align="right"><?php echo number_format($konten[0]->ppn,2,",",",") ?></td>
     </tr>
     <tr>
+
       <td >Total Fatur</td> 
-      <td align="right"><?php echo "Rp. ".number_format($konten[0]->totalfatur,2,",",",") ?></td>    
+      <td align="right"><?php echo number_format($konten[0]->totalfatur,2,",",",") ?></td>    
     </tr>
     <tr>
+
       <td >Total Bayar </td> 
-      <td align="right"><?php echo "Rp. ".number_format($konten[0]->bayar,2,",",",") ?></td>     
+      <td align="right"><?php echo number_format($konten[0]->bayar,2,",",",") ?></td>     
     </tr>
     <tr>
+
       <td >Total Kembalian </td> 
-      <td align="right"><?php echo "Rp. ".number_format($konten[0]->kembalian,2,",",",") ?></td>   
+      <td align="right"><?php echo number_format($konten[0]->kembalian,2,",",",") ?></td>   
     </tr>
   </table>
   <table align="left" width="100%" border="0" style="font-size:11px; "  >
