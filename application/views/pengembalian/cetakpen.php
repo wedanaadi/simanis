@@ -52,13 +52,13 @@
 
 </div>
 
-<table id="TabelKonten"  border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  width="100%"   >
+<table id="TabelKonten"  border="1" cellspacing="10" cellpadding="5" style="border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  width="100%"   >
   <tbody>
     <tr>
-      <th >NO</th>
-      <th >Nama Barang</th>
+      <th width="6%">NO</th>
+      <th width="20%" >Nama Barang</th>
       <th  scope="col">Service</th>
-      <th  scope="col">Qty</th>
+      <th  width="7%" scope="col">Qty</th>
       <th  scope="col">Subtotal</th>
       <th  scope="col">Total</th>
     </tr>
@@ -69,13 +69,13 @@
       <?php if($value->nama_barang != $temp)
       {
       ?>
-      <td rowspan="<?php echo $value->jumlah ?>"><?php echo $i ?></td>
-      <td rowspan="<?php echo $value->jumlah ?>"><?php echo $value->nama_barang ?></td>
+      <td align="center" rowspan="<?php echo $value->jumlah ?>"><?php echo $i ?></td>
+      <td rowspan="<?php echo $value->jumlah ?>"><?php echo $value->nama_barang .', '.$value->sn_barang.', '.$value->kelengkapan ?></td>
       <?php } ?>
       <td><?php echo $value->nama_service ?></td>
-      <td><?php echo $value->qty ?></td>
-      <td><?php echo $value->harga ?></td>
-      <td><?php echo $value->subtotal ?></td>
+      <td align="right"><?php echo $value->qty ?></td>
+      <td align="right"><?php echo number_format($value->harga,2,",",".") ?></td>
+      <td align="right"><?php echo number_format($value->subtotal,2,",",".") ?></td>
     </tr>
     <?php
       $temp = $value->nama_barang;
@@ -84,31 +84,34 @@
     ?>
   </tbody>
 </table>
-<table align="right" id="tabelharga" width="40%" border="0" style="font-size:11px; border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  >
+<table align="right" id="tabelharga" width="40%" border="0" style="font-size:12px; border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  >
     <tr>
-
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
       <td  >Total </td>
-      <td  align="right"><?php echo number_format($konten[0]->total,2,",",",")?></td>
+      <td  align="right"><?php echo number_format($konten[0]->total,2,",",".")?></td>
     </tr>
      <tr>
 
       <td >Total PPN </td>
-      <td align="right"><?php echo number_format($konten[0]->ppn,2,",",",") ?></td>
+      <td align="right"><?php echo number_format($konten[0]->ppn,2,",",".") ?></td>
     </tr>
     <tr>
 
       <td >Total Fatur</td>
-      <td align="right"><?php echo number_format($konten[0]->totalfatur,2,",",",") ?></td>
+      <td align="right"><?php echo number_format($konten[0]->totalfatur,2,",",".") ?></td>
     </tr>
     <tr>
 
       <td >Total Bayar </td>
-      <td align="right"><?php echo number_format($konten[0]->bayar,2,",",",") ?></td>
+      <td align="right"><?php echo number_format($konten[0]->bayar,2,",",".") ?></td>
     </tr>
     <tr>
 
       <td >Total Kembalian </td>
-      <td align="right"><?php echo number_format($konten[0]->kembalian,2,",",",") ?></td>
+      <td align="right"><?php echo number_format($konten[0]->kembalian,2,",",".") ?></td>
     </tr>
   </table>
   <table align="left" width="100%" border="0" style="font-size:11px; "  >
