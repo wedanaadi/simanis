@@ -70,7 +70,7 @@ class Penerimaan extends CI_Controller {
 		$KodePem = $this->input->get('KodePem', TRUE);
 	    $data['header'] = $this->load->view('layouts/cetak_head',null,TRUE);
 	    $data['konten'] = $this->M_penerimaan->loadpenerimaan($KodePem);
-	    $html=$this->load->view('pengembalian/cetakpem',$data, TRUE);
+	    $html=$this->load->view('penerimaan/cetakpem',$data, TRUE);
      	$this->create_pdf->load($html,'TandaTerima'.'-'.$data['konten'][0]->id_penerimaan, 'A4');	
 	}
 
