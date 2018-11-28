@@ -73,7 +73,7 @@ class M_penerimaan extends CI_Model {
 			FROM m_service s
 			JOIN m_penerimaan p ON (s.`id_penerimaan`= p.`id_penerimaan`)
 			JOIN m_customer c ON (p.`id_customer`= c.`id_customer`)
-			JOIN m_karyawan k ON (s.`id_karyawan`= k.`id_karyawan`)
+			JOIN m_karyawan k ON (p.`id_karyawan`= k.`id_karyawan`)
 			JOIN m_kategoriservis o ON (s.`id_kategori` = o.`id_kategori`)
 			JOIN status_service t ON (s.`id_status` = t.`id_status` )
 			JOIN garansi g ON (s.`id_garansi` = g.`id_garansi`) WHERE p.id_penerimaan = '$KodePem';"
@@ -81,6 +81,25 @@ class M_penerimaan extends CI_Model {
 		return $query->result() ; 
 	}
 
+	function penerimaanbytanggal($MulaiPem, $AkhirPem) 
+	{
+		$query = $this->db->query
+		(
+			"SELECT s.id_service, p.id_penerimaan,k.`nama_karyawan`, DATE_FORMAT(p.`tgl_penerimaan`,'%d-%m-%Y') AS tgl_penerimaan , 
+			c.nama_customer, c.notlp_cus, c.alamat_cus, 
+			s.id_kategori, o.nama_kategori, s.sn_barang, s.nama_barang, s.kelengkapan, s.keluhan, 
+			s.id_status, t.`status_service`, s.id_garansi, g.`nama_st` ,s.kondisi
+			FROM m_service s
+			JOIN m_penerimaan p ON (s.`id_penerimaan`= p.`id_penerimaan`)
+			JOIN m_customer c ON (p.`id_customer`= c.`id_customer`)
+			JOIN m_karyawan k ON (p.`id_karyawan`= k.`id_karyawan`)
+			JOIN m_kategoriservis o ON (s.`id_kategori` = o.`id_kategori`)
+			JOIN status_service t ON (s.`id_status` = t.`id_status` )
+			JOIN garansi g ON (s.`id_garansi` = g.`id_garansi`) 
+			WHERE tgl_penerimaan BETWEEN '$MulaiPem' AND '$AkhirPem' ORDER BY p.id_penerimaan;"
+		);
+		return $query->result() ; 
+	}
 
 }
 

@@ -24,12 +24,12 @@ $this->load->view('layouts/template-atas');
 						<div class="row">
 							<div class="col-md-3">
 								<div id ="barangservis" class="form-group">
-									<input type="text" name="Terima" id="Terima" class="form-control">
+									<input type="text" name="Terima" id="Terima" class="form-control ">
 									<span class="help-block with-errors"></span>
 								</div>
 							</div>
 								<div class="form-group" >
-									<a style="margin-top:-1px;" class="btn btn-success disabled" name="terima" id="terima"><i class='fa  fa-print'></i>  Unduh  </a> 
+									<a style="margin-top:-1px;" class="btn btn-success disabled TandaTerima" name="terima" id="terima"><i class='fa  fa-print'></i>  Unduh  </a> 
 								</div>
 						</div>
 						<div class="row">
@@ -46,7 +46,7 @@ $this->load->view('layouts/template-atas');
 									<div class="input-group-addon">
 										<i class="fa fa-calendar"></i>
 									</div>
-									<input type="text" class="form-control pull-right" id="MulaiPem" required="required">
+									<input type="text" class="form-control pull-right" id="MulaiPem" name="MulaiPem" required="required">
 									<span class="help-block with-errors"></span>
 								</div>
 							</div>
@@ -59,7 +59,7 @@ $this->load->view('layouts/template-atas');
 									<div class="input-group-addon">
 										<i class="fa fa-calendar"></i>
 									</div>
-									<input type="text" class="form-control pull-right" id="AkhirPem" required="required">
+									<input type="text" class="form-control pull-right" id="AkhirPem" name="AkhirPem" required="required">
 									<span class="help-block with-errors"></span>
 								</div>
 							</div>
@@ -103,7 +103,7 @@ $this->load->view('layouts/template-atas');
 									</div>
 								</div>
 								<div class="form-group" >
-									<a style="margin-top:-1px;" class="btn btn-success disabled" id="tambah"><i class='fa  fa-print'></i>  Unduh  </a> 
+									<a style="margin-top:-1px;" class="btn btn-success disabled InvoiceServis" id="Tambahkan"><i class='fa  fa-print'></i>  Unduh  </a> 
 								</div>
 							</div>
 							<div class="row">
@@ -169,12 +169,31 @@ $this->load->view('layouts/template-atas');
 </script>
 
 <script>
-	$('#MulaiPem, #AkhirPem').keyup(function (){
-	 if ($('#MulaiPem').val()=='' || $('#AkhirPem').val()=='' ){
-	 	$('#UnduhPem').addClass('disabled');
-	 };
-	 if ($('#MulaiPem').val()!='' && $('#AkhirPem').val()!='' ){
-	 	$('#UnduhPem').removeClass('disabled');
-	 }
+	$('#Invoice').keyup(function (){
+	$('#Tambahkan').removeClass('disabled');
+		if ($('#Invoice').val()=='' ) {
+			$('#Tambahkan').addClass('disabled');
+		};
 	});
+</script>
+
+<script type="text/javascript">
+  $(function () {  
+  $(".TandaTerima").click(function(){
+      var kodepem = $( "#Terima" ).val();
+      window.open("<?php echo base_url(). 'index.php/Penerimaan/CetakPEM/';?>?KodePem="+kodepem ,"MyTargetWindowName")
+  }); 
+});
+</script>
+
+
+
+<script type="text/javascript">
+  $(function () {  
+  $(".InvoiceServis").click(function(){
+      var MulaiPem = $( "#MulaiPem" ).val();
+      var AkhirPem = $( "#AkhirPem" ).val();
+      window.open("<?php echo base_url(). 'index.php/Penerimaan/CetakPEM_Tgl/';?>?Status="+ 'Semua' +"&MulaiPem="+ MulaiPem+"&AkhirPem="+AkhirPem ,"MyTargetWindowName")
+  });
+});
 </script>

@@ -12,7 +12,6 @@ class Laporan extends CI_Controller {
 		//$this->load->model('M_penerimaan');
 		$this->load->helper(array('url'));
 		$this->load->library(array('session','create_pdf'));
-		$this->load->library( array('create_kode'));
 	}
 
    public function index()

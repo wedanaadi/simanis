@@ -32,7 +32,7 @@
     </tr>
     <tr>
      <td><strong>Karyawan</strong></td>
-     <td align="left">: <?php echo $this->session->userdata('namauser')?></td>
+     <td align="left">: <?php echo $konten[0]->nama_karyawan;?></td>
      <td align="left"><strong>Telp.</strong> </td>
      <td align="left">: <?php echo $konten[0]->notlp_cus;?></td>
    </tr>
