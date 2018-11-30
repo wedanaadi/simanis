@@ -65,9 +65,12 @@ $this->load->view('layouts/template-atas');
 							</div>
 							<div class="col-sm-1">
 								<div class="form-group" >
-									<div class="col-md-12" align="right" style="margin-top :20px;">
-										<button type="submit" class="btn btn-success btn-lg fa fa-print save" id="Simpan"> Unduh</button>
-									</div>
+<!-- 									<div class="col-md-12" align="right" style="margin-top :20px;">
+										<button type="simpan" class="btn btn-success btn-lg fa fa-print save" id="Simpan"> Unduh</button>
+									</div> -->
+									<div class="form-group" >
+									<a style="margin-top:22px;" class="btn btn-success save " name="Simpan" id="Simpan"><i class='fa  fa-print'></i>  Unduh  </a> 
+								</div>
 								</div>
 							</div>
 						</div>			
@@ -138,9 +141,12 @@ $this->load->view('layouts/template-atas');
 									</div>
 								</div>
 								<div class="col-sm-1">
-									<div class="col-md-12" align="right" style="margin-top :20px;">
-										<button type="submit" class="btn btn-success btn-lg fa fa-print save" id="Simpan"> Unduh</button>
-									</div>
+<!-- 									<div class="col-md-12" align="right" style="margin-top :20px;">
+										<button type="submit" class="btn btn-success btn-lg fa fa-print Simpan1" id="Simpan1"> Unduh</button>
+									</div> -->
+									<div class="form-group" >
+									<a style="margin-top:22px;" class="btn btn-success Simpan1" name="Simpan1" id="Simpan1"><i class='fa  fa-print'></i>  Unduh  </a> 
+								</div>
 								</div>
 							</div>			
 						</div>
@@ -177,6 +183,8 @@ $this->load->view('layouts/template-atas');
 	});
 </script>
 
+
+
 <script type="text/javascript">
   $(function () {  
   $(".TandaTerima").click(function(){
@@ -186,14 +194,27 @@ $this->load->view('layouts/template-atas');
 });
 </script>
 
-
-
 <script type="text/javascript">
-  $(function () {  
-  $(".InvoiceServis").click(function(){
+  $(".save").click(function(){
       var MulaiPem = $( "#MulaiPem" ).val();
       var AkhirPem = $( "#AkhirPem" ).val();
       window.open("<?php echo base_url(). 'index.php/Penerimaan/CetakPEM_Tgl/';?>?Status="+ 'Semua' +"&MulaiPem="+ MulaiPem+"&AkhirPem="+AkhirPem ,"MyTargetWindowName")
   });
+</script>
+
+<script type="text/javascript">
+  $(function () {  
+  $(".InvoiceServis").click(function(){
+      var kodepen = $( "#Invoice" ).val();
+      window.open("<?php echo base_url(). 'index.php/Pengembalian/CetakPEN/';?>?KodePen="+kodepen ,"MyTargetWindowName")
+  }); 
 });
+</script>
+
+<script type="text/javascript">
+  $(".Simpan1").click(function(){
+      var MulaiIn = $( "#MulaiIn" ).val();
+      var AkhirIn = $( "#AkhirIn" ).val();
+      window.open("<?php echo base_url(). 'index.php/Pengembalian/CetakPEN_Tgl/';?>?Status="+ 'Semua' +"&MulaiIn="+ MulaiIn+"&AkhirIn="+AkhirIn ,"MyTargetWindowName")
+  });
 </script>

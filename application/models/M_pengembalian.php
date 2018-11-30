@@ -59,7 +59,7 @@
 		}
 	}
 
-  function loadpenerimaan($kodepen)
+  function loadpengembalian($kodepen)
 	{
 		$query = $this->db->query
 		(
@@ -74,12 +74,33 @@
       INNER JOIN `m_customer` AS c ON c.`id_customer` = pb.`id_customer`
       INNER JOIN `m_kategoriservis` AS ks ON ks.`id_kategori` = dp.`id_kategori`
       INNER JOIN `garansi` AS g ON g.`id_garansi` = dp.`id_garansi`
-      INNER JOIN `m_karyawan` AS k ON k.`id_karyawan` = dp.`id_karyawan`
+      INNER JOIN `m_karyawan` AS k ON k.`id_karyawan` = pb.`id_karyawan`
       WHERE dp.`id_pengembalian` = '$kodepen';"
 
 		);
 		return $query->result() ;
 	}
+
+  function pengembalianbytanggal($MulaiIn, $AkhirIn) 
+  { $query = $this->db->query 
+  	(
+  		"SELECT dp.`id_pengembalian`, k.`nama_karyawan`, ks.`nama_kategori`, dp.`id_service`, g.`nama_st`, dp.`nama_barang`,
+      dp.`sn_barang`, dp.`kelengkapan`, dp.`kelengkapan`, dp.`keluhan`, DATE_FORMAT(pb.tgl_pengembalian,'%d-%m-%Y') AS tgl_pengembalian,
+      pb.`bayar`, pb.`ppn`, pb.`total`, pb.`totalfatur`, c.`nama_customer`, c.`notlp_cus`, c.`alamat_cus`, ds.`nama_service`, ds.`qty`,
+      ds.`harga`, ds.`subtotal`, pb.`kembalian`,
+      (SELECT COUNT(`id_service`) FROM `m_detailservice` WHERE `id_service` = dp.`id_service`) AS jumlah
+      FROM `m_detailpengem` AS dp
+      INNER JOIN `m_detailservice` AS ds ON ds.`id_service` = dp.`id_service`
+      INNER JOIN `m_pengembalian` AS pb ON dp.`id_pengembalian` = pb.`id_pengembalian`
+      INNER JOIN `m_customer` AS c ON c.`id_customer` = pb.`id_customer`
+      INNER JOIN `m_kategoriservis` AS ks ON ks.`id_kategori` = dp.`id_kategori`
+      INNER JOIN `garansi` AS g ON g.`id_garansi` = dp.`id_garansi`
+      INNER JOIN `m_karyawan` AS k ON k.`id_karyawan` = pb.`id_karyawan`
+      WHERE tgl_pengembalian BETWEEN '$MulaiIn' AND '$AkhirIn' ORDER BY dp.`id_pengembalian`;"
+  	);
+  	return $query->result() ;
+  }
+
  }
 
  /* End of file M_pengembalian.php */
