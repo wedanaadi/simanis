@@ -15,7 +15,7 @@
 
 <div style="margin-buttom : 15px;" >
 <table width="100%" border="0"  >
-    <tr><td colspan="2" align="center" style="font-size:14px;"> <strong> INVOICE SERVICE  </strong>  </td></tr>
+    <tr><td colspan="2" align="center" style="font-size:14px;"> <strong> LAPORAN INVOICE SERVICE </strong>  </td></tr>
     <tr><td  colspan="2" align="center" style="font-size:8px;"> <?php echo $periode['MulaiIn'].' '.'-'.' '.$periode['AkhirIn'] ?>  </td></tr>
     <tr><td colspan="2" align="left">&nbsp;</td></tr>
 </table>
@@ -30,27 +30,27 @@
             <tr >
              <td colspan="4" align="right"  style="border-right: 0; border-bottom: 0;"><strong>&nbsp;</strong>  </td>
              <td width="15%" align="left"  style="border-right: 0; border-left: 0; border-bottom: 0;"><strong>Total</strong>  </td>
-             <td align="right"  style="border-left: 0; border-bottom: 0;"> <?php echo number_format($total, 0, '.', '.'); $total =0; ?></td>
+             <td align="right"  style="border-left: 0; border-bottom: 0;"> <?php echo number_format($total, 2, '.', '.'); $total =0; ?></td>
             </tr>
             <tr >
              <td colspan="4" align="right" style="border-top: 0;  border-bottom: 0; border-right: 0;"><strong>&nbsp;</strong></td>
              <td  align="left" style="border-top: 0;  border-bottom: 0; border-left: 0; border-right: 0;"><strong>PPN</strong></td>
-             <td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"> <?php echo number_format($ppn, 0, '.', '.'); $ppn =0;?></td>
+             <td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"> <?php echo number_format($ppn, 2, '.', '.'); $ppn =0;?></td>
             </tr>
             <tr >
              <td colspan="4" align="right" style="border-top: 0;  border-bottom: 0; border-right: 0;"><strong>&nbsp;</strong></td>
              <td  align="left" style="border-top: 0;  border-bottom: 0; border-left: 0; border-right: 0;"><strong>Total Fatur</strong></td>
-             <td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"> <?php echo number_format($totalfatur, 0, '.', '.'); $totalfatur =0;?></td>
+             <td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"> <?php echo number_format($totalfatur, 2, '.', '.'); $totalfatur =0;?></td>
             </tr>
             <tr >
              <td colspan="4" align="right" style="border-top: 0;  border-bottom: 0; border-right: 0;"><strong>&nbsp;</strong></td>
              <td  align="left" style="border-top: 0;  border-bottom: 0; border-left: 0; border-right: 0;"><strong>Bayar</strong></td>
-             <td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"> <?php echo number_format($bayar, 0, '.', '.'); $bayar =0;?></td>
+             <td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"> <?php echo number_format($bayar, 2, '.', '.'); $bayar =0;?></td>
             </tr>
             <tr >
              <td colspan="4" align="right" style="border-top: 0;  border-right: 0;" ><strong>&nbsp;</strong></td>
              <td align="left" style="border-top: 0;  border-right: 0; border-left: 0;"  ><strong>Kembalian</strong></td>
-             <td style=" border: 0;" style="border-top: 0;  border-left: 0;"  align="right" > <?php echo number_format($kembalian, 0, '.', '.'); $kembalian =0;?></td>
+             <td style=" border: 0;" style="border-top: 0;  border-left: 0;"  align="right" > <?php echo number_format($kembalian, 2, '.', '.'); $kembalian =0;?></td>
             </tr>
             <tr class="noBorder">
               <td >&nbsp;</td>

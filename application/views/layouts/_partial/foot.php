@@ -4,6 +4,8 @@
 <script src="<?php echo base_url('assets/datatables/datatables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/lte/bower_components/select2/dist/js/select2.full.min.js')?>"></script>
 <script src="<?php echo base_url('assets/sweetalert/dist/sweetalert.js')  ?>"></script>
+<!-- ChartJS -->
+<script src=" <?php echo base_url('assets/lte/bower_components/chart.js/Chart.js')?>"></script>
 <script src=" <?php echo base_url('assets/validator/validator.js')?> "></script>
 <!-- bootstrap datepicker -->
 <script src=" <?php echo base_url('assets/lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')?> "></script>

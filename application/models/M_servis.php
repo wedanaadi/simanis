@@ -36,6 +36,17 @@ class M_servis extends CI_Model {
 
 	}
 
+function servis_selesai()
+	 {
+		$data = $this->db->query("SELECT COUNT(id_status) AS servis_selesai FROM m_service WHERE id_status = '2' AND kondisi ='1';");
+		return $data->result();
+	 }
+
+function proses_selesai()
+	 {
+		$data = $this->db->query("SELECT COUNT(id_status) AS proses_selesai FROM m_service WHERE id_status != '2';");
+		return $data->result();
+	 }
 	
 function jasa()
 	{

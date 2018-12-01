@@ -9,6 +9,29 @@ class M_penerimaan extends CI_Model {
 		return $data->result();
 	 }
 
+	 function hitungservismasuk()
+	 {
+		$data = $this->db->query('
+			SELECT p.id_penerimaan, COUNT(p.tgl_penerimaan) AS penerimaan 
+			FROM m_service s
+			JOIN m_penerimaan p ON (s.`id_penerimaan` = p.`id_penerimaan`)
+			WHERE tgl_penerimaan = CURDATE();
+			');
+		return $data->result();
+	 }
+
+	function hitungpenerimaan()
+	 {
+		$data = $this->db->query("
+			SELECT CONCAT(YEAR(p.tgl_penerimaan),'/',MONTH(p.tgl_penerimaan)) AS tahun_bulan, DATE_FORMAT(p.tgl_penerimaan, '%M') AS bulan, COUNT(*) AS jumlah_Data
+			FROM m_service s
+			JOIN m_penerimaan p ON (s.`id_penerimaan` = p.`id_penerimaan`)
+			WHERE CONCAT(YEAR(p.tgl_penerimaan),'/',MONTH(p.tgl_penerimaan))= CONCAT(YEAR(NOW()),'/',MONTH(p.tgl_penerimaan))
+			GROUP BY YEAR(p.tgl_penerimaan),MONTH(p.tgl_penerimaan);
+			");
+		return $data->result();
+	 }
+
 	function kategori()
 	{
 		$data = $this->db->get('m_kategoriservis');
