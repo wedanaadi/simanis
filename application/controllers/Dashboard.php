@@ -36,5 +36,11 @@ class Dashboard extends CI_Controller {
     	echo json_encode($data);
     	//print_r($cek);exit();
 	}
+
+	function grafix()
+	{
+		$data = $this->M_pengembalian->grafix();
+		echo json_encode($data);
+	}
 }
  ?>

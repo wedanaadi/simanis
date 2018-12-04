@@ -103,14 +103,17 @@ $this->load->view('layouts/template-atas');
                     <!-- BAR CHART -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart Penerimaan dan Pengembalian Service</h3>
+              <h3 class="box-title">Chart Penerimaan dan Pengembalian Service</h3>
 
               <div class="box-tools pull-right">
             </div>
             <div class="box-body">
-              <div class="chart">
+<!--               <div class="chart">
                 <canvas id="barChart" style="height:310px"></canvas>
-              </div>
+              </div> -->
+              <div class="box-body chart-responsive">
+              <div class="chart" id="bar-chart" style="height: 300px;"></div>
+            </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -128,12 +131,13 @@ $this->load->view('layouts/template-atas');
 <?php  
 $this->load->view('layouts/template-bawah');
 ?>
-<script>
+<!-- <script>
   $(function () {
     var Bulan = [];
     var Bulan2 = [];
     var Jumlah_Data = [];
     var Jumlah_Data2 = [];
+
 
     $.ajax({
       method: "POST",
@@ -143,7 +147,7 @@ $this->load->view('layouts/template-bawah');
         $.each(obj, function (test, item) {
           Bulan.push(item.bulan);
           Jumlah_Data.push(item.jumlah_Data);
-          //console.log(Bulan);
+          //console.log(obj);
         });
     
     $.ajax({
@@ -154,13 +158,20 @@ $this->load->view('layouts/template-bawah');
         $.each(obj, function (test, item) {
           Bulan2.push(item.bulan2);
           Jumlah_Data2.push(item.jumlah_Data2);
-          //console.log(Bulan2);
+         // console.log(Jumlah_Data2);
         });
 
+
         
+    if (Jumlah_Data > Jumlah_Data2) {
+      var bulaan = Bulan2
+    }
+    else {
+      var bulaan = Bulan
+    }
 
     var areaChartData = {
-      labels  : Bulan,
+      labels  : bulaan,
       datasets: [
         {
           label               : 'Electronics',
@@ -170,7 +181,7 @@ $this->load->view('layouts/template-bawah');
           pointStrokeColor    : '#c1c7d1',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(220,220,220,1)',
-          data                : Jumlah_Data 
+          data                : Jumlah_Data, 
         },
         {
           label               : 'Digital Goods',
@@ -221,13 +232,46 @@ $this->load->view('layouts/template-bawah');
       //Boolean - whether to make the chart responsive
       responsive              : true,
       maintainAspectRatio     : true
+    
     }
 
     barChartOptions.datasetFill = false
     barChart.Bar(barChartData, barChartOptions)
+
        }
       });
     }
     });
   });
+</script> -->
+
+<script type="text/javascript">
+$.ajax({
+      method: "POST",
+      url: "<?php echo base_url('index.php/Dashboard/grafix') ?>",
+      success: function(hitun2g) {
+        var objGr = JSON.parse(hitun2g);
+        console.log(objGr);
+        console.log(objGr.length);
+        var dataGrafik = [];
+        for (var i = 0; i < objGr.length; i++) {
+          dataGrafik.push({
+            'bln': objGr[i].bulan,
+            'penerimaan': objGr[i].penerimaan,
+            'pengembalian': objGr[i].pengembalian,
+          });
+        }
+
+        var bar = new Morris.Bar({
+        element: 'bar-chart',
+        resize: true,
+        data: dataGrafik,
+        barColors: ['#00a65a', '#f56954'],
+        xkey: 'bln',
+        ykeys: ['penerimaan', 'pengembalian'],
+        labels: ['penerimaan', 'pengembalian'],
+        hideHover: 'auto'
+      });
+      }
+    });
 </script>

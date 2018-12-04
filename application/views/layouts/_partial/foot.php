@@ -7,6 +7,9 @@
 <!-- ChartJS -->
 <script src=" <?php echo base_url('assets/lte/bower_components/chart.js/Chart.js')?>"></script>
 <script src=" <?php echo base_url('assets/validator/validator.js')?> "></script>
+<!-- Morris.js charts -->
+<script src="<?php echo base_url('assets/lte/bower_components/raphael/raphael.min.js')?>"></script>
+<script src="<?php echo base_url('assets/lte/bower_components/morris.js/morris.min.js')?>"></script>
 <!-- bootstrap datepicker -->
 <script src=" <?php echo base_url('assets/lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')?> "></script>
 <script src=" <?php echo base_url('assets/imask/min/inputmask/inputmask.min.js')?> "></script>

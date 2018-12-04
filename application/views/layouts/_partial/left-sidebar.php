@@ -30,6 +30,7 @@
         <li class="header" style="text-align: center; color: #c7c7c7;">PT. BALIYONI SAGUNA</li>
         <li><a href=" <?php echo base_url('index.php/Dashboard') ?> "><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li><a href=" <?php echo base_url('index.php/Profil') ?> "><i class="fa fa-user"></i> <span>Profil Pengguna</span></a></li>
+        <?php if ($this->session->userdata('id_akses') == 1) { ?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-database"></i> <span>Master Data</span>
@@ -44,6 +45,8 @@
             <li><a href="<?php echo base_url('index.php/Kategori')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-tasks"></i> Kategori Service </a></li>
           </ul>
         </li>
+        <?php } ?>
+        <?php if ($this->session->userdata('id_akses') == 1) { ?>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-pencil-square-o"></i> <span>Transaksi</span>
@@ -56,8 +59,11 @@
             <li><a href="<?php echo base_url('index.php/Pengembalian')?>">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check-square-o"></i> Pengembalian Service </a></li>
           </ul>
         </li>
+        <?php } ?>
         <li><a href=" <?php echo base_url('index.php/Servis') /*== base_url('index.php/Servis/view_detail')*/ ?> "><i class="fa fa-share-alt"></i> <span>Service</span></a></li>
+        <?php if ($this->session->userdata('id_akses') == 1) { ?>
         <li><a href=" <?php echo base_url('index.php/Laporan') ?> "><i class="fa fa-book"></i> <span>Laporan</span></a></li>
+        <?php } ?>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

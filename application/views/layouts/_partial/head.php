@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLte/css/AdminLTE.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLte/css/skins/_all-skins.min.css') ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/datatables/datatables.min.css') ?>">
+      <!-- Morris charts -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/lte/bower_components/morris.js/morris.css') ?>">
       <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="<?php echo base_url('assets/lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') ?>">
         <!-- sweetalert -->

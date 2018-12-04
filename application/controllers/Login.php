@@ -6,6 +6,7 @@ class Login extends CI_Controller {
 		$this->CI =& get_instance(); 
 		parent::__construct();		
 		$this->load->model(array('M_karyawan'));
+		$this->load->model(array('M_servis'));
 		$this->load->helper(array('url'));	
 	}
 
@@ -58,5 +59,26 @@ class Login extends CI_Controller {
 			$this->session->sess_destroy();
 			redirect('Login');
 		}
+
+	function hlmutama()
+		{
+			$this->load->view('login/hlmutama');
+		}
+
+	function cariservice()
+	{
+		$id = $this->input->get('id_penerimaan');
+		$data = $this->M_servis->cariservice($id);
+		echo json_encode($data);
+		//print_r($data);exit();
+	}
+
+	function caridetail()
+	{
+		$id = $this->input->get('nonota2');
+		$data = $this->M_servis->caridetail($id);
+		echo json_encode($data);
+		
+	}
 }
  ?>

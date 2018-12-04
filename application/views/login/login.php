@@ -57,20 +57,18 @@
             <strong><?= (isset($message))?$message:'' ?></strong>          
         </span>
       </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <div class="checkbox icheck">
-<!--             <label>
-              <input type="checkbox"> Remember Me
-            </label> -->
+      <div class="row" align="center">
+        <div class="col-xs-6">
+          <br>
+            <a class='fa fa-fast-backward btn btn-primary btn-block btn-flat' href="<?php echo base_url('index.php/Login/hlmutama')?>"> Halaman Utama</a>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-6">
+          <div class="col-xs-12">
+            <br>
+          <button type="submit" class="fa fa-sign-in btn btn-primary btn-block btn-flat "> Login</button> <br>
           </div>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <br>
-          <button type="submit" class="fa fa-sign-in btn btn-primary btn-block btn-flat "> Login</button> <br>
-        </div>
-        <!-- /.col -->
       </div>
     </form>
   </div>

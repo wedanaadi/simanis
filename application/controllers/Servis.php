@@ -170,6 +170,7 @@ class Servis extends CI_Controller {
 		$data = $this->M_servis->getDetilService($id);
 		echo json_encode($data);
 	}
+
 }
 
 /* End of file Servis.php */

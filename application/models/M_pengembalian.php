@@ -123,6 +123,41 @@
   	return $query->result() ;
   }
 
+  function grafix()
+  {
+  	$query = $this->db->query
+  	("
+		  		SELECT tahun_bulan, bulan, SUM(pen) AS 'penerimaan', SUM(pem) AS 'pengembalian', month_num FROM (
+			SELECT CONCAT(YEAR(p.tgl_penerimaan),'/',MONTH(p.tgl_penerimaan)) AS tahun_bulan, 
+			DATE_FORMAT(p.tgl_penerimaan, '%M') AS bulan, 
+			COUNT(*) AS 'pen',
+			'0' AS 'pem',
+			'1' AS 'status',
+			MONTH(p.tgl_penerimaan) AS 'month_num'
+			FROM m_service s
+			JOIN m_penerimaan p ON (s.`id_penerimaan` = p.`id_penerimaan`)
+			WHERE CONCAT(YEAR(p.tgl_penerimaan),'/',MONTH(p.tgl_penerimaan))= CONCAT(YEAR(NOW()),'/',MONTH(p.tgl_penerimaan))
+			GROUP BY YEAR(p.tgl_penerimaan),MONTH(p.tgl_penerimaan)
+
+			UNION	
+			
+			SELECT CONCAT(YEAR(p.tgl_pengembalian),'/',MONTH(p.tgl_pengembalian)) AS tahun_bulan, 
+			DATE_FORMAT(p.tgl_pengembalian, '%M') AS bulan, 
+			'0' AS 'pen',
+			COUNT(*) AS 'pem',
+			'2' AS 'status',
+			MONTH(p.tgl_pengembalian) AS 'month_num'
+			FROM m_detailpengem d
+			JOIN m_pengembalian p ON (d.`id_pengembalian` = p.`id_pengembalian`) 
+			WHERE CONCAT(YEAR(p.tgl_pengembalian),'/',MONTH(p.tgl_pengembalian))= CONCAT(YEAR(NOW()),'/',MONTH(p.tgl_pengembalian))
+			GROUP BY YEAR(p.tgl_pengembalian),MONTH(p.tgl_pengembalian)
+		) AS grafik
+		GROUP BY bulan
+		ORDER BY month_num
+  	");
+  	return $query->result() ;
+  }
+
  }
 
  /* End of file M_pengembalian.php */

@@ -173,7 +173,27 @@ function findservis($id)
 		return $data = $this->db->get('m_detailservice')->result();
 	}
 	  
-	//public function 
+	public function cariservice($id)
+	{
+		$data = $this->db->query
+		("
+			SELECT s.id_service, p.id_penerimaan, c.nama_customer, c.email_cus, 
+			s.sn_barang, s.nama_barang, t.status_service, s.kondisi, s.keluhan, s.kelengkapan
+			FROM m_service s
+			JOIN m_penerimaan p ON (s.`id_penerimaan`= p.`id_penerimaan`)
+			JOIN m_customer c ON (p.`id_customer`= c.`id_customer`)
+			JOIN status_service t ON (s.`id_status` = t.`id_status` )
+			WHERE p.id_penerimaan = '$id';
+		");
+		return $data->result();
+	}
+
+	public function caridetail($id)
+	{
+		$this->db->where('id_service',$id);
+		return $data = $this->db->get('m_detailservice')->result();
+	}
+
 }
 
 /* End of file M_servis.php */
