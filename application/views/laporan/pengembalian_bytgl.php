@@ -107,7 +107,7 @@
             <td align="right"><?php echo number_format($row->subtotal,2,",",".") ?></td>
           </tr>
               <?php $total=$row->total; $ppn=$row->ppn; $totalfatur=$row->totalfatur; $bayar=$row->bayar; $kembalian=$row->kembalian; $NoNota = $row->id_pengembalian; $count++; $temp = $row->nama_barang; } ?>
-                      <tr >
+            <tr >
              <td colspan="4" align="right"  style="border-right: 0; border-bottom: 0;"><strong>&nbsp;</strong>  </td>
              <td width="15%" align="left"  style="border-right: 0; border-left: 0; border-bottom: 0;"><strong>Total</strong>  </td>
              <td align="right"  style="border-left: 0; border-bottom: 0;"> <?php echo number_format($row->total,2,",",".") ?></td>

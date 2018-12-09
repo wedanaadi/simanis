@@ -17,6 +17,8 @@
     <!-- Custom Fonts -->
     <link href="<?php echo base_url('assets/startboot/vendor/font-awesome/css/font-awesome.min.css')?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?php echo base_url('assets/datatables/datatables.min.css') ?>">
+    <!-- sweetalert -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/sweetalert/dist/sweetalert.css') ?>">
 
     <!-- Theme CSS -->
     <link href="<?php echo base_url('assets/startboot/css/agency.min.css')?>" rel="stylesheet">
@@ -145,7 +147,7 @@
                           <th>Action</th>
                           <th style="display: none;">No</th>
                         </tr>
-                        <a class='btn btn-warning btn-xs'><span class='fa fa-envelope' ></span></a> Request Harga Service &nbsp;&nbsp;<a class='btn btn-success btn-xs'><span class=' fa  fa-share-square-o' ></span></a> Cek Detail Service
+                        <a class='btn btn-success btn-flat Harga disabled'><span class='fa fa-envelope'> Request Harga Service</span></a>
                         <br><br>
                       </thead>
                     </table>
@@ -172,6 +174,7 @@
 <script src="<?php echo base_url('assets/datatables/datatables.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/startboot/js/jqBootstrapValidation.js')?>"></script>
 <script src="<?php echo base_url('assets/startboot/js/contact_me.js')?>"></script>
+<script src="<?php echo base_url('assets/sweetalert/dist/sweetalert.js')  ?>"></script>
 
 <!-- Theme JavaScript -->
 <script src="<?php echo base_url('assets/startboot/js/agency.min.js')?>"></script>
@@ -201,6 +204,12 @@
      var nonota = $('input[name=NoNota]').val();
      var t = $('#tabel1').DataTable();
      t.clear();
+     var jumlah = t.rows().count();
+      if(jumlah =! 0)
+      {
+        $('.Harga').removeClass('disabled');
+      }
+
       $.ajax({
       url: "<?php echo site_url('Login/cariservice') ?>",
       method: "GET",
@@ -210,7 +219,7 @@
       {
         var obj = JSON.parse(data);
         console.log(obj);
-        var Action = "<a class='btn btn-warning btn-xs EmailData'><span class='fa fa-envelope'></span></a>&nbsp;&nbsp;<a class='btn btn-success btn-xs DetailData'><span class='fa fa-share-square-o' data-toggle='modal' data-target='#show'></span></a>" 
+        var Action = "<a class='btn btn-success btn-xs DetailData'><span class='fa fa-share-square-o' data-toggle='modal' data-target='#show'> Cek Service</span></a>" 
         var t = $('#tabel1').DataTable();
         $('#NamaCustomer').val(obj[0].nama_customer);
         $('#EmailCustomer').val(obj[0].email_cus);
@@ -262,4 +271,34 @@
     }
    return false;
  });
+</script>
+
+<script>
+  $('.Harga').on('click',function(e){
+    if(!e.isDefaultPrevented())
+      {
+        var _data = {
+          no_nota: $('input[name=NoNota]').val(),
+          emailcus : $('input[name=EmailCustomer]').val(),
+        };
+        $.ajax({
+          url: "<?php echo site_url('Login/Email') ?>",
+          type: "POST",
+          method: "POST",
+          data: _data,
+          success: function(data)
+          {
+            obj = JSON.parse(data);
+            swal({
+                title: "Sukses",
+                text: obj.message,
+                type: "success",
+                timer: 2000,
+                button: "ok",
+            });
+          }
+        });
+      }
+    return false;
+  });
 </script>

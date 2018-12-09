@@ -102,12 +102,6 @@ function findpenerimaan($id)
 function findservis($id)
 	{
 		$this->db->where('id_service',$id);
-/*   	 	$data = $this->db->query("SELECT id_service, id_penerimaan, nama_barang, sn_barang, kelengkapan, keluhan, 
-			m_kategoriservis.nama_kategori, m_karyawan.nama_karyawan, status_service.status_service, kondisi FROM m_service 
-			INNER JOIN m_kategoriservis ON m_service.id_kategori = m_kategoriservis.id_kategori 
-			INNER JOIN m_karyawan ON m_service.id_karyawan = m_karyawan.id_karyawan
-			INNER JOIN status_service ON m_service.id_status = status_service.id_status 
-			WHERE id_service = '$id'");*/
    	 	$data = $this->db->get('m_service');
     	return $data->row();
 	}
@@ -192,6 +186,22 @@ function findservis($id)
 	{
 		$this->db->where('id_service',$id);
 		return $data = $this->db->get('m_detailservice')->result();
+	}
+
+	function request($Kode)
+	{
+		$query = $this->db->query
+		(
+			"SELECT p.`id_penerimaan`, d.`id_service`, s.`nama_barang`, s.`sn_barang`, s.`keluhan`,s.`kelengkapan`, d.`nama_service`, d.`qty`,d.`harga`, d.`subtotal`,c.`nama_customer`,
+			(SELECT COUNT(`id_service`) FROM `m_detailservice` WHERE `id_service` = d.`id_service`) AS jumlah
+			FROM m_detailservice d
+			JOIN m_service s ON (s.id_service = d.`id_service`)
+			JOIN m_penerimaan p ON (p.`id_penerimaan` = s.`id_penerimaan`)
+			JOIN m_karyawan k ON (k.`id_karyawan` = p.`id_karyawan`)
+			JOIN m_customer c ON (c.`id_customer` = p.`id_customer`)
+			WHERE p.id_penerimaan = '$Kode';"
+		);
+		return $query->result();
 	}
 
 }
