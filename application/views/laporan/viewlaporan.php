@@ -189,7 +189,7 @@ $this->load->view('layouts/template-atas');
   $(function () {  
   $(".TandaTerima").click(function(){
       var kodepem = $( "#Terima" ).val();
-      window.open("<?php echo base_url(). 'index.php/Penerimaan/CetakPEM/';?>?KodePem="+kodepem ,"MyTargetWindowName")
+      window.open("<?php echo base_url(). 'index.php/Laporan/CetakPEM/';?>?KodePem="+kodepem ,"MyTargetWindowName")
   }); 
 });
 </script>
@@ -198,7 +198,7 @@ $this->load->view('layouts/template-atas');
   $(".save").click(function(){
       var MulaiPem = $( "#MulaiPem" ).val();
       var AkhirPem = $( "#AkhirPem" ).val();
-      window.open("<?php echo base_url(). 'index.php/Penerimaan/CetakPEM_Tgl/';?>?Status="+ 'Semua' +"&MulaiPem="+ MulaiPem+"&AkhirPem="+AkhirPem ,"MyTargetWindowName")
+      window.open("<?php echo base_url(). 'index.php/Laporan/CetakPEM_Tgl/';?>?Status="+ 'Semua' +"&MulaiPem="+ MulaiPem+"&AkhirPem="+AkhirPem ,"MyTargetWindowName")
   });
 </script>
 
@@ -206,7 +206,7 @@ $this->load->view('layouts/template-atas');
   $(function () {  
   $(".InvoiceServis").click(function(){
       var kodepen = $( "#Invoice" ).val();
-      window.open("<?php echo base_url(). 'index.php/Pengembalian/CetakPEN/';?>?KodePen="+kodepen ,"MyTargetWindowName")
+      window.open("<?php echo base_url(). 'index.php/Laporan/CetakPEN/';?>?KodePen="+kodepen ,"MyTargetWindowName")
   }); 
 });
 </script>
@@ -215,6 +215,6 @@ $this->load->view('layouts/template-atas');
   $(".Simpan1").click(function(){
       var MulaiIn = $( "#MulaiIn" ).val();
       var AkhirIn = $( "#AkhirIn" ).val();
-      window.open("<?php echo base_url(). 'index.php/Pengembalian/CetakPEN_Tgl/';?>?Status="+ 'Semua' +"&MulaiIn="+ MulaiIn+"&AkhirIn="+AkhirIn ,"MyTargetWindowName")
+      window.open("<?php echo base_url(). 'index.php/Laporan/CetakPEN_Tgl/';?>?Status="+ 'Semua' +"&MulaiIn="+ MulaiIn+"&AkhirIn="+AkhirIn ,"MyTargetWindowName")
   });
 </script>

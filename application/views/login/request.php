@@ -56,7 +56,7 @@
       <th  scope="col">Total</th>
     </tr>
 
-    <?php $i=1; $temp=null; foreach ($konten as $value)
+    <?php $i=1; $total=0; $temp=null; foreach ($konten as $value)
       {
     ?>
     <tr>
@@ -74,22 +74,28 @@
     <?php
       $temp = $value->nama_barang;
       $i++;
+      $total+=$value->subtotal;
       }
+    ?>
+    <?php 
+      $PPN = $total*0.1;
+      $bayar = $total+$PPN;
     ?>
     <tr >
     	<td colspan="4" align="right" style="border-top: 0;  border-bottom: 0; border-right: 0;"><strong>&nbsp;</strong></td>
     	<td  align="left" style="border-top: 0;  border-bottom: 0; border-left: 0; border-right: 0;"><strong>Total</strong></td>
-    	<td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"></td>
+    	<td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"><?php echo number_format($total,2,",","."); $total=0;?></td>
     </tr>
+
     <tr >
     	<td colspan="4" align="right" style="border-top: 0;  border-bottom: 0; border-right: 0;"><strong>&nbsp;</strong></td>
     	<td  align="left" style="border-top: 0;  border-bottom: 0; border-left: 0; border-right: 0;"><strong>PPN</strong></td>
-    	<td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"></td>
+    	<td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"> <?php echo number_format($PPN,2,",","."); ?> </td>
     </tr>
     <tr >
     	<td colspan="4" align="right" style="border-top: 0;  border-right: 0;" ><strong>&nbsp;</strong></td>
     	<td align="left" style="border-top: 0;  border-right: 0; border-left: 0;"  ><strong>Total Bayar</strong></td>
-    	<td style=" border: 0;" style="border-top: 0;  border-left: 0;"  align="right" ></td>
+    	<td style=" border: 0;" style="border-top: 0;  border-left: 0;"  align="right" ><?php echo number_format($bayar,2,",","."); ?></td>
     </tr>
   </tbody>
 </table>

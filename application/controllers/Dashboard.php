@@ -21,26 +21,28 @@ class Dashboard extends CI_Controller {
 		$this->load->view('dashboard/tampildashboard',$data);
 	}
 
-	function hitungpenerimaan() 
-	{
-		//$data = array();
-		$data = $this->M_penerimaan->hitungpenerimaan();
-    	echo json_encode($data);
-    	//print_r($cek);exit();
-	}
-
-	function hitungpengembalian() 
-	{
-		//$data = array();
-		$data = $this->M_pengembalian->hitungpengembalian();
-    	echo json_encode($data);
-    	//print_r($cek);exit();
-	}
-
 	function grafix()
 	{
 		$data = $this->M_pengembalian->grafix();
 		echo json_encode($data);
 	}
+
+	// function hitungpenerimaan() 
+	// {
+	// 	//$data = array();
+	// 	$data = $this->M_penerimaan->hitungpenerimaan();
+    // 	echo json_encode($data);
+    // 	//print_r($cek);exit();
+	// }
+
+	// function hitungpengembalian() 
+	// {
+	// 	//$data = array();
+	// 	$data = $this->M_pengembalian->hitungpengembalian();
+    // 	echo json_encode($data);
+    // 	//print_r($cek);exit();
+	// }
+
+
 }
  ?>

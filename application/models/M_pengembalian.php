@@ -42,17 +42,18 @@
 			');
 		return $data->result();
 	 }
-	function hitungpengembalian()
-	 {
-		$data = $this->db->query("
-			SELECT CONCAT(YEAR(p.tgl_pengembalian),'/',MONTH(p.tgl_pengembalian)) AS tahun_bulan, DATE_FORMAT(p.tgl_pengembalian, '%M') AS bulan2, COUNT(*) AS jumlah_Data2
-			FROM m_detailpengem d
-			JOIN m_pengembalian p ON (d.`id_pengembalian` = p.`id_pengembalian`) 
-			WHERE CONCAT(YEAR(p.tgl_pengembalian),'/',MONTH(p.tgl_pengembalian))= CONCAT(YEAR(NOW()),'/',MONTH(p.tgl_pengembalian))
-			GROUP BY YEAR(p.tgl_pengembalian),MONTH(p.tgl_pengembalian);
-			");
-		return $data->result();
-	 }
+	
+	// function hitungpengembalian()
+	//  {
+	// 	$data = $this->db->query("
+	// 		SELECT CONCAT(YEAR(p.tgl_pengembalian),'/',MONTH(p.tgl_pengembalian)) AS tahun_bulan, DATE_FORMAT(p.tgl_pengembalian, '%M') AS bulan2, COUNT(*) AS jumlah_Data2
+	// 		FROM m_detailpengem d
+	// 		JOIN m_pengembalian p ON (d.`id_pengembalian` = p.`id_pengembalian`) 
+	// 		WHERE CONCAT(YEAR(p.tgl_pengembalian),'/',MONTH(p.tgl_pengembalian))= CONCAT(YEAR(NOW()),'/',MONTH(p.tgl_pengembalian))
+	// 		GROUP BY YEAR(p.tgl_pengembalian),MONTH(p.tgl_pengembalian);
+	// 		");
+	// 	return $data->result();
+	//  }
 
 	public function getDetilService($id)
 	{

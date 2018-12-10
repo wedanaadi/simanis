@@ -75,27 +75,6 @@ class Penerimaan extends CI_Controller {
      	$this->create_pdf->load($html,'TandaTerima'.'-'.$data['konten'][0]->id_penerimaan, 'A4');	
 	}
 
-	function CetakPEM_Tgl(){
-	   $MulaiPem = $this->input->get('MulaiPem', TRUE);
-	   $AkhirPem = $this->input->get('AkhirPem', TRUE);
-
-	   $TglAwal1 = DateTime::createFromFormat('m/d/Y',$MulaiPem);
-	   $TglAwal2 = $TglAwal1->format("Y-m-d");
-	   $TglAwal3 = $TglAwal1->format("d-m-Y");
-	   $TglAkhir1 = DateTime::createFromFormat('m/d/Y',$AkhirPem);
-	   $TglAkhir2 = $TglAkhir1->format("Y-m-d");
-	   $TglAkhir3 = $TglAkhir1->format("d-m-Y");
-
-	   $data['header'] = $this->load->view('layouts/cetak_head',null,TRUE);
-	   $data['konten'] = $this->M_penerimaan->penerimaanbytanggal($TglAwal2, $TglAkhir2);
-	   $data['periode'] = array('MulaiPem' => $TglAwal3 , 'AkhirPem' => $TglAkhir3);
-	   $html=$this->load->view('laporan/penerimaan_bytgl',$data, TRUE);
-	  //print_r($this->db->last_query());exit();
-	  //print_r($data);exit();
-	  $this->create_pdf->load($html,'TandaTerima'.' '.$TglAwal3.' '.'-'.' '.$TglAkhir3, 'A4-P','');
-		
-	}
-
 }
 
 
