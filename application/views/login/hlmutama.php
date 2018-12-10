@@ -175,6 +175,19 @@
 <script src="<?php echo base_url('assets/startboot/js/jqBootstrapValidation.js')?>"></script>
 <script src="<?php echo base_url('assets/startboot/js/contact_me.js')?>"></script>
 <script src="<?php echo base_url('assets/sweetalert/dist/sweetalert.js')  ?>"></script>
+<script src="<?php echo base_url('assets/startboot/loadingoverlay.min.js')  ?>"></script>
+
+<!-- Loading Overlay -->
+<script type="text/javascript">
+	$.LoadingOverlaySetup({
+    color           : "rgba(255, 255, 255, 0.8)" ,
+    image           : "<?php echo base_url('assets/startboot/2.gif') ?>",
+    maxSize         : "64px",
+    minSize         : "64px",
+    resizeInterval  : 0,
+    size            : "100%"
+});
+</script>
 
 <!-- Theme JavaScript -->
 <script src="<?php echo base_url('assets/startboot/js/agency.min.js')?>"></script>
@@ -276,6 +289,7 @@
 <script>
   $('.Harga').on('click',function(e){
     if(!e.isDefaultPrevented())
+    $.LoadingOverlay("show");
       {
         var _data = {
           no_nota: $('input[name=NoNota]').val(),
@@ -289,6 +303,7 @@
           success: function(data)
           {
             obj = JSON.parse(data);
+            $.LoadingOverlay("hide");
             swal({
                 title: "Sukses",
                 text: obj.message,

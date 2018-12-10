@@ -10,6 +10,8 @@
 <!-- Morris.js charts -->
 <script src="<?php echo base_url('assets/lte/bower_components/raphael/raphael.min.js')?>"></script>
 <script src="<?php echo base_url('assets/lte/bower_components/morris.js/morris.min.js')?>"></script>
+<!-- Loading Overlay -->
+<script src="<?php echo base_url('assets/startboot/loadingoverlay.min.js')  ?>"></script>
 <!-- bootstrap datepicker -->
 <script src=" <?php echo base_url('assets/lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')?> "></script>
 <script src=" <?php echo base_url('assets/imask/min/inputmask/inputmask.min.js')?> "></script>
@@ -31,4 +33,16 @@ $('uL.sidebar-menu a').filter(function() {
 $('ul.treeview-menu a').filter(function() {
      return this.href == url;
 }).parentsUntil(".sidebar-menu > .treeview-menu").addClass('active');
+</script>
+
+<!-- Loading Overlay -->
+<script type="text/javascript">
+	$.LoadingOverlaySetup({
+    color           : "rgba(255, 255, 255, 0.8)" ,
+    image           : "<?php echo base_url('assets/startboot/2.gif') ?>",
+    maxSize         : "64px",
+    minSize         : "64px",
+    resizeInterval  : 0,
+    size            : "100%"
+});
 </script>

@@ -104,7 +104,7 @@ class Login extends CI_Controller {
      	$this->email->from('baliyonikomputer@gmail.com', 'Baliyoni Computer');
      	$this->email->to('putuartatkj@gmail.com');
      	$ululuuuu = $this->load->view('pengembalian/cetakpen',$data, TRUE);
-     	$this->email->subject('ayoo testt saja');
+     	$this->email->subject('Cek Service');
      	$this->email->message($html);
      	$this->email->send();	
 	}
