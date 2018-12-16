@@ -13,7 +13,7 @@
 	{
 		$data = $this->db->query
 		("
-			SELECT s.id_service, p.id_penerimaan, c.nama_customer, c.notlp_cus, c.alamat_cus,
+			SELECT s.id_service, p.id_penerimaan, c.nama_customer, c.notlp_cus, c.alamat_cus, s.`id_status`,
 			p.id_customer, o.nama_kategori, s.sn_barang, s.nama_barang, t.status_service, g.nama_st,s.kondisi
 			FROM m_service s
 			JOIN m_penerimaan p ON (s.`id_penerimaan`= p.`id_penerimaan`)
@@ -21,7 +21,7 @@
 			JOIN m_karyawan k ON (s.`id_karyawan`= k.`id_karyawan`)
 			JOIN m_kategoriservis o ON (s.`id_kategori` = o.`id_kategori`)
 			JOIN status_service t ON (s.`id_status` = t.`id_status` )
-			JOIN garansi g ON (s.`id_garansi` = g.`id_garansi`) WHERE s.kondisi = '1';
+			JOIN garansi g ON (s.`id_garansi` = g.`id_garansi`) WHERE s.kondisi = '1' AND s.id_status = '2';
 		");
 		return $data->result();
 	}
