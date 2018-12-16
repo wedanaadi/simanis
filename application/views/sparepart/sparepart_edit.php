@@ -34,7 +34,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Nama</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="nama" placeholder = "masukan nama sparepart" required oninvalid="this.setCustomValidity('Masukan Nama sparepart')" oninput="setCustomValidity('')">
+                      <input type="text" class="form-control" name="namaedit" placeholder = "masukan nama sparepart" required oninvalid="this.setCustomValidity('Masukan Nama sparepart')" oninput="setCustomValidity('')">
                     <span class="help-block with-errors"></span>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Harga Pokok</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="pokok" id="pokok" placeholder = "masukan harga" required oninvalid="this.setCustomValidity('Masukan Harga')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)" onkeyup="sum();">
+                      <input type="text" class="form-control" name="pokokedit" id="pokokedit" placeholder = "masukan harga" required oninvalid="this.setCustomValidity('Masukan Harga')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)" onkeyup="sum();">
                     <span class="help-block with-errors"></span>
                     </div>
                 </div>
@@ -50,14 +50,14 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Harga Jual</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="jual" id="jual" placeholder = "0" required oninvalid="this.setCustomValidity('')" oninput="setCustomValidity('')" readonly onkeyup="sum();" >
+                      <input type="text" class="form-control" name="jualedit" id="jualedit" placeholder = "0" required oninvalid="this.setCustomValidity('')" oninput="setCustomValidity('')" readonly onkeyup="sum();" >
                     </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label" style="text-align: left;">Stok</label>
                     <div class="col-sm-4">
-                      <input type="text" class="form-control" name="stok" placeholder = "masukan stok" required oninvalid="this.setCustomValidity('Masukan Jumlah Stok')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)">
+                      <input type="text" class="form-control" name="stokedit" placeholder = "masukan stok" required oninvalid="this.setCustomValidity('Masukan Jumlah Stok')" oninput="setCustomValidity('')" onkeypress="return hanyaAngka(event)">
                     <span class="help-block with-errors"></span>
                     </div>
                 </div>
@@ -79,6 +79,16 @@
         </div>
 
   <script>
+    $(document).on('input','input[name=pokokedit]',function(e){
+      let pokok = $('#pokokedit').val();
+      let hj = parseFloat(pokok) * 0.1;
+      console.log(pokok);
+      if (!isNaN(parseFloat(pokok)+parseFloat(hj))) {
+        $('#jualedit').val(parseFloat(pokok)+parseFloat(hj));
+      } else  {
+        $('#jualedit').val(0);
+      }
+    });
     function hanyaAngka(evt) {
       var charCode = (evt.which) ? evt.which : event.keyCode
        if (charCode > 31 && (charCode < 48 || charCode > 57))

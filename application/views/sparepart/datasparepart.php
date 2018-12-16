@@ -92,10 +92,10 @@ $this->load->view('sparepart/sparepart_edit');
         var ambil = JSON.parse(sparepart);
         $('[name="id"]').val(ambil.id_sparepart);
         $('[name="suplayer"]').val(ambil.id_suplayer);
-        $('[name="nama"]').val(ambil.nama_sparepart);
-        $('[name="pokok"]').val(ambil.harga_pokok);
-        $('[name="jual"]').val(ambil.harga_jual);
-        $('[name="stok"]').val(ambil.jumlah_stok);
+        $('[name="namaedit"]').val(ambil.nama_sparepart);
+        $('[name="pokokedit"]').val(ambil.harga_pokok);
+        $('[name="jualedit"]').val(ambil.harga_jual);
+        $('[name="stokedit"]').val(ambil.jumlah_stok);
         }
     });
   });
