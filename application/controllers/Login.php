@@ -102,7 +102,7 @@ class Login extends CI_Controller {
      	$this->load->library('email', $config);
      	$this->email->set_newline("\r\n");
      	$this->email->from('baliyonikomputer@gmail.com', 'Baliyoni Computer');
-     	$this->email->to('putuartatkj@gmail.com');
+     	$this->email->to($EmailCustomer);
      	$ululuuuu = $this->load->view('pengembalian/cetakpen',$data, TRUE);
      	$this->email->subject('Cek Service');
      	$this->email->message($html);
@@ -110,3 +110,4 @@ class Login extends CI_Controller {
 	}
 }
  ?>
+

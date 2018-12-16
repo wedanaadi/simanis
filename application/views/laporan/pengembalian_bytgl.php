@@ -95,7 +95,7 @@
         <?php } ?> 
 
           <tr>
-            <?php if($row->nama_barang != $temp)
+            <?php if($row->sn_barang != $temp)
             {
             ?>
             <td align="center" rowspan="<?php echo $row->jumlah ?>"><?php echo $row->id_service ?></td>
@@ -106,7 +106,7 @@
             <td align="right"><?php echo number_format($row->harga,2,",",".") ?></td>
             <td align="right"><?php echo number_format($row->subtotal,2,",",".") ?></td>
           </tr>
-              <?php $total=$row->total; $ppn=$row->ppn; $totalfatur=$row->totalfatur; $bayar=$row->bayar; $kembalian=$row->kembalian; $NoNota = $row->id_pengembalian; $count++; $temp = $row->nama_barang; } ?>
+              <?php $total=$row->total; $ppn=$row->ppn; $totalfatur=$row->totalfatur; $bayar=$row->bayar; $kembalian=$row->kembalian; $NoNota = $row->id_pengembalian; $count++; $temp = $row->sn_barang; } ?>
             <tr >
              <td colspan="4" align="right"  style="border-right: 0; border-bottom: 0;"><strong>&nbsp;</strong>  </td>
              <td width="15%" align="left"  style="border-right: 0; border-left: 0; border-bottom: 0;"><strong>Total</strong>  </td>

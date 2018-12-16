@@ -66,7 +66,7 @@
       {
     ?>
     <tr>
-      <?php if($value->nama_barang != $temp)
+      <?php if($value->sn_barang != $temp)
       {
       ?>
       <!-- <td align="center" rowspan="<?php echo $value->jumlah ?>"><?php echo $i ?></td> -->
@@ -78,7 +78,7 @@
       <td align="right"><?php echo number_format($value->subtotal,2,",",".") ?></td>
     </tr>
     <?php
-      $temp = $value->nama_barang;
+      $temp = $value->sn_barang;
       $i++;
       }
     ?>
@@ -99,7 +99,7 @@
     </tr>
         <tr >
       <td colspan="3" align="right" style="border-top: 0;  border-bottom: 0; border-right: 0;"><strong>&nbsp;</strong></td>
-      <td  align="left" style="border-top: 0;  border-bottom: 0; border-left: 0; border-right: 0;"><strong>Total Kembalian</strong></td>
+      <td  align="left" style="border-top: 0;  border-bottom: 0; border-left: 0; border-right: 0;"><strong>Total Bayar</strong></td>
       <td  align="right" style=" border: 0;" style="border-top: 0; border-bottom: 0; border-left: 0;"><?php echo number_format($value->bayar,2,",",".") ?></td>
     </tr>
     <tr >

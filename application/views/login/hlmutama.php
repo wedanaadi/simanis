@@ -176,6 +176,7 @@
 <script src="<?php echo base_url('assets/startboot/js/contact_me.js')?>"></script>
 <script src="<?php echo base_url('assets/sweetalert/dist/sweetalert.js')  ?>"></script>
 <script src="<?php echo base_url('assets/startboot/loadingoverlay.min.js')  ?>"></script>
+<script src=" <?php echo base_url('assets/validator/validator.js')?> "></script>
 
 <!-- Loading Overlay -->
 <script type="text/javascript">
