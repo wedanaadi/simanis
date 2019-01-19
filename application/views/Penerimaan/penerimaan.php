@@ -133,7 +133,7 @@ $this->load->view('layouts/template-atas');
                    </div>
                      <div class="col-xs-3">
                       <div class="form-group">
-                        <label class="control-label">Status</label>
+                        <label class="control-label">Status Barang</label>
                           <select style="width:100%; border-radius: 0" class="form-control" id="Garansi" name="Garansi">
                             <option value="" disabled="disabled" selected="selected"> --Pilih Status-- 
                             </option>

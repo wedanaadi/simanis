@@ -23,7 +23,7 @@
 <table id="TabelKonten"  border="1" style="border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  width="100%"   >
  
     <tbody>
-      <?php $total=0; $NoNota =''; $count = 0; $temp=null; foreach ($konten as $row) { ?>
+      <?php $jumlahbarang=0; $total=0; $NoNota =''; $count = 0; $temp=null; foreach ($konten as $row) { ?>
         <?php if ($row->id_penerimaan != $NoNota ) { ?>
           
             <?php if ($count!=0 ) { ?>
@@ -86,9 +86,22 @@
       
     </tr>
     
-    <?php $NoNota = $row->id_penerimaan; $count++; $temp = $row->id_penerimaan; } ?>
+    <?php $NoNota = $row->id_penerimaan; $count++; $temp = $row->id_penerimaan; $jumlahbarang++; } ?>
     </tbody>
 
+</table>
+<table width="100%"  border="0" style="font-size:11px; ">
+  <tr>     
+    <td >&nbsp;</td>
+    <td >&nbsp;</td>
+  </tr>
+</table>
+</table>
+<table id="TabelKonten"  border="1" style="border-collapse: collapse; border-color:#000000; margin-bottom : 130px;"  width="100%"   >
+  <tr>     
+    <td  > Jumlah Service Masuk Dari Tanggal <?php echo $periode['MulaiPem'].' '.'-'.' '.$periode['AkhirPem'] ?> </td>
+    <td width="17%"><?php echo $jumlahbarang ?> Unit</td>
+  </tr>
 </table>
 
 <table width="30%" align="right" border="0" style="font-size:11px; "  >

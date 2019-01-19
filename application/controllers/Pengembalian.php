@@ -21,7 +21,7 @@ class Pengembalian extends CI_Controller {
         $bulan = date('m');
 		$hari	= date ('d');
 		$last_kode = $this->M_pengembalian->last_kode($tahun.$bulan.$hari);
-		$data['kodetd'] = $this->create_kode->generate_menu($last_kode->kode, 3, 9, 'PEG', $tahun.$bulan.$hari);
+		$data['kodetd'] = $this->create_kode->generate_menu($last_kode->kode, 2, 9, 'PEG', $tahun.$bulan.$hari);
 		$data['dataservis'] = $this->M_pengembalian->dataservis();
 		$this->load->view('Pengembalian/pengembalianservis',$data);
 	}

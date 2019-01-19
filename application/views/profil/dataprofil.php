@@ -93,7 +93,7 @@
                   		<div class="form-group">
                     		<label for="inputSkills" class="col-sm-2 control-label" style="text-align: left; padding-left: 44px" >Email</label>
                     		<div class="col-sm-10">
-                      			<input type="text" class="form-control" id="Email" name="Email" value="<?php echo $dataprofil->email ?>" required>
+                      			<input type="email" class="form-control" id="Email" name="Email" value="<?php echo $dataprofil->email ?>" required>
                     		    <div class="help-block with-errors"></div>
                         </div>
                   		</div>

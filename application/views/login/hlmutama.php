@@ -295,7 +295,8 @@
         var _data = {
           no_nota: $('input[name=NoNota]').val(),
           emailcus : $('input[name=EmailCustomer]').val(),
-        };
+        }; 
+        console.log(_data);
         $.ajax({
           url: "<?php echo site_url('Login/Email') ?>",
           type: "POST",

@@ -20,9 +20,10 @@ class Penerimaan extends CI_Controller {
         $bulan = date('m');
 		$hari	= date ('d'); 
 		$last_kode = $this->M_penerimaan->last_kode($tahun.$bulan.$hari); 
-		/* last_kode($tahun.$bulan.$hari); --> $where pada M_penerimaan untuk mencocokan tgl sekarang dengan id_penerimaan*/ 
+		//print_r($this->db->last_query()); /* last_kode($tahun.$bulan.$hari); --> $where pada M_penerimaan untuk mencocokan tgl sekarang dengan id_penerimaan*/ 
 		
-		$data['kodetd'] = $this->create_kode->generate_menu($last_kode->kode, 3, 9, 'PEM', $tahun.$bulan.$hari);
+		$data['kodetd'] = $this->create_kode->generate_menu($last_kode->kode, 2, 9, 'PEM', $tahun.$bulan.$hari);
+/*		print_r($data).exit();*/
 		
 		$data['teknisi'] = $this->M_penerimaan->teknisi();
 		$data['kategori'] = $this->M_penerimaan->kategori();

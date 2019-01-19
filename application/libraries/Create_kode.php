@@ -7,11 +7,11 @@ class Create_kode {
     }
 
     function generate_menu($lastKode, $lenght, $start, $awalKode = NULL, $split = NULL) {
-        $kode = substr($lastKode,$start);
+        $kode = substr($lastKode,$start,2);
 		$angka = (int)$kode;
-		$angka_baru = $awalKode.$split.str_repeat("0", $lenght - strlen($angka+1)).($angka+1);
+        $barang = $angka+1;
+		$angka_baru = $awalKode.$split.str_repeat("0", $lenght - strlen($angka+1)).($angka+1)."808";
 		return $angka_baru;
     }
 }
 ?>
-
