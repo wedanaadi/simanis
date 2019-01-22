@@ -7,7 +7,8 @@ class Login extends CI_Controller {
 		parent::__construct();		
 		$this->load->model(array('M_karyawan'));
 		$this->load->model(array('M_servis'));
-		$this->load->helper(array('url'));
+		$this->load->library('session');
+		$this->load->helper(array('url','captcha'));
 		//$this->load->library(array('create_pdf'));	
 	}
 
@@ -34,20 +35,20 @@ class Login extends CI_Controller {
 		$result = $this->M_karyawan->getdata($username, $password)->result();
 
 		if (!empty($result)) {
-		 $user_session = array(
-		 	'session_id' => $this->session->userdata('session_id'),
-		 	'kodeuser' => $result[0]->id_karyawan,
-		 	'namauser' => $result[0]-> nama_karyawan,
-		 	'hak_akses' => $result[0]-> hak_akses,
-		 	'id_akses' => $result[0]-> id_hakakses,
-		 	'notlp' => $result[0]-> notlp_kar,
-		 	'alamat' => $result[0]-> alamat_kar,
-		 	'usernameuser' => $result[0]-> username,
-		 	'pass' => $result[0]-> pass,
-		 	'emailuser' => $result[0]-> email
-		 );
-		 $this->session->set_userdata($user_session);
-		 redirect('Dashboard');
+			$user_session = array(
+				'session_id' => $this->session->userdata('session_id'),
+				'kodeuser' => $result[0]->id_karyawan,
+				'namauser' => $result[0]-> nama_karyawan,
+				'hak_akses' => $result[0]-> hak_akses,
+				'id_akses' => $result[0]-> id_hakakses,
+				'notlp' => $result[0]-> notlp_kar,
+				'alamat' => $result[0]-> alamat_kar,
+				'usernameuser' => $result[0]-> username,
+				'pass' => $result[0]-> pass,
+				'emailuser' => $result[0]-> email
+			);
+			$this->session->set_userdata($user_session);
+			redirect('Dashboard');
 		}
 		else {
 			$respon['errorno']=1;
@@ -56,24 +57,47 @@ class Login extends CI_Controller {
 		}
 	}
 	function logout()
-		{
-			$this->session->sess_destroy();
-			redirect('Login');
-		}
+	{
+		$this->session->sess_destroy();
+		redirect('Login');
+	}
 
 	function hlmutama()
-		{
-			$this->load->view('login/hlmutama');
-		}
+	{
+		$id = $this->input->post('NoNota');
+		$data['dataservice'] = $this->M_servis->cariservice($id);
+
+		$config = array(
+			'img_path'      => 'assets/captcha_images/',
+			'img_url'       => base_url().'assets/captcha_images/',
+			'font_path'     => 'system/fonts/texb.ttf',
+			'img_width'     => '160',
+			'img_height'    => 50,
+			'word_length'   => 8,
+			'font_size'     => 18
+		);
+		$captcha = create_captcha($config);
+
+        // Unset previous captcha and set new captcha word
+		$this->session->unset_userdata('captchaCode');
+		$this->session->set_userdata('captchaCode', $captcha['word']);
+
+        // Pass captcha image to view
+		$data['captchaImg'] = $captcha['image'];
+        // Load the view
+		$this->load->view('login/hlmutama', $data);
+
+	}
 
 	function cariservice()
-	{
+	{ 
 		$id = $this->input->get('id_penerimaan');
 		$data = $this->M_servis->cariservice($id);
 		echo json_encode($data);
-		//print_r($data);exit();
+		
 	}
 
+	
 	function caridetail()
 	{
 		$id = $this->input->get('nonota2');
@@ -107,7 +131,7 @@ class Login extends CI_Controller {
      	$this->email->subject('Cek Service');
      	$this->email->message($html);
      	$this->email->send();	
-	}
-}
+     }
+ }
  ?>
 

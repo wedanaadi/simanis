@@ -341,6 +341,7 @@ $this->load->view('Penerimaan/daftarcustomer');
 
 <?php if($this->session->flashdata('no_nota')): ?>
 <?php $kodecetak =  $this->session->flashdata('no_nota');?> 
+
 <script type="text/javascript">
   $(document).ready(function() {
     var kodepem = "<?php echo $kodecetak;?>"

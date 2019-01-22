@@ -79,6 +79,11 @@ class Laporan extends CI_Controller {
 		  //print_r($data);exit();
 	   $this->create_pdf->load($html,'TandaTerima'.' '.$TglAwal3.' '.'-'.' '.$TglAkhir3, 'A4-P','');
 
+	}
+
+	public function cetak()
+	{
+		$this->load->view('laporan/viewcetak');
 	}	
 
 }
